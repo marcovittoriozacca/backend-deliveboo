@@ -24,7 +24,7 @@ class OrderSeeder extends Seeder
             $order->date = $faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s');
             $order->status = $faker->boolean();
             $order->total_price = $faker->randomFloat(2, 1, 99);
-            $dish->category_id = $faker->numberBetween(1, 5);
+            $order->restaurant_id = $i+1;
             $order->save();
         }
     }

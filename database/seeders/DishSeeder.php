@@ -25,6 +25,7 @@ class DishSeeder extends Seeder
             $dish->price = $faker->randomFloat(2, 1, 99);
             $dish->visible = $faker->boolean();
             $dish->category_id = $faker->numberBetween(1, 4);
+            $dish->restaurant_id = $i+1;
             $dish->save();
         }
     }

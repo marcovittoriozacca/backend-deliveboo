@@ -21,7 +21,7 @@ class RestaurantSeeder extends Seeder
                 'slug' => Str::slug($name, '-'),
                 'address' => fake()->address(),
                 'piva' =>  fake()->unique()->randomNumber(),
-                'user_id' => $i,
+                'user_id' => $i+1,
             ]);
         }
     }
