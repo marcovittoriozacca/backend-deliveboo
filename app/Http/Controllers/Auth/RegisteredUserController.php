@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
+use App\Models\Type;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -22,7 +23,9 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $typologies = Type::all();
+
+        return view('auth.register', compact('typologies'));
     }
 
     /**
@@ -82,7 +85,6 @@ class RegisteredUserController extends Controller
             // 'image' => ['nullable', 'image', 'mimes:jpg,jpeg,bmp,png,svg'],
         ]);
 
-
         //Creazione del record UTENTE
         $user = User::create([
             'name' => $request->name,
@@ -92,7 +94,7 @@ class RegisteredUserController extends Controller
         ]);
 
         //Creazione del record RISTORANTE
-        Restaurant::create([
+        $new_restaurant = Restaurant::create([
             'activity_name' => $request->activity_name,
             'slug' => Str::slug($request->activity_name ,'-'),
             'address' => $request->address,
@@ -101,10 +103,18 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id,
         ]);
 
+        //se al ristorante sono state associate delle categorie, viene compilata la tabella pivot con type_id e restaurant_id
+        if($request->has('typologies')){
+            $new_restaurant->types()->attach($request->typologies);
+        }
+
+        //avviente la registrazione
         event(new Registered($user));
 
+        //l'utente viene loggato in automatico
         Auth::login($user);
 
+        //redirection alla pagina /dashboard
         return redirect(RouteServiceProvider::HOME);
     }
 }

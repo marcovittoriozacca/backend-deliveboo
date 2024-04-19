@@ -95,6 +95,21 @@
                             </div>
                         </div>
 
+                        {{-- input Tipololgie Ristorante (many to many) --}}
+                        <div class="mb-3">
+                            <label for="typologies" class="form-label">{{ __('Typologies') }}</label>
+                            <select
+                                multiple
+                                class="form-select form-select-lg"
+                                name="typologies[]"
+                                id="typologies"
+                            >
+                            @foreach ($typologies as $type)    
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                        
                         {{-- input Indirizzo Ristorante --}}
                         <div class="mb-4 row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
