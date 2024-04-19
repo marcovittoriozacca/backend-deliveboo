@@ -15,7 +15,7 @@ class DishSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i=0; $i<10; $i++){
+        for ($i=0; $i<5; $i++){
             $dish= new Dish();
             $dish->name = $faker->randomElement(['pasta', 'pizza', 'carne', 'topo']);
             $dish->slug = Str::slug($dish->name, '-');
@@ -24,6 +24,8 @@ class DishSeeder extends Seeder
             $dish->image = $faker->url('http');
             $dish->price = $faker->randomFloat(2, 1, 99);
             $dish->visible = $faker->boolean();
+            $dish->category_id = $faker->numberBetween(1, 4);
+            $dish->restaurant_id = $i+1;
             $dish->save();
         }
     }
