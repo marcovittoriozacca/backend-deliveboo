@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Category extends Model
 {
@@ -14,8 +14,4 @@ class Category extends Model
         'name',
         'slug'
     ];
-
-    public function dishes(): BelongsToMany{
-        return $this->belongsToMany(Dish::class);
-    }
 }

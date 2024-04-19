@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 class Dish extends Model
@@ -27,7 +27,7 @@ class Dish extends Model
         return Str::slug($name,'-');
     }
 
-    public function categories(): BelongsToMany {
-        return $this->belongsToMany(Category::class);
+    public function category(): BelongsTo {
+        return $this->belongsTo(Category::class);
     }
 }
