@@ -10,16 +10,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Order extends Model
 {
     use HasFactory;
-
-    protected $fillable=[
-        "full_name",
-        "email",
-        "address",
-        "tel_number",
-        "description",
-        "date",
-        "status",
-        "total_price"
+    protected $fillable = [
+        'full_name',
+        'email',
+        'address',
+        'tel_number',
+        'description',
+        'date',
+        'status',
+        'total_price',
+        'restaurant_id',
     ];
 
     public function dishes() :BelongsToMany {

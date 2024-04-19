@@ -16,7 +16,9 @@ class Dish extends Model
         "ingredient",
         "image",
         "price",
-        "visible"
+        "visible",
+        "restaurant_id",
+        "category_id"
     ];
 
     public function restaurant() :BelongsTo{
