@@ -1,6 +1,7 @@
 
-#create_main{
+.create_main{
     background-color: $peacoat;
+    min-height: calc(100vh - 70px);
 }
 
 .container_form{
