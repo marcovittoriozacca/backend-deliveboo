@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="container-fluid py-3 d-flex flex-column align-items-center vh-100" id="create_main">
-    <h1 class="white mb-5 mt-2">Crea un nuovo piatto</h1>
-    <div class="container container_form p-5" >
-        <div class="d-flex justify-content-between gap-5">
+<main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
+    <h1 class="text-center white mb-5 mt-2">Crea un nuovo piatto</h1>
+    <div class="container container_form p-3 py-3 p-lg-5" >
+        <div class="d-flex justify-content-between gap-5 flex-column flex-lg-row">
             <div class="mb-3 w-100">
                 <label for="exampleFormControlInput1" class="form-label">Name</label>
                 <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="inserisci il nome">
