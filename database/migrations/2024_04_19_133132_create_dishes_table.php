@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
+            $table->varchar("name");
+            $table->varchar("slug");
+            $table->varchar("description");
+            $table->varchar("ingredient");
+            $table->varchar("image");
+            $table->decimal("price");
+            $table->bool("visible");
+            $table->unsignedBigInteger('restaurant_id');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
