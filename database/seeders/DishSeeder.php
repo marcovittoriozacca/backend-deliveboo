@@ -15,7 +15,7 @@ class DishSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i=0; $i<10; $i++){
+        for ($i=0; $i<5; $i++){
             $dish= new Dish();
             $dish->name = $faker->randomElement(['pasta', 'pizza', 'carne', 'topo']);
             $dish->slug = Str::slug($dish->name, '-');
