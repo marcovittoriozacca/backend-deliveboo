@@ -27,7 +27,7 @@ class TypeSeeder extends Seeder
             "Brasiliano"
         ];
 
-        foreach ($tipologie as $key => $tipologia) {
+        foreach ($tipologie as $tipologia) {
             Type::create([
                 'name' => $tipologia,
                 'slug' => Str::slug($tipologia, '-'),

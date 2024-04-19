@@ -27,25 +27,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string'],
-            'surname' => ['required', 'string'],
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'name.required' => ['Il nome è un campo obbligatorio'],
-            'name.string' => ['Inserisci delle parole'],
-            'surname.required' => ['Il cognome è un campo obbligatorio'],
-            'surname.string' => ['Inserisci delle parole'],
-            'email.required' => ["L'email è un campo obbligatorio"],
-            'email.string' => ["L'email è un campo obbligatorio"],
-            'email.email' => ["L'email è un campo obbligatorio"],
-            'password.required' => ['required', 'string'],
-            'password.string' => ['required', 'string'],
         ];
     }
 

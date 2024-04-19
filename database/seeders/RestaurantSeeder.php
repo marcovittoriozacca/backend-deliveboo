@@ -17,7 +17,7 @@ class RestaurantSeeder extends Seeder
         for ($i=0; $i < 5; $i++) { 
             $name = fake()->unique()->name();
             Restaurant::create([
-                'name' => $name,
+                'activity_name' => $name,
                 'slug' => Str::slug($name, '-'),
                 'address' => fake()->address(),
                 'piva' =>  fake()->unique()->randomNumber(),
