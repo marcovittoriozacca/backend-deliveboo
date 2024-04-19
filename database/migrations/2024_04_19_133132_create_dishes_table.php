@@ -17,9 +17,9 @@ return new class extends Migration
             $table->varchar("slug");
             $table->varchar("description");
             $table->varchar("ingredient");
-            $table->varchar("image");
+            $table->varchar("image")->nullable;
             $table->decimal("price");
-            $table->bool("visible");
+            $table->bool("visible")->default(1);
             $table->unsignedBigInteger('restaurant_id');
             $table->unsignedBigInteger('category_id');
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
