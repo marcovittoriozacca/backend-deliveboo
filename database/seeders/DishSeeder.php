@@ -24,6 +24,7 @@ class DishSeeder extends Seeder
             $dish->image = $faker->url('http');
             $dish->price = $faker->randomFloat(2, 1, 99);
             $dish->visible = $faker->boolean();
+            $dish->category_id = $faker->numberBetween(1, 4);
             $dish->save();
         }
     }
