@@ -30,4 +30,7 @@ class Restaurant extends Model
     public function dish(): HasMany{
         return $this->hasMany( Dish::class );
     }
+    public function order(): HasMany{
+        return $this->hasMany( Order::class );
+    }
 }
