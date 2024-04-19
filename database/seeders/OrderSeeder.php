@@ -14,7 +14,7 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i=0; $i<10; $i++){
+        for ($i=0; $i<5; $i++){
             $order= new Order();
             $order->full_name = $faker->name();
             $order->email = $faker->email();
@@ -24,6 +24,7 @@ class OrderSeeder extends Seeder
             $order->date = $faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s');
             $order->status = $faker->boolean();
             $order->total_price = $faker->randomFloat(2, 1, 99);
+            $order->restaurant_id = $i+1;
             $order->save();
         }
     }

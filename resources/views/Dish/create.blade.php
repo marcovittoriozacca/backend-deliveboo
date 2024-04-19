@@ -1,42 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="container py-3">
-    <h1>Crea un nuovo piatto</h1>
-    <div class="d-flex">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Name</label>
-            <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="inserisci il nome">
+<main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
+    <h1 class="text-center white mb-5 mt-2">Crea un nuovo piatto</h1>
+    <div class="container container_form p-3 py-3 p-lg-5" >
+        <div class="d-flex justify-content-between gap-5 flex-column flex-lg-row">
+            <div class="mb-3 w-100">
+                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="inserisci il nome">
+            </div>
+            <div class="w-100">
+                <label class="mb-2" for="form-select">Categoria</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>scegli una categoria</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
         </div>
-        <select class="form-select" aria-label="Default select example">
-            <option selected>scegli una categoria</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-    </div>
-    <div>
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-    <div class="input-group">
-        <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Carica</button>
-    </div>
-    <div>
-        <div class="mb-3">
-            <label for="priceTag" class="form-label">Prezzo</label>
-            <input type="price" class="form-control" id="price">
+        <div class="my-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descrizione</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" maxlength="1200"></textarea>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Disponibilità
-            </label>
-          </div>
+        <div class="input-group my-5">
+            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Carica</button>
+        </div>
+        <div class="mb-4">
+            <div>
+                <label for="priceTag" class="form-label">Prezzo</label>
+                <input type="number" class="form-control" id="price">
+            </div>
+        </div>
+        <div class="text-center w-100">
+            <button type="button" class="btn btn-warning w-50 white">Aggiungi</button>
+        </div>
+
     </div>
-    <div class="text-center">
-        <button type="button" class="btn btn-warning">Aggiungi</button>
-    </div>
+
 </main>
+
 @endsection
