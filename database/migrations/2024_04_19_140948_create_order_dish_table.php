@@ -12,24 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('order_dishe', function (Blueprint $table) {
-            $table->id();
-            $table->primary(['dish_id', 'order_id']);
-
-
-            $table->unsignedBigInteger('dish_id')->nullable();
+            
+            $table->unsignedBigInteger('dish_id');
             $table->foreign('dish_id')->references('id')->on('dishes');
 
 
-            $table->unsignedBigInteger('order_id')->nullable();
+            $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
 
-
-            $table->varchar("name");
+            $table->string("name");
             $table->int("quantity")->default(1);
             $table->decimal("price");
 
 
-
+            $table->primary(['dish_id', 'order_id']);
             $table->timestamps();
         });
     }

@@ -13,21 +13,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->varchar("full_name");
-            $table->varchar("email");
-            $table->varchar("address");
-            $table->varchar("tel_number");
+            $table->string("full_name");
+            $table->string("email");
+            $table->string("address");
+            $table->string("tel_number");
             $table->text("description");
             $table->date("date");
-            $table->bool("status")->default(0);
+            $table->boolean("status")->default(0);
             $table->decimal("total_price");
             $table->unsignedBigInteger('restaurant_id');
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('restaurant_id');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
-
-
-
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->cascadeOnDelete();
 
             $table->timestamps();
         });
