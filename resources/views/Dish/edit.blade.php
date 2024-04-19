@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="container py-3">
-    <h1>Crea un nuovo piatto</h1>
+    <h1>Modifica (elemento)</h1>
     <div class="d-flex">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Name</label>
@@ -36,7 +36,7 @@
           </div>
     </div>
     <div class="text-center">
-        <button type="button" class="btn btn-warning">Aggiungi</button>
+        <button type="button" class="btn btn-warning">Modifica</button>
     </div>
 </main>
 @endsection
