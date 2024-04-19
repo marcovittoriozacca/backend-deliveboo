@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('slug');
+            $table->string('address');
+            $table->string('piva')->unique();
+            $table->string('image')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }
