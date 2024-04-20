@@ -3,8 +3,9 @@
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Modifica: {{ $dish->name }}</h1>
-    <form action="{{ route('dishes.store', $restaurant->id) }}" method="POST">
+    <form action="{{ route('dishes.update', [$restaurant->id,$dish->id]) }}" method="POST">
         @csrf
+        @method('PUT')
         <div class="container container_form p-3 py-3 p-lg-5">
             <div class="d-flex justify-content-between gap-5 flex-column flex-lg-row">
                 {{-- edit nome --}}
