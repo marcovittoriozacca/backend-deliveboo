@@ -1,0 +1,56 @@
+#main_login{
+    background-image: url("login_register/login-register-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 85.45px);
+
+}
+
+.text_orange_color{
+    color: $orange;
+}
+
+.bg_login{
+    // background-color: $dark-navy-blue;
+    background-color: #03071ec9
+}
+
+@media screen and (max-width:992px){
+    .view_container_login{
+        height: calc(100vh - 85.45px);
+
+    }
+
+
+
+}
+.bg_trasp{
+    // background-color: $dark-navy-blue;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+
+
+
+
+
+#LogoDeliveboo{
+    width: 200px;
+    height: 200px;
+}
+
+
+.bg-nav{
+    background-color: $dark-blue;
+}
+
+.link-orange{
+    color: $orange;
+    text-decoration: none;
+}
+
+
+.button_login{
+    background-color: $orange;
+}

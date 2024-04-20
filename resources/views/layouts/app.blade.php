@@ -72,7 +72,7 @@
             </div>
         </nav>
 
-        <main class="">
+        <main id="main_login">
             @yield('content')
         </main>
     </div>
@@ -80,17 +80,3 @@
 
 </html>
 
-
-<style lang="scss">
-    #LogoDeliveboo{
-        width: 200px;
-        height: 200px;
-    }
-    .bg-nav{
-        background-color: #03071E;
-    }
-    .link-orange{
-        color: #f58115;
-        text-decoration: none;
-    }
-</style>
