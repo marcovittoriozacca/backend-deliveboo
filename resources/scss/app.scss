@@ -2,6 +2,7 @@ $dark-navy-blue:#15182d;
 $peacoat: #3f3d56;
 $dark-blue: #03071E ;
 $light-gray: #e0e2e6;
+$grey:#b1b2b5;
 $chocolate: #370617;
 $dark-red: #6A040F;
 $red: #9D0208;
@@ -18,6 +19,7 @@ $yellow: #FFBA08;
 @import "./partials/create_form.scss";
 @import "./partials/edit_form.scss";
 @import "./partials/login_register.scss";
+@import "./partials/index.scss";
 
 
 

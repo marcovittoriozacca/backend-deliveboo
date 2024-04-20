@@ -19,7 +19,7 @@ class DishController extends Controller
     public function index(Restaurant $restaurant)
     {
         $restaurant_id = Auth::id();
-        $dishes = Dish::with('restaurant')->where('restaurant_id', $restaurant_id)->get();
+        $dishes = Dish::with('restaurant','category')->where('restaurant_id', $restaurant_id)->get();
         return view('dish.index', compact('dishes', 'restaurant'));
     }
 
@@ -46,7 +46,7 @@ class DishController extends Controller
         $new_dish['category_id'] = 1;
 
         $new_dish = Dish::create($new_dish);
-        
+
 
         return redirect()->route('dishes.index', compact('restaurant'));
     }
@@ -64,7 +64,7 @@ class DishController extends Controller
      */
     public function edit(Restaurant $restaurant, Dish $dish)
     {
-        
+
         return view('dish.edit', compact('restaurant', 'dish'));
     }
 
