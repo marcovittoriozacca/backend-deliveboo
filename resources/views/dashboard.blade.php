@@ -10,7 +10,7 @@
             <p>{{ $restaurant->address }}</p>
             <p>{{ $restaurant->piva }}</p>
 
-            <a href="{{ route('dishes.index') }}">Menù</a>
+            <a href="{{ route('dishes.index', $restaurant->id) }}">Menù</a>
         </div>
         @endforeach
     </div>

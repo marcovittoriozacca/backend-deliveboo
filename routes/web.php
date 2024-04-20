@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     
-    Route::resource('/dishes', DishController::class);
+    Route::resource('/{restaurant}/dishes', DishController::class);
 
 });
 

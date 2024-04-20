@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Models\Dish;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
@@ -13,19 +14,19 @@ class DishController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Restaurant $restaurant)
     {
         $restaurant_id = Auth::id();
         $dishes = Dish::with('restaurant')->where('restaurant_id', $restaurant_id)->get();
-        return view('dish.index', compact('dishes'));
+        return view('dish.index', compact('dishes', 'restaurant'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Restaurant $restaurant)
     {
-        return view('dish.create');
+        return view('dish.create', compact('restaurant'));
     }
 
     /**
@@ -47,9 +48,9 @@ class DishController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Dish $dish)
+    public function edit(Restaurant $restaurant, Dish $dish)
     {
-        return view('dish.edit', compact('dish'));
+        return view('dish.edit', compact('restaurant', 'dish'));
     }
 
     /**
