@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Models\Dish;
+use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
@@ -14,7 +15,9 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $restaurant_id = Auth::id();
+        $dishes = Dish::with('restaurant')->where('restaurant_id', $restaurant_id)->get();
+        return view('dish.index', compact('dishes'));
     }
 
     /**
