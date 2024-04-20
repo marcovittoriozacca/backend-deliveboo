@@ -39,7 +39,6 @@ class LoginRequest extends FormRequest
             'email.email' => 'Inserisci una Email valida',
             'password.required' => 'Inserisci la Password',
             'password.string' => 'Inserisci una Password valida',
-            
         ];
     }
     /**
@@ -55,7 +54,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => 'Email o Password non validi'
+                'email' => 'Email o Password non valida'
             ]);
         }
 

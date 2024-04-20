@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
             'activity_name' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'piva' => ['required', 'string', 'size:11', 'unique:'.Restaurant::class],
-            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,bmp,png,svg'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,jpe,webp,heif,bmp,tiff,tif,xbm,png,svg', 'max:2000'],
         ],
         //messaggi alternativi che verranno visualizzati in caso di errore durante la fase di invio dei dati (se l'utente non supera la validazione dei dati)
         [
@@ -101,7 +101,8 @@ class RegisteredUserController extends Controller
 
             //messaggi di errore personalizzati per la foto
             'image.image' => 'Puoi inserire soltato un file di tipo Immagine',
-            'image.mime' => 'Tipo di file non ammesso. Usa: jpg, jpeg, bmp, png o svg',
+            'image.mime' => 'Estensione della immagine non ammessa.',
+            'image.max' => "Peso dell'immagine troppo elevato.",
         ]);
 
         //Creazione del record UTENTE
