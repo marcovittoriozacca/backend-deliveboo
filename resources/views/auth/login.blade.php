@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid container-lg">
-    <div class="row justify-content-center bg_login">
+    <div class="row justify-content-center bg_login rounded-4">
         <div class="mx-1 col-md-8 view_container_login ">
             <div class="card mt-3 mt-lg-5 bg_trasp py-lg-5 rounded-3 ">
 

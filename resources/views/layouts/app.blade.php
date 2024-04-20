@@ -73,7 +73,9 @@
         </nav>
 
         <main id="main_login">
-            @yield('content')
+            <div class="pt-lg-5">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
