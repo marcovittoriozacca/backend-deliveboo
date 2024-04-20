@@ -1,9 +1,9 @@
 #main_login{
-    background-image: url("login_register/login-register-bg.jpg");
+
+    background-image: url("login_register/login-register-bg-blur.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: calc(100vh - 85.45px);
-
 }
 
 .text_orange_color{
@@ -15,13 +15,16 @@
     background-color: #03071ec9
 }
 
+.bg_register{
+    // background-color: $dark-navy-blue;
+    background-color: #03071ec9
+}
+
 @media screen and (max-width:992px){
     .view_container_login{
         height: calc(100vh - 85.45px);
 
     }
-
-
 
 }
 .bg_trasp{
@@ -52,5 +55,9 @@
 
 
 .button_login{
+    background-color: $orange;
+}
+
+.button_register{
     background-color: $orange;
 }
