@@ -72,8 +72,10 @@
             </div>
         </nav>
 
-        <main id="main_login">
-            @yield('content')
+        <main>
+            <div class="">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
