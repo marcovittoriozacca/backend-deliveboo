@@ -15,6 +15,7 @@
     background-color: $base-orange;
     color: white;
     transition: .3s all ease-out;
+    cursor: pointer;
     &:hover{
         background-color: $light-gray;
         color: black;
