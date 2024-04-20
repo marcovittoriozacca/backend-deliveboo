@@ -15,14 +15,20 @@
 
 
 .bg_card{
-    background-color: $peacoat;
+    background-color: $dark-blue;
 }
+
+
 
 
 .index_main{
-    background-color: $dark-blue;
-    height: 100vh;
+    background: linear-gradient(to bottom, #ffb90800 45%,$peacoat 20px);
 }
+
+.card_block{
+    top: 60%;
+}
+
 
 
 
@@ -35,6 +41,9 @@
 .button_delete{
     background-color: $light-red;
 }
+
+
+
 
 .type{
     background-color: $orange;
@@ -49,4 +58,31 @@
 .img_plate img{
     width: 100%;
 
+}
+
+.blur{
+    filter: blur(3px);
+    transform: scale(102%);
+}
+
+
+@media screen and (max-width:768px){
+    .index_main{
+        background: linear-gradient(to bottom, #ffb90800 12%,$peacoat 20px);
+    }
+}
+
+
+@media screen and (max-width:589px){
+    .index_main{
+        background: linear-gradient(to bottom, #ffb90800 10%,$peacoat 20px);
+    }
+}
+
+
+
+@media screen and (max-width:375px){
+    .index_main{
+        background: linear-gradient(to bottom, #ffb90800 7%,$peacoat 20px);
+    }
 }
