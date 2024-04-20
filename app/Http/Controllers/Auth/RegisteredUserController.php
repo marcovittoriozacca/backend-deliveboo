@@ -37,52 +37,72 @@ class RegisteredUserController extends Controller
     {
         //Validazione della richiesta inviata tramite il form di registrazione (contiene i dati dell'utente e del ristorante)
         $request->validate([
+            //dati utente
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-
+            'password' => ['required', 'confirmed', Rules\Password::min(8)
+                                                                    ->mixedCase()
+                                                                    ->letters()
+                                                                    ->numbers()
+                                                                    ->symbols()
+                                                                    ->uncompromised(7)
+            ],
+            //dati ristorante
             'activity_name' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'piva' => ['required', 'string', 'size:11', 'unique:'.Restaurant::class],
-            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,bmp,png,svg'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,jpe,webp,heif,bmp,tiff,tif,xbm,png,svg', 'max:2000'],
         ],
         //messaggi alternativi che verranno visualizzati in caso di errore durante la fase di invio dei dati (se l'utente non supera la validazione dei dati)
         [
+            //messaggi di errore personalizzati per il nome utente
             'name.required' => 'Inserisci il Nome',
             'name.string' => 'Inserisci un Nome valido',
             'name.max' => 'Il Nome inserito è troppo lungo',
 
+            //messaggi di errore personalizzati per il cognome utente
             'surname.required' => 'Inserisci il Cognome',
             'surname.string' => 'Inserisci un Cognome valido',
             'surname.max' => 'Il Cognome inserito è troppo lungo',
 
+            //messaggi di errore personalizzati per la email utente
             'email.required' => 'Inserisci una Email', 
             'email.string' => 'Inserisci una Email valida',
             'email.email' => 'Inserisci una Email valida',
             'email.max' => "L'email inserita è troppo lunga",
             'email.unique' => "Questa Email è già stata utilizzata in precedenza",
 
-            //da completare la validazione della password
-            'password.required' => 'Inserisci una password',
-            'password.confirmed' => '',
+            //messaggi di errore personalizzati per la password utente
+            'password.required' => 'Inserisci una Password',
+            'password.min' => 'La Password deve essere composta da almeno 8 caratteri',
+            'password.confirmed' => 'La password non corrisponde',
+            'password.mixed' => 'La Password deve contenere almeno un carattere Maiuscolo e Minuscolo',
+            'password.letters' => 'La Password deve contenere almeno una lettera',
+            'password.numbers' => 'La Password deve contenere almeno un numero',
+            'password.symbols' => 'La Password deve contenere almeno un carattere speciale',
+            'password.uncompromised' => 'La Password è presente in un recenter Data Leak, per sicurezza inseriscine una diversa',
 
+            //messaggi di errore personalizzati per il nome del ristorante
             'activity_name.required' => 'Inserisci il Nome della tua Attività',
             'activity_name.string' => 'Inserisci un Nome valido per la tua Attività',
             'activity_name.max' => 'Il Nome della tua Attività è troppo lungo',
 
+            //messaggi di errore personalizzati per l'indirizzo del ristorante
             'address.required' => "Inserisci un indirizzo per la tua Attività",
             'address.string' => 'Inserisci un Indirizzo valido',
             'address.max' => "L'indirizzo è troppo lungo",
 
+            //messaggi di errore personalizzati per la partita iva del ristorante
             'piva.required' => 'Inserisci la Partita IVA',
             'piva.string' => 'Inserisci una Partita IVA valida',
             'piva.size' => 'La Partita IVA deve essere composta da 11 caratteri',
             'piva.unique' => 'Questa Partita IVA è già stata utilizzata in precedenza',
 
+            //messaggi di errore personalizzati per la foto
             'image.image' => 'Puoi inserire soltato un file di tipo Immagine',
-            'image.mime' => 'Tipo di file non ammesso. Usa: jpg, jpeg, bmp, png o svg',
-            // 'image' => ['nullable', 'image', 'mimes:jpg,jpeg,bmp,png,svg'],
+            'image.mime' => 'Estensione della immagine non ammessa.',
+            'image.max' => "Peso dell'immagine troppo elevato.",
         ]);
 
         //Creazione del record UTENTE
