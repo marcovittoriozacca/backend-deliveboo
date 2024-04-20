@@ -19,6 +19,15 @@
 }
 
 
+.index_main{
+    background-color: $dark-blue;
+    height: 100vh;
+}
+
+
+
+
+
 .button_edit{
     background-color: $grey;
 }
@@ -33,6 +42,11 @@
 }
 
 .img_plate{
-    min-width: 100%;
+    max-width: 100%;
+
+}
+
+.img_plate img{
+    width: 100%;
 
 }
