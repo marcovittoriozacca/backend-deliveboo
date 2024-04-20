@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid container-lg">
-    <div class="row justify-content-center bg_login rounded-4">
-        <div class="mx-1 col-md-8 view_container_login ">
+<div class="container-fluid px-0 over" id="main_login">
+    <span class="contenuto_fix d-none d-lg-block">.</span>
+    <div class="mt-lg-5 pb-5  px-0 px-lg-1 row justify-content-center bg_login rotondo container-fluid container-lg mx-auto  overflow-auto">
+        <div class="mx-lg-1 px-0 px-lg-1 col-md-8 view_container_login ">
             <div class="card mt-3 mt-lg-5 bg_trasp py-lg-5 rounded-3 ">
 
 
@@ -59,12 +60,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Password?') }}
-                                </a>
-                                @endif
                             </div>
                         </div>
                     </form>

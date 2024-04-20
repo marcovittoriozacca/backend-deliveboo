@@ -6,6 +6,8 @@
     height: calc(100vh - 85.45px);
 }
 
+
+
 .text_orange_color{
     color: $orange;
 }
@@ -20,13 +22,38 @@
     background-color: #03071ec9
 }
 
+.over{
+    overflow: hidden;
+}
+
 @media screen and (max-width:992px){
     .view_container_login{
         height: calc(100vh - 85.45px);
 
     }
 
+
 }
+
+@media screen and (min-width:992px) and (min-height:1300px){
+
+    .h-lg-auto{
+        height: auto!important;
+    }
+
+    .rotondo{
+        border-radius: 20px!important;
+    }
+
+}
+
+.contenuto_fix{
+    color: transparent;
+}
+
+
+
+
 .bg_trasp{
     // background-color: $dark-navy-blue;
     background-color: transparent;
