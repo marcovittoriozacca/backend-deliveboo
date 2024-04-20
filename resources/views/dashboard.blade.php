@@ -2,25 +2,17 @@
 
 @section('content')
 <div class="container">
-    <h2 class="fs-4 text-secondary my-4">
-        {{ __('Dashboard') }}
-    </h2>
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
+    <div class="row">
+        @foreach ($restaurants as $restaurant)
+        <div class="col-12">
+            <p>{{ $restaurant->activity_name }}</p>
+            <img src="{{ $restaurant->image }}" alt="immagine-ristorante-quando-ci-sarà">
+            <p>{{ $restaurant->address }}</p>
+            <p>{{ $restaurant->piva }}</p>
 
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+            <a href="{{ route('dishes.index', $restaurant->id) }}">Menù</a>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection
