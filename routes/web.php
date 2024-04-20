@@ -31,7 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     
-    Route::resource('/{restaurant}/dishes', DishController::class);
+    Route::middleware('check-user-restaurant')->group( function (){
+        Route::resource('/{restaurant}/dishes', DishController::class);
+    });
 
 });
 
