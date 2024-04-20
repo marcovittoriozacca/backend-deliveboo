@@ -1,0 +1,52 @@
+// $dark-navy-blue:#15182d;
+// $peacoat: #3f3d56;
+// $dark-blue: #03071E ;
+// $light-gray: #e0e2e6;
+// $chocolate: #370617;
+// $dark-red: #6A040F;
+// $red: #9D0208;
+// $light-red: #D00000;
+// $dark-orange: #DC2F02;
+// $orange: #f58115; //(colore link della navbar in versione SM/MD)
+// $base-orange: #ff9654; //(colore link delle navbar LG)
+// $light-orange: #F48C06;
+// $dark-yellow: #FAA307;
+// $yellow: #FFBA08;
+
+
+.bg_card{
+    background-color: $peacoat;
+}
+
+
+.index_main{
+    background-color: $dark-blue;
+    height: 100vh;
+}
+
+
+
+
+
+.button_edit{
+    background-color: $grey;
+}
+
+.button_delete{
+    background-color: $light-red;
+}
+
+.type{
+    background-color: $orange;
+
+}
+
+.img_plate{
+    max-width: 100%;
+
+}
+
+.img_plate img{
+    width: 100%;
+
+}
