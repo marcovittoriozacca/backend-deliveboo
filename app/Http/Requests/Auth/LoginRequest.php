@@ -31,6 +31,16 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'email.required' => 'Inserisci la Email',
+            'email.string' => 'Inserisci una Email valida',
+            'email.email' => 'Inserisci una Email valida',
+            'password.required' => 'Inserisci la Password',
+            'password.string' => 'Inserisci una Password valida',
+        ];
+    }
     /**
      * Attempt to authenticate the request's credentials.
      *
@@ -44,7 +54,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => 'Email o Password non valida'
             ]);
         }
 
