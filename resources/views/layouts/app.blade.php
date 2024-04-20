@@ -23,7 +23,7 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-nav shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-nav shadow-sm ">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div>
@@ -31,7 +31,7 @@
                     </div>
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler px-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <img width="50" src="/hamburger_menu.png" alt="burger-menu">
                 </button>
 
@@ -54,7 +54,7 @@
                                 <span class="text-white text-center">
                                     {{ Auth::user()->name}}
                                 </span>
-                                
+
                             </div>
                             <a class="dropdown-item link-orange text-center" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
                             <a class="dropdown-item link-orange text-center" href="{{ url('profile') }}">{{__('Profile')}}</a>
@@ -64,7 +64,7 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-                            
+
                         </li>
                         @endguest
                     </ul>
