@@ -19,7 +19,7 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::with('restaurant','category')->where('restaurant_id', Auth::id())->get();    
+        $dishes = Dish::with('restaurant','category')->where('restaurant_id', Auth::id())->get();
         return view('dish.index', compact('dishes'));
     }
 
@@ -63,6 +63,11 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
+
+        if($dish->restaurant_id == Auth::id()){
+        }else{
+            $dish = Dish::with('restaurant')->where('restaurant_id', Auth::id())->where('slug', $dish->slug)->first();
+        }
         $categories = Category::all();
         return view('dish.edit', compact('dish', 'categories'));
     }
@@ -72,8 +77,17 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
+
+        if($dish->restaurant_id == Auth::id()){
+        }else{
+            $dish = Dish::with('restaurant')->where('restaurant_id', Auth::id())->where('slug', $dish->slug)->first();
+        }
+
+
         $updated_dish = $request->all();
+
         $dish->update($updated_dish);
+        $dish['slug'] = Str::slug($dish['name'],'-');
         $dish->save();
         return redirect()->route('dishes.index');
     }
@@ -83,6 +97,6 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        dd($dish);
     }
 }
