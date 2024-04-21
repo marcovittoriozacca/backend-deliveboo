@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
+use App\Models\Category;
 use App\Models\Dish;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -16,25 +17,26 @@ class DishController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Restaurant $restaurant)
+    public function index()
     {
-        $restaurant_id = Auth::id();
-        $dishes = Dish::with('restaurant','category')->where('restaurant_id', $restaurant_id)->get();
-        return view('dish.index', compact('dishes', 'restaurant'));
+        $dishes = Dish::with('restaurant','category')->where('restaurant_id', Auth::id())->get();    
+        return view('dish.index', compact('dishes'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Restaurant $restaurant)
+    public function create()
     {
-        return view('dish.create', compact('restaurant'));
+
+        $categories = Category::all();
+        return view('dish.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDishRequest $request, Restaurant $restaurant)
+    public function store(StoreDishRequest $request)
     {
         $new_dish = $request->validated();
 
@@ -42,13 +44,10 @@ class DishController extends Controller
         $new_dish['visible'] = true;
         $new_dish['restaurant_id'] = Auth::id();
 
-        //bisogna rimuovere questa riga e il required nelle migrations
-        $new_dish['category_id'] = 1;
-
         $new_dish = Dish::create($new_dish);
 
 
-        return redirect()->route('dishes.index', compact('restaurant'));
+        return redirect()->route('dishes.index');
     }
 
     /**
@@ -62,21 +61,21 @@ class DishController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Restaurant $restaurant, Dish $dish)
+    public function edit(Dish $dish)
     {
-
-        return view('dish.edit', compact('restaurant', 'dish'));
+        $categories = Category::all();
+        return view('dish.edit', compact('dish', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Restaurant $restaurant, Dish $dish)
+    public function update(UpdateDishRequest $request, Dish $dish)
     {
-        $updish = $request->all();
-        $dish->update($updish);
+        $updated_dish = $request->all();
+        $dish->update($updated_dish);
         $dish->save();
-        return redirect()->route('dishes.index', compact('restaurant'));
+        return redirect()->route('dishes.index');
     }
 
     /**

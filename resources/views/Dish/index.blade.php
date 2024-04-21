@@ -1,115 +1,84 @@
 @extends('layouts.app')
 
 @section('content')
-    <main class="container-fluid  px-0 position-relative">
+<div class="create_main pb-5">
 
-            <div class="">
-                <figure class="mb-0 immagine_qualcosa" style="width: 99%">
-                    <img class="img-fluid blur w-100" src="/restaurant_bg_1.jpg" alt="a">
-                </figure>
-            </div>
+    <div class="position-relative negative-index">
 
+        {{-- banner con l'immagine del ristorante che sarà dinamica --}}
+        <figure class="mb-0 photo-max-h overflow-hidden">
+            <div style="background-image:url({{ $dishes[0]->restaurant->image }})" class="h-100 menu-restaurant-banner"></div>
+        </figure>
 
+        {{-- informazioni generali del ristoranti --}}
+        <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-3 px-5 rounded ">
+            <h1>
+                {{ $dishes[0]->restaurant->activity_name }}
+            </h1>
+            <h3>
+                {{ $dishes[0]->restaurant->address }}
+            </h3>
+        </div>
 
+        <div class="position-absolute start-0 bottom-0">
+            <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungu un piatto!</a>
+        </div>
+    </div>
 
+    {{-- sezione piatti --}}
+    <div class="container dishes-container">
+        <div class="row row-gap-4">
+            @foreach ($dishes as $dish)    
+            <div class="col-12 col-md-6 col-lg-4">
+                {{-- piatto --}}
+                <div class="bg_card p-4 rounded-3">
+                    <figure class="mb-0">
+                        {{-- <img src="{{ $dishes->image }}" alt="immagine-piatto"> --}}
+                        <img class="img-fluid rounded-2" src="/pizza_card.webp" alt="immagine-piatto">
+                    </figure>
 
-
-
-
-
-
-
-
-        <div class="container-fluid position-absolute index_main card_block">
-
-                    @foreach ($dishes as $dish)
-                <div class="row row-cols-1 g-4 row-cols-md-5 mx-3 mx-sm-5">
-
-                    <div class="col">
-
-                        <div class="bg_card rounded-4 single_card">
-                            <figure class="p-3 img_plate mb-0">
-                                {{-- <img src="{{ $dish->image }}" alt="No Image Found"> --}}
-                                <img class="rounded-4" src="/pizza_card.webp" alt="No Image Found">
-                            </figure>
-
-                            <div class="p-3 rounded text-light pt-0">
-                                <div class="d-flex justify-content-between">
-                                    <h2 class="text-capitalize">{{ $dish->name }}</h2>
-                                    <span>{{ $dish->price }}€</span>
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <span class="type px-5 py-1 rounded-4">{{$dish->category->name}}</span>
-                                </div>
-
-
-
-
-                                <div class="d-flex flex-column gap-2">
-                                    <a class="text-center w-100 rounded-3 button_edit text-decoration-none text-light py-1" href="{{ route('dishes.edit', [$restaurant->id, $dish->id]) }}">EDIT</a>
-                                    <a class="text-center button_delete w-100 rounded-3 button_edit text-decoration-none text-light py-1" href="{{ route('dishes.edit', [$restaurant->id, $dish->id]) }}">REMOVE</a>
-                                </div>
-
-                        </div>
-
-
-
-                        </div>
-
-
-
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="mb-0 text-white">
+                            {{ $dish->name }}
+                        </h3>
+                        <p class="mb-0 text-white">
+                            {{ $dish->price }}€
+                        </p>
                     </div>
 
-                    <div class="col">
-
-                        <div class="bg_card rounded-4 single_card">
-                            <figure class="p-3 img_plate mb-0">
-                                {{-- <img src="{{ $dish->image }}" alt="No Image Found"> --}}
-                                <img class="rounded-4" src="/pizza_card.webp" alt="No Image Found">
-                            </figure>
-
-                            <div class="p-3 rounded text-light pt-0">
-                                <div class="d-flex justify-content-between">
-                                    <h2 class="text-capitalize">{{ $dish->name }}</h2>
-                                    <span>{{ $dish->price }}€</span>
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <span class="type px-5 py-1 rounded-4">{{$dish->category->name}}</span>
-                                </div>
-
-
-
-
-                                <div class="d-flex flex-column gap-2">
-                                        <a class="text-center w-100 rounded-3 button_edit text-decoration-none text-light py-1" href="{{ route('dishes.edit', [$restaurant->id, $dish->id]) }}">EDIT</a>
-                                        <a class="text-center button_delete w-100 rounded-3 button_edit text-decoration-none text-light py-1" href="{{ route('dishes.edit', [$restaurant->id, $dish->id]) }}">REMOVE</a>
-                                </div>
-
-                        </div>
-
-
-
-                        </div>
-
-
-
+                    <div class="bg-body-tertiary text-dark rounded-2 my-2 py-2">
+                        <p class="mb-0">{{ $dish->description }}</p>
                     </div>
-
-
-                </div>
-                    @endforeach
                     <div>
-                        <a class="btn-base-orange p-3 rounded-4" href="{{ route('dishes.create', $restaurant->id) }}">AGGIUNGI PIATTO</a>
+                        <p class="mb-0 text-secondary">Ingredienti: <span class="text-white">{{ $dish->ingredient }}</span></p>
                     </div>
 
-    </main>
+                    <div class="my-3">
+                        <p class="mb-0 d-inline-block rounded-pill py-1 px-2 text-white bg-base-orange">{{ $dish->category->name }}</p>
+                    </div>
 
+                    <div class="row row-gap-3">
+                        <div class="col-12 col-xl-6">
+                            <a href="{{ route('dishes.edit', $dish->slug) }}">
+                                <div class="btn-base-gray py-3 text-center rounded">
+                                    Modifica Piatto
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12 col-xl-6">
+                            {{-- ancora da modificare e ultimare --}}
+                            <a class="btn btn-danger w-100" href="{{ route('dishes.edit', $dish->slug) }}">
+                                <div class=" py-2 text-center rounded">
+                                    Rimuovi Piatto
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
 
-
-
-
+</div>
 @endsection
