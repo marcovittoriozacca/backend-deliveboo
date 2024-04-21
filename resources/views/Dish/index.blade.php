@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="create_main pb-5">
 
+<div class="create_main pb-5">
+    @if (count($dishes) < 1)
+    <div class="position-absolute start-0 bottom-0">
+        <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungu un piatto!</a>
+    </div>
+    @endif
+
+    @if (count($dishes) > 0)
     <div class="position-relative negative-index">
 
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
@@ -67,11 +74,17 @@
                         </div>
                         <div class="col-12 col-xl-6">
                             {{-- ancora da modificare e ultimare --}}
-                            <a class="btn btn-danger w-100" href="{{ route('dishes.edit', $dish->slug) }}">
-                                <div class=" py-2 text-center rounded">
-                                    Rimuovi Piatto
-                                </div>
-                            </a>
+                            <button
+                                type="button"
+                                class="btn btn-danger w-100 py-3 text-center delete-button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#delete-modal"
+                                data-delete-slug='{{ $dish->slug }}'
+                                data-delete-path='dishes'
+                                data-delete-name='{{ $dish->name }}'
+                            >
+                            Rimuovi Piatto
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -79,6 +92,9 @@
             @endforeach
         </div>
     </div>
+
+    @include('partials.delete-modal');
+    @endif
 
 </div>
 @endsection
