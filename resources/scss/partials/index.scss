@@ -84,6 +84,18 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
     filter: blur(2px);
+}
+
+.restaurant-credentials{
+    background-color: rgba(3, 7, 30, 0.8);
+}
+
+.dishes-container{
+    margin-top: -5em;
+    z-index: 1;
+    position: relative;
+}
+.negative-index{
+    z-index: 0;
 }

@@ -3,7 +3,7 @@
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Modifica: {{ $dish->name }}</h1>
-    <form action="{{ route('dishes.update', [$restaurant->id,$dish->id]) }}" method="POST">
+    <form action="{{ route('dishes.update', $dish->slug) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="container container_form p-3 py-3 p-lg-5">
@@ -29,12 +29,22 @@
                 {{-- edit categorie - ancora da sistemare --}}
                 <div class="w-100">
                     <label class="mb-2" for="form-select">Categoria</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>scegli una categoria</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" required>
+                        @foreach ($categories as $category)
+                        @if (old('category_id'))
+                        @endif
+                        <option 
+                            value="{{ $category->id }}" 
+                            @if (old('category_id', $dish->category_id) == $category->id) selected @endif
+                        >
+                        {{ $category->name }}
+                        </option>
+                            {{ $category->name }}</option>
+                        @endforeach
                     </select>
+                    @error ('category_id')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
     
@@ -96,7 +106,7 @@
                 </div>
             </div>
             <div class="text-center w-100">
-                <button type="submit" class="btn btn-warning w-50 white">Aggiungi</button>
+                <button type="submit" class="btn btn-warning w-50 white">Modifica</button>
             </div>
     
         </div>
