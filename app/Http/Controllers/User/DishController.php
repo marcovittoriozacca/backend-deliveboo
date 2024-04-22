@@ -118,7 +118,10 @@ class DishController extends Controller
         
         $updated_dish['visible'] = 0;
         $updated_dish['slug'] = $dish['slug'].'-'.$dish['id'];
-        
+        if($updated_dish['image']){
+            Storage::delete($updated_dish['image']);
+            $updated_dish['image'] = null;
+        }
         $dish->update($updated_dish);
         $dish->save();
         return redirect()->route('dishes.index');
