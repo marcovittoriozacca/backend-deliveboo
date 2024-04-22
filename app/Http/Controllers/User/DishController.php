@@ -44,6 +44,7 @@ class DishController extends Controller
         $new_dish['slug'] = Str::slug($new_dish['name'], '-');
         $new_dish['visible'] = true;
         $new_dish['restaurant_id'] = Auth::id();
+        
         if($request->hasFile('image')){
             $path = Storage::disk('public')->put('dish_images', $request->image);
             $new_dish['image'] = $path;
@@ -82,24 +83,25 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
+
         if($dish->restaurant_id == Auth::id()){
         }else{
             $dish = Dish::with('restaurant')->where('restaurant_id', Auth::id())->where('slug', $dish->slug)->first();
         }
+        
+        $updated_dish = $request->validated();
+        
+        $updated_dish['slug'] = Str::slug($updated_dish['name'] ,'-');
 
-
-        $updated_dish = $request->all();
-
-        $dish->update($updated_dish);
-        $dish['slug'] = Str::slug($dish['name'],'-');
-        if ($request->hasFile('image')){
+        if ($updated_dish['image']){
             if($dish->image){
-                Storage::delete($dish->image);
+                Storage::disk('public')->delete($dish->image);
             }
-            $path = Storage::disk('public')->put('dish_images', $request->image);
-            $dish['image'] = $path;
+            $path = Storage::disk('public')->put('dish_images', $updated_dish['image']);
+            $updated_dish['image'] = $path;
         }
         
+        $dish->update($updated_dish);
         $dish->save();
         return redirect()->route('dishes.index');
     }
@@ -119,7 +121,7 @@ class DishController extends Controller
         $updated_dish['visible'] = 0;
         $updated_dish['slug'] = $dish['slug'].'-'.$dish['id'];
         if($updated_dish['image']){
-            Storage::delete($updated_dish['image']);
+            Storage::disk('public')->delete($updated_dish['image']);
             $updated_dish['image'] = null;
         }
         $dish->update($updated_dish);
