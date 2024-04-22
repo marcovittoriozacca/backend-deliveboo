@@ -5,13 +5,12 @@
 <div class="create_main pb-5">
     @if (count($dishes) < 1)
     <div class="position-absolute start-0 bottom-0">
-        <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungu un piatto!</a>
+        <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
     </div>
     @endif
 
     @if (count($dishes) > 0)
     <div class="position-relative negative-index">
-
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
         <figure class="mb-0 photo-max-h overflow-hidden">
             <div style="background-image:url({{ $dishes[0]->restaurant->image }})" class="h-100 menu-restaurant-banner"></div>
@@ -28,7 +27,7 @@
         </div>
 
         <div class="position-absolute start-0 bottom-0">
-            <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungu un piatto!</a>
+            <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
         </div>
     </div>
 
@@ -79,7 +78,7 @@
                                 class="btn btn-danger w-100 py-3 text-center delete-button"
                                 data-bs-toggle="modal"
                                 data-bs-target="#delete-modal"
-                                data-delete-slug='{{ $dish->slug }}'
+                                data-delete-id='{{ $dish->id }}'
                                 data-delete-path='dishes'
                                 data-delete-name='{{ $dish->name }}'
                             >

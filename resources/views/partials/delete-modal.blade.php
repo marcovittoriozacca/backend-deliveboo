@@ -10,15 +10,13 @@
             </div>
             <div id="delete-modal-body"  class="modal-body">Body</div>
             <div class="modal-footer">
-
                 <form id="form-destroy" method="POST">
                     @csrf
-                    @method('DELETE')
+                    @method('PUT')
                     <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">
                         Elimina
                     </button>
                 </form>
-
             </div>
         </div>
     </div>
