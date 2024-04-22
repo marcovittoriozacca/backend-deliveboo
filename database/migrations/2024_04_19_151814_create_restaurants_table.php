@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('activity_name');
             $table->string('slug');
             $table->string('address');
-            $table->string('piva')->unique();
+            $table->string('piva',11)->unique();
             $table->string('image')->nullable();
             $table->unsignedBigInteger('user_id')->nullable()->unique();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
