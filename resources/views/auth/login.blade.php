@@ -6,12 +6,9 @@
     <div class="mt-lg-5 pb-5  px-0 px-lg-1 row justify-content-center bg_login rotondo container-fluid container-lg mx-auto  overflow-auto">
         <div class="mx-lg-1 px-0 px-lg-1 col-md-8 view_container_login ">
             <div class="card mt-3 mt-lg-5 bg_trasp py-lg-5 rounded-3 ">
-
-
                 <div class="card-body  rounded-3 p-0 ">
                     <form id="login-form" method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div>
                             <div class="px-3 px-lg-5 mb-4 row d-flex flex-column text_orange_color">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

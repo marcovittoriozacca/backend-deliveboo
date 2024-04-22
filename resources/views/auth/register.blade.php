@@ -7,7 +7,7 @@
         <div class="col-md-8 px-0 px-sm-2">
             <div class="card bg_trasp text_orange_color">
                 <div class="card-body px-0 px-sm-2 overflow-lg-scroll mb-5">
-                    <form method="POST" action="{{ route('register') }}" class="d-flex flex-column justify-content-center pt-2" enctype="multipart/form-data">
+                    <form id="register-form" method="POST" action="{{ route('register') }}" class="d-flex flex-column justify-content-center pt-2" enctype="multipart/form-data">
                         @csrf
                         <div class="row d-flex justify-content-center">
                             {{-- input Nome Utente --}}
@@ -15,8 +15,8 @@
                                 <label for="name" class="col-lg-6 col-form-label text-md-right">{{ __('Name') }}</label>
 
                                 <div>
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Inserisci Nome" autofocus>
-
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" placeholder="Inserisci Nome" autofocus>
+                                    <div id="nameError" class="d-none text-danger" role="alert"></div>
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -30,8 +30,8 @@
                                 <label for="surname" class="col-md-6 col-form-label text-md-right">{{ __('Surname') }}</label>
 
                                 <div class="">
-                                    <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" placeholder="Inserisci Cognome" autofocus>
-
+                                    <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" autocomplete="surname" placeholder="Inserisci Cognome" autofocus>
+                                    <div id="surnameError" class="d-none text-danger" role="alert"></div>
                                     @error('surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,8 +45,8 @@
                                 <label for="email" class="col-md-6 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                                 <div class="">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required placeholder="Inserisci Email" autocomplete="email">
-
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Inserisci Email" autocomplete="email">
+                                    <div id="emailError" class="d-none text-danger" role="alert"></div>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -58,10 +58,9 @@
                             {{-- input Password Utente --}}
                             <div class="mb-4 row d-flex flex-column col-lg-6">
                                 <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
-
                                 <div class="">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Inserisci Password" autocomplete="new-password">
-
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Inserisci Password" autocomplete="new-password">
+                                    <div id="passwordError" class="d-none text-danger" role="alert"></div>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -75,7 +74,8 @@
                                 <label for="password-confirm" class="col-md-12 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                                 <div class="">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Ripeti Password" autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Ripeti Password" autocomplete="new-password">
+                                    <div id="passwordConfirmError" class="d-none text-danger" role="alert"></div>
                                 </div>
                             </div>
 
@@ -84,8 +84,8 @@
                                 <label for="activity_name" class="col-md-6 col-form-label text-md-right">{{ __('Activity Name') }}</label>
 
                                 <div class="">
-                                    <input id="activity_name" type="text" class="form-control @error('activity_name') is-invalid @enderror" name="activity_name" value="{{ old('activity_name') }}" required autocomplete="activity_name" placeholder="Inserisci Nome Attività" autofocus>
-
+                                    <input id="activity_name" type="text" class="form-control @error('activity_name') is-invalid @enderror" name="activity_name" value="{{ old('activity_name') }}" autocomplete="activity_name" placeholder="Inserisci Nome Attività" autofocus>
+                                    <div id="activityNameError" class="d-none text-danger" role="alert"></div>
                                     @error('activity_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -107,6 +107,7 @@
                                     <option value="{{ $type->id }}">{{ $type->name }}</option>
                                 @endforeach
                                 </select>
+                                <div id="typologiesError" class="d-none text-danger" role="alert"></div>
                             </div>
 
                             {{-- input Indirizzo Ristorante --}}
@@ -114,8 +115,8 @@
                                 <label for="address" class="col-md-6 col-form-label text-md-right">{{ __('Address') }}</label>
 
                                 <div class="">
-                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" placeholder="Inserisci Indirizzo Attività" autofocus>
-
+                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" placeholder="Inserisci Indirizzo Attività" autofocus>
+                                    <div id="addressError" class="d-none text-danger" role="alert"></div>
                                     @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -129,8 +130,8 @@
                                 <label for="piva" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva') }}</label>
 
                                 <div class="">
-                                    <input id="piva" type="text" class="form-control @error('piva') is-invalid @enderror" name="piva" value="{{ old('piva') }}" required placeholder="Inserisci Partita Iva" autocomplete="piva" autofocus>
-
+                                    <input id="piva" type="text" class="form-control @error('piva') is-invalid @enderror" name="piva" value="{{ old('piva') }}" placeholder="Inserisci Partita Iva" autocomplete="piva" autofocus>
+                                    <div id="pivaError" class="d-none text-danger" role="alert"></div>
                                     @error('piva')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -145,6 +146,7 @@
 
                                 <div class="">
                                     <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus>
+                                    <div id="imageError" class="d-none text-danger" role="alert"></div>
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
