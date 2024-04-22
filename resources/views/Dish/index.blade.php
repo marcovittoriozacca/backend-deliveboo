@@ -53,9 +53,9 @@
                             <figure class="mb-0 figure_plate">
                                 {{-- <img src="{{ $dishes->image }}" alt="immagine-piatto"> --}}
                                 @if($dish->image)
-                                    <img class="img-fluid rounded-2 dish-image" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
+                                    <img class="img-fluid rounded-2" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
                                 @else
-                                    <img class="img-fluid rounded-2 dish-image" src="/pizza_card.webp" alt="immagine-piatto">
+                                    <img class="img-fluid rounded-2" src="/pizza_card.webp" alt="immagine-piatto">
                                 @endif
                             </figure>
 
@@ -115,11 +115,3 @@
 
 </div>
 @endsection
-
-<style lang="scss" scoped>
-    .dish-image{
-        width: 400px;
-        aspect-ratio: 1 / 1;
-        object-fit: contain;
-    }
-</style>
