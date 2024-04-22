@@ -46,7 +46,7 @@
                 <div class="col-12  col-lg-6">
                     <div>
                         <figure class="mb-0 position-relative d-flex justify-content-center align-items-center">
-                            <img class="img-fluid rounded" src="/trashcan.jpg" alt="">
+                            <img class="img-fluid rounded" src="{{asset('/storage/'. $restaurant->image)}}" alt="restaurant-img">
                             <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute" href="{{ route('dishes.index') }}">Gestisci il tuo menù</a>
                             <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute dashboard_links_mt" href="{{ route('dishes.index') }}">Osserva gli ordini</a>
                         </figure>

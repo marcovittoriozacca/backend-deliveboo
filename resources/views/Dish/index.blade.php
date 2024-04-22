@@ -13,7 +13,7 @@
     <div class="position-relative negative-index">
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
         <figure class="mb-0 photo-max-h overflow-hidden">
-            <div style="background-image:url(https://hotelfurnitureconcept.com/wp-content/uploads/2021/03/restaurant-table-made-in-turkey-0-1.jpg)" class="h-100 menu-restaurant-banner"></div>
+            <div style="background-image:url({{asset('/storage/'. $dishes[0]->restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
             {{-- {{ $dishes[0]->restaurant->image }} --}}
         </figure>
 
