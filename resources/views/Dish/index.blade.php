@@ -46,63 +46,66 @@
     <div class="container dishes-container">
         <div class="row row-gap-4">
             @foreach ($dishes as $dish)
-            <div class="col-12 col-md-6 col-lg-4">
-                {{-- piatto --}}
-                <div class="bg_card p-4 rounded-3">
-                    <figure class="mb-0">
-                        {{-- <img src="{{ $dishes->image }}" alt="immagine-piatto"> --}}
-                        @if($dish->image)
-                            <img class="img-fluid rounded-2 dish-image" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
-                        @else
-                            <img class="img-fluid rounded-2 dish-image" src="/pizza_card.webp" alt="immagine-piatto">
-                        @endif
-                    </figure>
+                @if($dish->visible)
+                    <div class="col-12 col-md-6 col-lg-4">
+                        {{-- piatto --}}
+                        <div class="bg_card p-4 rounded-3">
+                            <figure class="mb-0 figure_plate">
+                                {{-- <img src="{{ $dishes->image }}" alt="immagine-piatto"> --}}
+                                @if($dish->image)
+                                    <img class="img-fluid rounded-2 dish-image" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
+                                @else
+                                    <img class="img-fluid rounded-2 dish-image" src="/pizza_card.webp" alt="immagine-piatto">
+                                @endif
+                            </figure>
 
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h3 class="mb-0 text-white">
-                            {{ $dish->name }}
-                        </h3>
-                        <p class="mb-0 text-white">
-                            {{ $dish->price }}€
-                        </p>
-                    </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h3 class="mb-0 text-white">
+                                    {{ $dish->name }}
+                                </h3>
+                                <p class="mb-0 text-white">
+                                    {{ $dish->price }}€
+                                </p>
+                            </div>
 
-                    <div class="bg-body-tertiary text-dark rounded-2 my-2 py-2 text-center">
-                        <p class="mb-0">{{ $dish->description }}</p>
-                    </div>
-                    <div>
-                        <p class="mb-0 text-secondary">Ingredienti: <span class="text-white">{{ $dish->ingredient }}</span></p>
-                    </div>
+                            <div class="bg-body-tertiary text-dark rounded-2 my-2 py-2 text-center">
+                                {{-- limitare campo a 255 --}}
+                                <p class="mb-0">{{ $dish->description }}</p>
+                            </div>
+                            <div>
+                                <p class="mb-0 text-secondary">Ingredienti: <span class="text-white">{{ $dish->ingredient }}</span></p>
+                            </div>
 
-                    <div class="my-3">
-                        <p class="mb-0 d-inline-block rounded-pill py-1 px-2 text-white bg-base-orange">{{ $dish->category->name }}</p>
-                    </div>
+                            <div class="my-3">
+                                <p class="mb-0 d-inline-block rounded-pill py-1 px-2 text-white bg-base-orange">{{ $dish->category->name }}</p>
+                            </div>
 
-                    <div class="row row-gap-3">
-                        <div class="col-12 col-xl-6">
-                            <a href="{{ route('dishes.edit', $dish->slug) }}">
-                                <div class="btn-base-gray py-3 text-center rounded">
-                                    Modifica Piatto
+                            <div class="row row-gap-3">
+                                <div class="col-12 col-xl-6">
+                                    <a href="{{ route('dishes.edit', $dish->slug) }}">
+                                        <div class="btn-base-gray py-3 text-center rounded">
+                                            Modifica Piatto
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-xl-6">
-                            {{-- ancora da modificare e ultimare --}}
-                            <button
-                                type="button"
-                                class="btn btn-danger w-100 py-3 text-center delete-button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#delete-modal"
-                                data-delete-id='{{ $dish->id }}'
-                                data-delete-path='dishes'
-                                data-delete-name='{{ $dish->name }}'
-                            >
-                            Rimuovi Piatto
-                            </button>
+                                <div class="col-12 col-xl-6">
+                                    {{-- ancora da modificare e ultimare --}}
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger w-100 py-3 text-center delete-button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#delete-modal"
+                                        data-delete-id='{{ $dish->id }}'
+                                        data-delete-path='dishes'
+                                        data-delete-name='{{ $dish->name }}'
+                                    >
+                                    Rimuovi Piatto
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                @endif
             @endforeach
         </div>
     </div>
