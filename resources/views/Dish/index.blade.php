@@ -4,7 +4,7 @@
 
 <div class="create_main pb-5 position-relative">
     @if (count($dishes) < 1)
-    <div class="position-absolute start-0 bottom-0">
+    <div class="position-absolute start-50 bottom-50 translate-middle">
         <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
     </div>
     @endif
@@ -44,7 +44,7 @@
 
     {{-- sezione piatti --}}
     <div class="container dishes-container">
-        <div class="row row-gap-4">
+        <div class="row row-gap-4 py-3">
             @foreach ($dishes as $dish)
                 @if($dish->visible)
                     <div class="col-12 col-md-6 col-lg-4">
@@ -53,9 +53,9 @@
                             <figure class="mb-0 figure_plate">
                                 {{-- <img src="{{ $dishes->image }}" alt="immagine-piatto"> --}}
                                 @if($dish->image)
-                                    <img class="img-fluid rounded-2 dish-image" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
+                                    <img class="img-fluid rounded-2" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
                                 @else
-                                    <img class="img-fluid rounded-2 dish-image" src="/pizza_card.webp" alt="immagine-piatto">
+                                    <img class="img-fluid rounded-2" src="/pizza_card.webp" alt="immagine-piatto">
                                 @endif
                             </figure>
 
@@ -115,11 +115,3 @@
 
 </div>
 @endsection
-
-<style lang="scss" scoped>
-    .dish-image{
-        width: 400px;
-        aspect-ratio: 1 / 1;
-        object-fit: contain;
-    }
-</style>
