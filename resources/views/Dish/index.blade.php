@@ -64,7 +64,7 @@
                         </p>
                     </div>
 
-                    <div class="bg-body-tertiary text-dark rounded-2 my-2 py-2">
+                    <div class="bg-body-tertiary text-dark rounded-2 my-2 py-2 text-center">
                         <p class="mb-0">{{ $dish->description }}</p>
                     </div>
                     <div>
