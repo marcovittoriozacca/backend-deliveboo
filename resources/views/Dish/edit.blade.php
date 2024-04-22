@@ -3,7 +3,7 @@
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Modifica: {{ $dish->name }}</h1>
-    <form action="{{ route('dishes.update', $dish->slug) }}" method="POST">
+    <form action="{{ route('dishes.update', $dish->slug) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="container container_form p-3 py-3 p-lg-5">
@@ -28,8 +28,8 @@
     
                 {{-- edit categorie - ancora da sistemare --}}
                 <div class="w-100">
-                    <label class="mb-2" for="form-select">Categoria</label>
-                    <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" required>
+                    <label class="mb-2" for="category">Categoria</label>
+                    <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category" required>
                         @foreach ($categories as $category)
                         @if (old('category_id'))
                         @endif
@@ -83,7 +83,7 @@
     
             {{-- edit immagine - ancora da sistemare --}}
             <div class="input-group my-5">
-                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="image" aria-label="Upload">
                 <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Carica</button>
             </div>
     

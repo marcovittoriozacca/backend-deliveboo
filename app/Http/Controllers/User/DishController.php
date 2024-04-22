@@ -11,6 +11,7 @@ use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -43,6 +44,10 @@ class DishController extends Controller
         $new_dish['slug'] = Str::slug($new_dish['name'], '-');
         $new_dish['visible'] = true;
         $new_dish['restaurant_id'] = Auth::id();
+        if($request->hasFile('image')){
+            $path = Storage::disk('public')->put('dish_images', $request->image);
+            $new_dish['image'] = $path;
+        }
 
         $new_dish = Dish::create($new_dish);
 
@@ -88,6 +93,13 @@ class DishController extends Controller
 
         $dish->update($updated_dish);
         $dish['slug'] = Str::slug($dish['name'],'-');
+        if ($request->hasFile('image')){
+            if($dish->image){
+                Storage::delete($dish->image);
+            }
+            $path = Storage::disk('public')->put('dish_images', $request->image);
+            $dish['image'] = $path;
+        }
         $dish->save();
         return redirect()->route('dishes.index');
     }

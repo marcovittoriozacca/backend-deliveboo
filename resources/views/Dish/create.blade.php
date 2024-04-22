@@ -3,7 +3,7 @@
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Aggiungi un piatto</h1>
-    <form action="{{ route('dishes.store') }}" method="POST">
+    <form action="{{ route('dishes.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container container_form p-3 py-3 p-lg-5">
             <div class="d-flex justify-content-between gap-5 flex-column flex-lg-row">
@@ -78,7 +78,7 @@
     
             {{-- edit immagine - ancora da sistemare --}}
             <div class="input-group my-5">
-                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="image" aria-label="Upload">
                 <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Carica</button>
             </div>
     
