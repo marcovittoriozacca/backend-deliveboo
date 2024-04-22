@@ -36,8 +36,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('/dishes', DishController::class)
             ->parameters(['dishes' => 'dish:slug']);
 
-        //softdelete route 
-        Route::put('/dishes/{dish}', [DishController::class, 'softDelete'])->name('dishes.softDelete');
+        // //softdelete route 
+        // Route::put('/dishes/{dish}', [DishController::class, 'softDelete'])->name('dishes.softDelete');
     
 
 });

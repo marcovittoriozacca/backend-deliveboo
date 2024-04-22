@@ -82,7 +82,6 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-
         if($dish->restaurant_id == Auth::id()){
         }else{
             $dish = Dish::with('restaurant')->where('restaurant_id', Auth::id())->where('slug', $dish->slug)->first();
@@ -100,6 +99,7 @@ class DishController extends Controller
             $path = Storage::disk('public')->put('dish_images', $request->image);
             $dish['image'] = $path;
         }
+        
         $dish->save();
         return redirect()->route('dishes.index');
     }
