@@ -4,7 +4,7 @@
 
 <div class="create_main pb-5 position-relative">
     @if (count($dishes) < 1)
-    <div class="position-absolute start-0 bottom-0">
+    <div class="position-absolute start-50 bottom-50 translate-middle">
         <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
     </div>
     @endif
