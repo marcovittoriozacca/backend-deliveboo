@@ -19,7 +19,7 @@ if(deleteBtns.length > 0){
         const id = button.getAttribute('data-delete-id');
 
         //https://127.0.0.1:800/dishes/id
-        const complete_uri = `${uri}/${path}/${id}`;
+        const complete_uri = `${uri}/${path}/${id}/softDelete`;
 
         //nome dell'elemento
         const name = button.getAttribute('data-delete-name');
