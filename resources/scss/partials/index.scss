@@ -55,16 +55,34 @@
 }
 
 
+@media screen and (max-width:991px){
+
+
+    }
+
+
 @media screen and (max-width:768px){
     .index_main{
         background: linear-gradient(to bottom, #ffb90800 12%,$peacoat 20px);
     }
+
+
 }
+
+
 
 
 @media screen and (max-width:589px){
     .index_main{
         background: linear-gradient(to bottom, #ffb90800 10%,$peacoat 20px);
+    }
+    .photo-max-h{
+        height: 550px!important;
+     }
+
+     .add_button{
+        top: 130%!important;
+        text-wrap: nowrap;
     }
 }
 
@@ -72,12 +90,17 @@
     .index_main{
         background: linear-gradient(to bottom, #ffb90800 7%,$peacoat 20px);
     }
+
+    .add_button{
+        top: 110%!important;
+        text-wrap: nowrap;
+    }
 }
 
 
 //stili per le prove
 .photo-max-h{
-   height: 350px;
+   height: 400px;
 }
 
 .menu-restaurant-banner{
@@ -88,8 +111,21 @@
 }
 
 .restaurant-credentials{
-    background-color: rgba(3, 7, 30, 0.8);
+    background-color: rgba(3, 7, 30, 0.658);
 }
+
+
+.restaurant-credentials h1,.restaurant-credentials h3,.restaurant-credentials h4{
+    color: $orange;
+}
+
+.add_button{
+    top: 115%;
+    text-wrap: nowrap;
+}
+
+
+
 
 .dishes-container{
     margin-top: -5em;
