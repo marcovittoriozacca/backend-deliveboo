@@ -44,7 +44,7 @@
 
     {{-- sezione piatti --}}
     <div class="container dishes-container">
-        <div class="row row-gap-4">
+        <div class="row row-gap-4 py-3">
             @foreach ($dishes as $dish)
                 @if($dish->visible)
                     <div class="col-12 col-md-6 col-lg-4">
