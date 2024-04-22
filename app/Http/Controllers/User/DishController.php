@@ -97,6 +97,18 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        dd($dish);
+
+    }
+
+    //cancella in modo fittizio il record, non mostrandolo più nel menù ma tenendolo comunque in memoria nel database
+    public function softDelete(Dish $dish){
+        $updated_dish = $dish->toArray();
+        
+        $updated_dish['visible'] = 0;
+        $updated_dish['slug'] = $dish['slug'].'-'.$dish['id'];
+        
+        $dish->update($updated_dish);
+        $dish->save();
+        return redirect()->route('dishes.index');
     }
 }

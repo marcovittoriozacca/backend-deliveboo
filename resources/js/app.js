@@ -16,14 +16,14 @@ if(deleteBtns.length > 0){
         //dishes
         const path = button.getAttribute('data-delete-path');
         //slug dell'elemento che dobbiamo cancellare
-        const slug = button.getAttribute('data-delete-slug');
+        const id = button.getAttribute('data-delete-id');
 
-        //https://127.0.0.1:800/dishes/slug-elemento
-        const complete_uri = `${uri}/${path}/${slug}`;
+        //https://127.0.0.1:800/dishes/id
+        const complete_uri = `${uri}/${path}/${id}`;
 
-        //nome dell'elemento (uguale allo slug ma senza i trattini)
+        //nome dell'elemento
         const name = button.getAttribute('data-delete-name');
-
+        console.log(complete_uri, name)
         //messaggio custo di conferma con il nome effettivo dell'elemento
         const deleteModalBody = document.getElementById('delete-modal-body');
         deleteModalBody.innerHTML = `Vuoi eliminare definitivamente il piatto: <span class="fw-bold">${name}</span>`;
