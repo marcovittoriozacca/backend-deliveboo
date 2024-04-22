@@ -18,9 +18,6 @@
     background-color: $dark-blue;
 }
 
-
-
-
 .index_main{
     background: linear-gradient(to bottom, #ffb90800 45%,$peacoat 20px);
 }
@@ -29,11 +26,6 @@
     top: 60%;
 }
 
-
-
-
-
-
 .button_edit{
     background-color: $grey;
 }
@@ -41,9 +33,6 @@
 .button_delete{
     background-color: $light-red;
 }
-
-
-
 
 .type{
     background-color: $orange;
@@ -66,23 +55,92 @@
 }
 
 
+@media screen and (max-width:991px){
+
+
+    }
+
+
 @media screen and (max-width:768px){
     .index_main{
         background: linear-gradient(to bottom, #ffb90800 12%,$peacoat 20px);
     }
+
+
 }
+
+
 
 
 @media screen and (max-width:589px){
     .index_main{
         background: linear-gradient(to bottom, #ffb90800 10%,$peacoat 20px);
     }
+    .photo-max-h{
+        height: 550px!important;
+     }
+
+     .add_button{
+        top: 130%!important;
+        text-wrap: nowrap;
+    }
 }
-
-
 
 @media screen and (max-width:375px){
     .index_main{
         background: linear-gradient(to bottom, #ffb90800 7%,$peacoat 20px);
     }
+
+    .add_button{
+        top: 110%!important;
+        text-wrap: nowrap;
+    }
+}
+
+
+//stili per le prove
+.photo-max-h{
+   height: 400px;
+}
+
+.menu-restaurant-banner{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: blur(2px);
+}
+
+.restaurant-credentials{
+    background-color: rgba(3, 7, 30, 0.658);
+}
+
+
+.restaurant-credentials h1,.restaurant-credentials h3,.restaurant-credentials h4{
+    color: $orange;
+}
+
+.add_button{
+    top: 115%;
+    text-wrap: nowrap;
+}
+
+
+.figure_plate{
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.figure_plate img{
+    width: 400px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
+
+.dishes-container{
+    margin-top: -5em;
+    z-index: 1;
+    position: relative;
+}
+.negative-index{
+    z-index: 0;
 }

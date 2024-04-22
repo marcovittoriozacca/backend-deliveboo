@@ -22,6 +22,18 @@
     }
 }
 
+//bottone grigio con effetto all'hover
+.btn-base-gray{
+    background-color: $light-gray;
+    color: black;
+    transition: .3s all ease-out;
+    cursor: pointer;
+    &:hover{
+        background-color: $base-orange;
+        color: white;
+    }
+}
+
 //reset dei tag "a"
 a{
     text-decoration: none;

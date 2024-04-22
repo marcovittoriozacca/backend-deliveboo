@@ -3,7 +3,7 @@
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Aggiungi un piatto</h1>
-    <form action="{{ route('dishes.store', $restaurant->id) }}" method="POST">
+    <form action="{{ route('dishes.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container container_form p-3 py-3 p-lg-5">
             <div class="d-flex justify-content-between gap-5 flex-column flex-lg-row">
@@ -28,12 +28,18 @@
                 {{-- edit categorie - ancora da sistemare --}}
                 <div class="w-100">
                     <label class="mb-2" for="form-select">Categoria</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>scegli una categoria</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" required>
+                        @foreach ($categories as $category)
+                        <option 
+                            value="{{ $category->id }}"
+                            @if (old('category_id') == $category->id) selected @endif
+                        >
+                        {{ $category->name }}</option>
+                        @endforeach
                     </select>
+                    @error ('category_id')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
     
@@ -72,7 +78,7 @@
     
             {{-- edit immagine - ancora da sistemare --}}
             <div class="input-group my-5">
-                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="image" aria-label="Upload">
                 <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Carica</button>
             </div>
     
@@ -82,7 +88,8 @@
                     <label for="price" class="form-label">Prezzo</label>
                     <input 
                         name="price" 
-                        type="number" 
+                        type="number"
+                        step=".01" 
                         class="form-control @error ('price') is-invalid @enderror" 
                         id="price"
                         required

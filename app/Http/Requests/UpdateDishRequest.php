@@ -23,10 +23,11 @@ class UpdateDishRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:1200'],
+            'description' => ['required', 'string', 'max:255'],
             'ingredient' => ['required', 'string', 'max:255'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,jpe,webp,heif,bmp,tiff,tif,xbm,png,svg', 'max:2000'],
             'price' => ['required', 'numeric', 'min:0'],
+            'category_id' => ['required', 'exists:App\Models\Category,id'],
         ];
     }
 
@@ -56,6 +57,9 @@ class UpdateDishRequest extends FormRequest
             'price.required' => ':attribute è un campo obbligatorio',
             'price.numeric' => 'Inserisci un numero',
             'price.min' => 'Numero troppo basso',
+
+            'category_id.required' => 'Inserisci la Categoria del piatto',
+            'category_id.exists' => 'Inserisci una categoria valida',
         ];
     }
 }

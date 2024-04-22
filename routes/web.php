@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\DishController;
 use App\Http\Controllers\User\RestaurantController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,9 +32,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     
-    Route::middleware('check-user-restaurant')->group( function (){
-        Route::resource('/{restaurant}/dishes', DishController::class);
-    });
+    //middleware momentaneamente commentato, più avanti verrà sistemato
+    // Route::middleware('check-user-restaurant')->group( function (){});
+        Route::resource('/dishes', DishController::class)
+            ->parameters(['dishes' => 'dish:slug']);
+
+        // //softdelete route 
+        Route::put('/dishes/{dish}/softDelete', [DishController::class, 'softDelete'])->name('dishes.softDelete');
+    
 
 });
 
