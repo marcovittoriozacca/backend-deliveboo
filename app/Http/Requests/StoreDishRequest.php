@@ -23,7 +23,7 @@ class StoreDishRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:1200'],
+            'description' => ['required', 'string', 'max:255'],
             'ingredient' => ['required', 'string', 'max:255'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,jpe,webp,heif,bmp,tiff,tif,xbm,png,svg', 'max:2000'],
             'price' => ['required', 'numeric', 'min:0'],
