@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\DishController;
 use App\Http\Controllers\User\RestaurantController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
