@@ -36,3 +36,51 @@ if(deleteBtns.length > 0){
 }
 
 
+
+
+//validazione js per la login form
+
+//funzione che controlla la mail con un regex
+const validateEmail = function(email) {
+    let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return validRegex.test(email);
+}
+//funzione che controlla la password con un regex
+const validatePassword = function (password) {
+    let validRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_@$!%*?&])[A-Za-z\d\-_@$!%*?&]{8,}$/;
+    return validRegex.test(password);
+}
+
+//prendiamo l'intero form per prevenire, in caso di errori, l'invio con submit ed event.preventDefault()
+const loginForm = document.getElementById('login-form');
+if(loginForm){
+    loginForm.addEventListener('submit', function(event) {
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+    
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+    
+        // Validazione dell'email
+        if (!email || !validateEmail(email)) {
+            emailError.innerText = 'Inserisci una Mail valida';
+            emailError.classList.replace('d-none', 'd-block')
+            event.preventDefault();
+        } else {
+            emailError.innerText = '';
+            emailError.classList.replace('d-block', 'd-none')
+        }
+    
+        // Validazione della password
+        if (!password || !validatePassword(password) || password.length<8) {
+            passwordError.innerText = 'Inserisci una Password valida';
+            passwordError.classList.replace('d-none', 'd-block')
+            event.preventDefault();
+        } else {
+            passwordError.innerText = '';
+            passwordError.classList.replace('d-block', 'd-none')
+        }
+    })
+}
+
+

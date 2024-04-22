@@ -9,7 +9,7 @@
 
 
                 <div class="card-body  rounded-3 p-0 ">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form id="login-form" method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div>
@@ -17,8 +17,8 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                                 <div>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autofocus required>
+                                    <div id="emailError" class="d-none text-danger" role="alert"></div>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -31,8 +31,8 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div>
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
+                                    <div id="passwordError" class="d-none text-danger" role="alert"></div>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
 
                         <div class=" px-3 px-lg-5">
                             <div class="d-flex flex-column align-items-center">
-                                <button  type="submit" class="button_login btn text-light w-100">
+                                <button id="submitBtn" type="submit" class="button_login btn text-light w-100">
                                     {{ __('Login') }}
                                 </button>
 
