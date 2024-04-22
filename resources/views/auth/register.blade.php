@@ -7,7 +7,7 @@
         <div class="col-md-8 px-0 px-sm-2">
             <div class="card bg_trasp text_orange_color">
                 <div class="card-body px-0 px-sm-2 overflow-lg-scroll mb-5">
-                    <form method="POST" action="{{ route('register') }}" class="d-flex flex-column justify-content-center pt-2">
+                    <form method="POST" action="{{ route('register') }}" class="d-flex flex-column justify-content-center pt-2" enctype="multipart/form-data">
                         @csrf
                         <div class="row d-flex justify-content-center">
                             {{-- input Nome Utente --}}

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class RegisteredUserController extends Controller
 {
@@ -113,20 +114,26 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        if($request->hasFile('image')){
+            $path = Storage::disk('public')->put('restaurant_images', $request->image);
+        }
+
         //Creazione del record RISTORANTE
         $new_restaurant = Restaurant::create([
             'activity_name' => $request->activity_name,
             'slug' => Str::slug($request->activity_name ,'-'),
             'address' => $request->address,
             'piva' => $request->piva,
-            'image' => null,
+            'image' => $path,
             'user_id' => $user->id,
         ]);
 
+    
         //se al ristorante sono state associate delle categorie, viene compilata la tabella pivot con type_id e restaurant_id
         if($request->has('typologies')){
             $new_restaurant->types()->attach($request->typologies);
         }
+
 
         //avviente la registrazione
         event(new Registered($user));
