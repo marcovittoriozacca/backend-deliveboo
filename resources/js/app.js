@@ -214,8 +214,10 @@ let button_visib=document.getElementById("visible");
 button_visib.addEventListener("click",function(){
     if(password.type=="password"){
         password.type="text"
+        document.getElementById("password-confirm").type="text"
     }else{
         password.type="password"
+        document.getElementById("password-confirm").type="password"
     }
 })
 
