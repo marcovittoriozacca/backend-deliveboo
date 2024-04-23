@@ -53,10 +53,10 @@ if(loginForm){
     loginForm.addEventListener('submit', function(event) {
         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
-    
+
         const emailError = document.getElementById('emailError');
         const passwordError = document.getElementById('passwordError');
-    
+
         // Validazione dell'email
         if (!email || !validateEmail(email)) {
             emailError.innerText = 'Inserisci una Mail valida';
@@ -66,7 +66,7 @@ if(loginForm){
             emailError.innerText = '';
             emailError.classList.replace('d-block', 'd-none')
         }
-    
+
         // Validazione della password
         if (!password || !validatePassword(password) || password.length<8) {
             passwordError.innerText = 'Inserisci una Password valida';
@@ -105,7 +105,7 @@ if(registerForm){
         const activityNameError = document.getElementById('activityNameError');
         const pivaError = document.getElementById('pivaError');
         const imageError = document.getElementById('imageError');
-    
+
         //validazione del nome
         if (!name) {
             nameError.innerText = 'Inserisci un Nome';
@@ -135,7 +135,7 @@ if(registerForm){
             emailError.innerText = '';
             emailError.classList.replace('d-block', 'd-none')
         }
-    
+
         // Validazione della password
         if (!password || !validatePassword(password) || password.length<8) {
             passwordError.innerText = 'Inserisci una Password valida';
@@ -207,3 +207,15 @@ if(registerForm){
 
     })
 }
+
+
+// Aggiunta la possibilità di vedere la password in chiaro nella registrazione
+let button_visib=document.getElementById("visible");
+button_visib.addEventListener("click",function(){
+    if(password.type=="password"){
+        password.type="text"
+    }else{
+        password.type="password"
+    }
+})
+

@@ -60,6 +60,7 @@
                                 <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
                                 <div class="">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Inserisci Password" autocomplete="new-password">
+                                    <div id="visible" style="cursor: pointer">a</div>
                                     <div id="passwordError" class="d-none text-danger" role="alert"></div>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -67,6 +68,7 @@
                                     </span>
                                     @enderror
                                 </div>
+
                             </div>
 
                             {{-- input Conferma Password Utente --}}
@@ -168,4 +170,7 @@
         </div>
     </div>
 </div>
+
 @endsection
+
+
