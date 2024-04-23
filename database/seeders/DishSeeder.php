@@ -18,8 +18,9 @@ class DishSeeder extends Seeder
         $faker = \Faker\Factory::create();
         $faker->addProvider(new \FakerRestaurant\Provider\it_IT\Restaurant($faker));
 
-        for ($i=0; $i<25; $i++){
+        for ($i=0; $i<10; $i++){
             $dish= new Dish();
+            $dish->category_id = $faker->numberBetween(1, 4);
             $dish->name = $faker->foodName();
             $dish->slug = Str::slug($dish->name, '-');
             $dish->description = $faker->text(25);
@@ -29,10 +30,7 @@ class DishSeeder extends Seeder
 
             $dish->price = $faker->randomFloat(2, 1, 99);
             $dish->visible = 1;
-
-            $dish->category_id = $faker->numberBetween(1, 4);
-            
-            $dish->restaurant_id = $faker->numberBetween(1, 5);
+            $dish->restaurant_id = $i + 1;
             $dish->save();
         }
     }
