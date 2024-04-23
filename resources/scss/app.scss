@@ -23,6 +23,13 @@ $yellow: #FFBA08;
 @import "./partials/dashboard.scss";
 @import "./partials/welcome.scss";
 
+*{
+    font-family: "PT Sans", sans-serif;
+}
 
+h1,h2,h3,h4,h5,h6{
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+}
 
 

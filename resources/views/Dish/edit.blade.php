@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $dish->slug)
+
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Modifica: {{ $dish->name }}</h1>
@@ -84,7 +86,6 @@
             {{-- edit immagine - ancora da sistemare --}}
             <div class="input-group my-5">
                 <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="image" aria-label="Upload">
-                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Carica</button>
             </div>
 
             {{-- edit prezzo --}}

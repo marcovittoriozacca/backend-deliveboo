@@ -84,6 +84,10 @@
         top: 130%!important;
         text-wrap: nowrap;
     }
+
+    h1{
+        font-size: 2rem!important;
+    }
 }
 
 @media screen and (max-width:375px){
@@ -92,15 +96,19 @@
     }
 
     .add_button{
-        top: 110%!important;
+        top: 130%;
         text-wrap: nowrap;
+    }
+
+    h1{
+        font-size: 1.5rem!important;
     }
 }
 
 
 //stili per le prove
 .photo-max-h{
-   height: 400px;
+   height: 500px;
 }
 
 .menu-restaurant-banner{
@@ -131,9 +139,9 @@
 }
 
 .figure_plate img{
-    width: 400px;
+    width: 100%;
     aspect-ratio: 1 / 1;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .dishes-container{
@@ -143,4 +151,14 @@
 }
 .negative-index{
     z-index: 0;
+}
+
+
+h1{
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.custom-top-banner{
+    top: 35%;
 }

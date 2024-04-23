@@ -1,26 +1,58 @@
 @extends('layouts.app')
 
+@section('title', 'Menù')
+
 @section('content')
 
 <div class="create_main pb-5 position-relative">
     @if (count($dishes) < 1)
-    <div class="position-absolute start-50 bottom-50 translate-middle">
-        <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
-    </div>
-    @endif
-
-    @if (count($dishes) > 0)
     <div class="position-relative negative-index">
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
         <figure class="mb-0 photo-max-h overflow-hidden">
-            <div style="background-image:url({{asset('/storage/'. $dishes[0]->restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
-            {{-- {{ $dishes[0]->restaurant->image }} --}}
+            @if ($restaurant->image )
+            <div style="background-image:url({{asset('/storage/'. $restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
+            @else
+            <div style="background-image:url('/restaurant_bg_1.jpg')" class="h-100 menu-restaurant-banner"></div>
+            @endif
         </figure>
 
         {{-- informazioni generali del ristoranti --}}
         <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
+            <div>
+                <h1 class="text-uppercase">
+                    {{ $restaurant->activity_name }}
+                </h1>
+                <h3>
+                    {{ $restaurant->address }}
+                </h3>
+                <h4>
+                    p.iva:{{ $restaurant->piva }}
+                </h4>
+            </div>
 
+            <div class="position-absolute start-50 translate-middle z-2 add_button">
+                <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
+            </div>
 
+        </div>
+    </div>
+
+    @endif
+
+    @if (count($dishes) > 0)
+
+    <div class="position-relative negative-index">
+        {{-- banner con l'immagine del ristorante che sarà dinamica --}}
+        <figure class="mb-0 photo-max-h overflow-hidden">
+            @if ($dishes[0]->restaurant->image)
+            <div style="background-image:url({{asset('/storage/'. $dishes[0]->restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
+            @else
+            <div style="background-image:url('/restaurant_bg_1.jpg')" class="h-100 menu-restaurant-banner"></div>
+            @endif
+        </figure>
+
+        {{-- informazioni generali del ristoranti --}}
+        <div class="position-absolute custom-top-banner start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
             <div>
                 <h1 class="text-uppercase">
                     {{ $dishes[0]->restaurant->activity_name }}
@@ -41,7 +73,6 @@
     </div>
 
 
-
     {{-- sezione piatti --}}
     <div class="container dishes-container">
         <div class="row row-gap-4 py-3">
@@ -49,17 +80,16 @@
                 @if($dish->visible)
                     <div class="col-12 col-md-6 col-lg-4">
                         {{-- piatto --}}
-                        <div class="bg_card p-4 rounded-3">
+                        <div class="bg_card p-4 rounded-3 h-100 d-flex flex-column  row-gap-2 justify-content-between">
                             <figure class="mb-0 figure_plate">
-                                {{-- <img src="{{ $dishes->image }}" alt="immagine-piatto"> --}}
                                 @if($dish->image)
-                                    <img class="img-fluid rounded-2" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
+                                    <img class=" rounded-2 dish-image" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
                                 @else
-                                    <img class="img-fluid rounded-2" src="/pizza_card.webp" alt="immagine-piatto">
+                                    <img class="img-fluid rounded-2" src="/template-dish.webp" alt="immagine-piatto">
                                 @endif
                             </figure>
 
-                            <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center justify-content-between my-2">
                                 <h3 class="mb-0 text-white">
                                     {{ $dish->name }}
                                 </h3>
@@ -70,7 +100,7 @@
 
                             <div class="bg-body-tertiary text-dark rounded-2 my-2 py-2 text-center">
                                 {{-- limitare campo a 255 --}}
-                                <p class="mb-0">{{ $dish->description }}</p>
+                                <p class="mb-0 text-truncate">{{ $dish->description }}</p>
                             </div>
                             <div>
                                 <p class="mb-0 text-secondary">Ingredienti: <span class="text-white">{{ $dish->ingredient }}</span></p>
@@ -80,7 +110,7 @@
                                 <p class="mb-0 d-inline-block rounded-pill py-1 px-2 text-white bg-base-orange">{{ $dish->category->name }}</p>
                             </div>
 
-                            <div class="row row-gap-3">
+                            <div class="row row-gap-3 mt-auto">
                                 <div class="col-12 col-xl-6">
                                     <a href="{{ route('dishes.edit', $dish->slug) }}">
                                         <div class="btn-base-gray py-3 text-center rounded">
