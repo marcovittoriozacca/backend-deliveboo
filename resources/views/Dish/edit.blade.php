@@ -84,7 +84,6 @@
             {{-- edit immagine - ancora da sistemare --}}
             <div class="input-group my-5">
                 <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="image" aria-label="Upload">
-                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Carica</button>
             </div>
 
             {{-- edit prezzo --}}
