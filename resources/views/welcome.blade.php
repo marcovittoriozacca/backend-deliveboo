@@ -29,14 +29,14 @@
         </div>
     </div>
     {{-- foto laterale --}}
-    <div class="side-photo">
+    <div  class="side-photo">
         <figure>
-            <img src="/welcome-side-photo.jpg" alt="-welcome-side-photo">
+            <img src="/welcome-side-photo.jpg" alt="-welcome-side-photo" class="responsive">
         </figure>
     </div>
 </div>
 {{-- seconda sezione (come funziona) --}}
-<div class="p-4 text-center">
+<div class="welcomeSection2 p-4 text-center">
     <h1>how it works</h1>
     <p>Con deliveboo, puoi ordinare cibo da ristoranti locali direttamente dal tuo dispositivo, pagare online e ricevere consegne comodamente a casa tua.
     </p>
