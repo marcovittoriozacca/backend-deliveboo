@@ -27,19 +27,20 @@ Route::middleware(['auth', 'verified'])->group(function(){
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // COMMENTATI PERCHE NON DOBBIAMO DARE LA POSSIBILITà AL RISTORATORE DI MODIFICARE DIRETTAMENTE I PROPRI DATI
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    
+
     //middleware momentaneamente commentato, più avanti verrà sistemato
     // Route::middleware('check-user-restaurant')->group( function (){});
         Route::resource('/dishes', DishController::class)
             ->parameters(['dishes' => 'dish:slug']);
 
-        // //softdelete route 
+        // //softdelete route
         Route::put('/dishes/{dish}/softDelete', [DishController::class, 'softDelete'])->name('dishes.softDelete');
-    
+
 
 });
 
