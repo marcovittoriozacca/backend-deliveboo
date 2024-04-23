@@ -57,7 +57,17 @@
 
                             {{-- input Password Utente --}}
                             <div class="mb-4 row d-flex flex-column col-lg-6">
-                                <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <div>
+                                    <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    <div id="rule">
+                                        <ul class="mb-0 pb-1">
+                                            <li>Inserisci un carattere speciale(@!#/)</li>
+                                            <li>Inserisci almeno un carattere maiuscolo</li>
+                                            <li>Inserisci almeno 8 carateri</li>
+                                            <li>Inserisci almeno un numero</li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <div class="position-relative">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Inserisci Password" autocomplete="new-password">
                                     <div id="visible" class="position-absolute" style="cursor: pointer">Shows</div>
