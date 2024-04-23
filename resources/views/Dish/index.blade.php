@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Menù')
+
 @section('content')
 
 <div class="create_main pb-5 position-relative">

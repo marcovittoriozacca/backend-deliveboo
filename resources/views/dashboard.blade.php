@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $restaurant->activity_name)
+
 @section('content')
 <div class="create_main">
     <div class="container">

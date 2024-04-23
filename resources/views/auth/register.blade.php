@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'DeliveBoo | Register')
+
 @section('content')
 <div class="container-fluid px-0 overflow-hidden" id="main_login">
     <span class="contenuto_fix d-none d-lg-block">.</span>
