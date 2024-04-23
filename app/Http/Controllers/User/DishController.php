@@ -45,7 +45,6 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        dd('blocco');
         //prendiamo tutti i dati che hanno passato la validazione
         $new_dish = $request->validated();
         
