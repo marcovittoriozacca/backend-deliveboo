@@ -60,7 +60,6 @@
 
                             </div>
                             <a class="dropdown-item link-orange text-center" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
-                            <a class="dropdown-item link-orange text-center" href="{{ url('profile') }}">{{__('Profile')}}</a>
                             <a class="dropdown-item link-orange text-center" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
