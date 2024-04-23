@@ -22,7 +22,8 @@ class DishController extends Controller
     {
         //prendiamo tutti i piatti appartenenti al ristorante dell'utente
         $dishes = Dish::with('restaurant','category')->where('restaurant_id', Auth::id())->get();
-        return view('dish.index', compact('dishes'));
+        $restaurant = Restaurant::where('id', Auth::id())->first();
+        return view('dish.index', compact('dishes', 'restaurant'));
     }
 
     /**

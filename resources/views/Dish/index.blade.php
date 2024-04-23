@@ -7,8 +7,8 @@
     <div class="position-relative negative-index">
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
         <figure class="mb-0 photo-max-h overflow-hidden">
-            @if ($dishes[0]->restaurant->image)
-            <div style="background-image:url({{asset('/storage/'. $dishes[0]->restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
+            @if ($restaurant->image)
+            <div style="background-image:url({{asset('/storage/'. $restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
             @else
             <div style="background-image:url('/restaurant_bg_1.jpg')" class="h-100 menu-restaurant-banner"></div>
             @endif
@@ -18,13 +18,13 @@
         <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
             <div>
                 <h1 class="text-uppercase">
-                    {{ $dishes[0]->restaurant->activity_name }}
+                    {{ $restaurant->activity_name }}
                 </h1>
                 <h3>
-                    {{ $dishes[0]->restaurant->address }}
+                    {{ $restaurant->address }}
                 </h3>
                 <h4>
-                    p.iva:{{ $dishes[0]->restaurant->piva }}
+                    p.iva:{{ $restaurant->piva }}
                 </h4>
             </div>
 

@@ -57,9 +57,6 @@ class TypeSeeder extends Seeder
             ],
         ];
 
-
-
-
         foreach ($tipologie as $tipologia) {
             Type::create([
                 'name' => $tipologia['type'],
