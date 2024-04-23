@@ -1,4 +1,8 @@
 @extends('layouts.app')
+
+@section('title', 'Deliveboo')
+
+
 @section('content')
 
 <div class="jumbotron mb-4 d-flex">

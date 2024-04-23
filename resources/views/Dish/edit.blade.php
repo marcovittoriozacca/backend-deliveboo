@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $dish->slug)
+
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Modifica: {{ $dish->name }}</h1>
