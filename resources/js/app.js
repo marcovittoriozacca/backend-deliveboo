@@ -210,6 +210,7 @@ if(registerForm){
 
 
 // Aggiunta la possibilità di vedere la password in chiaro nella registrazione
+if(window.location.href === 'http://127.0.0.1:8000/register' || window.location.href === 'http://127.0.0.1:8000/login'){
 let button_visib=document.getElementById("visible");
 button_visib.addEventListener("click",function(){
     if(password.type=="password"){
@@ -220,4 +221,5 @@ button_visib.addEventListener("click",function(){
         document.getElementById("password-confirm").type="password"
     }
 })
+}
 
