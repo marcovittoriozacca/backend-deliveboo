@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Dish;
 use App\Models\Restaurant;
 use Closure;
 use Illuminate\Http\Request;
@@ -19,9 +20,9 @@ class checkUserRestaurant
     {
         
         $user = Auth::id();
-        $restaurant = $request->segment(1);
-
-        if($user != $restaurant){
+        $dish = $request->segment(2);
+        $check_dish = Dish::where('restaurant_id', $user)->where('slug', $dish)->get();
+        if(count($check_dish) == 0 && $dish != null && $dish !== 'create' ){
             abort(403, 'Accesso non autorizzato');
         }
 

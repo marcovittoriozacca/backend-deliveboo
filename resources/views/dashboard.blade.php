@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-12  col-lg-6">
                     <div>
-                        <figure class="mb-0 position-relative d-flex justify-content-center align-items-center">
+                        <figure class="mb-0 position-relative d-flex justify-content-center align-items-center m-0">
                             @if ($restaurant->image)
                             <img class="img-fluid rounded" src="{{asset('/storage/'. $restaurant->image)}}" alt="restaurant-img">
                             @else

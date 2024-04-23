@@ -32,14 +32,20 @@ Route::middleware('auth')->group(function () {
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
-    //middleware momentaneamente commentato, più avanti verrà sistemato
-    // Route::middleware('check-user-restaurant')->group( function (){});
+    Route::middleware('check-user-restaurant')->group(function () {
+        Route::get('/dishes/{dish:slug}/edit', [DishController::class, 'edit']);
         Route::resource('/dishes', DishController::class)
             ->parameters(['dishes' => 'dish:slug']);
+    });
 
-        // //softdelete route
+
+
+
+        //softdelete route
         Route::put('/dishes/{dish}/softDelete', [DishController::class, 'softDelete'])->name('dishes.softDelete');
+
+            //middleware momentaneamente commentato, più avanti verrà sistemato
+
 
 
 });

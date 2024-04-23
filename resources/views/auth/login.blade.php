@@ -9,14 +9,14 @@
         <div class="mx-lg-1 px-0 px-lg-1 col-md-8 view_container_login ">
             <div class="card mt-3 mt-lg-5 bg_trasp py-lg-5 rounded-3 ">
                 <div class="card-body  rounded-3 p-0 ">
-                    <form id="login-form" method="POST" action="{{ route('login') }}">
+                    <form id="login-form" method="POST" action="{{ route('login') }}" autocomplete="off">
                         @csrf
                         <div>
                             <div class="px-3 px-lg-5 mb-4 row d-flex flex-column text_orange_color">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail') }}</label>
 
                                 <div>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autofocus required>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="off" autofocus required>
                                     <div id="emailError" class="d-none text-danger" role="alert"></div>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div>
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="off">
                                     <div id="passwordError" class="d-none text-danger" role="alert"></div>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
