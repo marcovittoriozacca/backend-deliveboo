@@ -10,14 +10,12 @@
             @if ($dishes[0]->restaurant->image)
             <div style="background-image:url({{asset('/storage/'. $dishes[0]->restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
             @else
-            <div style="background-image:url(https://www.courmayeurmontblanc.it/wp-content/uploads/2022/03/ristoranti-e-chalet-a-courmayeur5522.jpeg)" class="h-100 menu-restaurant-banner"></div>
+            <div style="background-image:url('/restaurant_bg_1.jpg')" class="h-100 menu-restaurant-banner"></div>
             @endif
         </figure>
 
         {{-- informazioni generali del ristoranti --}}
         <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
-
-
             <div>
                 <h1 class="text-uppercase">
                     {{ $dishes[0]->restaurant->activity_name }}
@@ -44,14 +42,15 @@
     <div class="position-relative negative-index">
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
         <figure class="mb-0 photo-max-h overflow-hidden">
+            @if ($dishes[0]->restaurant->image)
             <div style="background-image:url({{asset('/storage/'. $dishes[0]->restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
-            {{-- {{ $dishes[0]->restaurant->image }} --}}
+            @else
+            <div style="background-image:url('/restaurant_bg_1.jpg')" class="h-100 menu-restaurant-banner"></div>
+            @endif
         </figure>
 
         {{-- informazioni generali del ristoranti --}}
-        <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
-
-
+        <div class="position-absolute custom-top-banner start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
             <div>
                 <h1 class="text-uppercase">
                     {{ $dishes[0]->restaurant->activity_name }}

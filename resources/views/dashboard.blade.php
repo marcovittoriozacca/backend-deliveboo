@@ -51,6 +51,9 @@
                         <figure class="mb-0 position-relative d-flex justify-content-center align-items-center">
                             @if ($restaurant->image)
                             <img class="img-fluid rounded" src="{{asset('/storage/'. $restaurant->image)}}" alt="restaurant-img">
+                            @else
+                            <img class="img-fluid rounded" src="/restaurant_bg_1.jpg" alt="restaurant-img">
+                            @endif
                             <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute" href="{{ route('dishes.index') }}">Menù</a>
                             <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute dashboard_links_mt" href="{{ route('dishes.index') }}">Ordini</a>
                         </figure>
