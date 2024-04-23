@@ -47,7 +47,6 @@ class RegisteredUserController extends Controller
                                                                     ->letters()
                                                                     ->numbers()
                                                                     ->symbols()
-                                                                    ->uncompromised(7)
             ],
             //dati ristorante
             'activity_name' => ['required', 'string', 'max:255'],
@@ -82,7 +81,6 @@ class RegisteredUserController extends Controller
             'password.letters' => 'La Password deve contenere almeno una lettera',
             'password.numbers' => 'La Password deve contenere almeno un numero',
             'password.symbols' => 'La Password deve contenere almeno un carattere speciale',
-            'password.uncompromised' => 'La Password è presente in un recenter Data Leak, per sicurezza inseriscine una diversa',
 
             //messaggi di errore personalizzati per il nome del ristorante
             'activity_name.required' => 'Inserisci il Nome della tua Attività',
