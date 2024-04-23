@@ -1,6 +1,20 @@
 .dashboard_links_mt{
     margin-top: 7em;
 }
+
+
+@media screen and (max-width:320px) {
+    figure a{
+        top: 25%;
+    }
+
+    .dashboard_links_mt{
+        margin-top: 3em;
+    }
+}
+
+
+
 //background arancione generico
 .bg-base-orange{
     background-color: $base-orange;
