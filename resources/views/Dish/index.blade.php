@@ -4,12 +4,6 @@
 
 <div class="create_main pb-5 position-relative">
     @if (count($dishes) < 1)
-    <div class="position-absolute start-50 bottom-50 translate-middle">
-        <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
-    </div>
-    @endif
-
-    @if (count($dishes) > 0)
     <div class="position-relative negative-index">
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
         <figure class="mb-0 photo-max-h overflow-hidden">
@@ -40,6 +34,39 @@
         </div>
     </div>
 
+    @endif
+
+    @if (count($dishes) > 0)
+
+    <div class="position-relative negative-index">
+        {{-- banner con l'immagine del ristorante che sarà dinamica --}}
+        <figure class="mb-0 photo-max-h overflow-hidden">
+            <div style="background-image:url({{asset('/storage/'. $dishes[0]->restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
+            {{-- {{ $dishes[0]->restaurant->image }} --}}
+        </figure>
+
+        {{-- informazioni generali del ristoranti --}}
+        <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
+
+
+            <div>
+                <h1 class="text-uppercase">
+                    {{ $dishes[0]->restaurant->activity_name }}
+                </h1>
+                <h3>
+                    {{ $dishes[0]->restaurant->address }}
+                </h3>
+                <h4>
+                    p.iva:{{ $dishes[0]->restaurant->piva }}
+                </h4>
+            </div>
+
+            <div class="position-absolute start-50 translate-middle z-2 add_button">
+                <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
+            </div>
+
+        </div>
+    </div>
 
 
     {{-- sezione piatti --}}
