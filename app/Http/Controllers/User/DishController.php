@@ -20,6 +20,7 @@ class DishController extends Controller
      */
     public function index()
     {
+        //prendiamo tutti i piatti appartenenti al ristorante dell'utente
         $dishes = Dish::with('restaurant','category')->where('restaurant_id', Auth::id())->get();
         return view('dish.index', compact('dishes'));
     }
@@ -70,10 +71,10 @@ class DishController extends Controller
     public function edit(Dish $dish)
     {
 
-        if($dish->restaurant_id == Auth::id()){
-        }else{
+        if($dish->restaurant_id != Auth::id()){
             $dish = Dish::with('restaurant')->where('restaurant_id', Auth::id())->where('slug', $dish->slug)->first();
         }
+
         $categories = Category::all();
         return view('dish.edit', compact('dish', 'categories'));
     }
@@ -84,8 +85,7 @@ class DishController extends Controller
     public function update(UpdateDishRequest $request, Dish $dish)
     {
 
-        if($dish->restaurant_id == Auth::id()){
-        }else{
+        if($dish->restaurant_id != Auth::id()){
             $dish = Dish::with('restaurant')->where('restaurant_id', Auth::id())->where('slug', $dish->slug)->first();
         }
         
@@ -93,7 +93,7 @@ class DishController extends Controller
         
         $updated_dish['slug'] = Str::slug($updated_dish['name'] ,'-');
 
-        if ($updated_dish['image']){
+        if (key_exists("image", $updated_dish) ){
             if($dish->image){
                 Storage::disk('public')->delete($dish->image);
             }
