@@ -84,6 +84,10 @@
         top: 130%!important;
         text-wrap: nowrap;
     }
+
+    h1{
+        font-size: 2rem!important;
+    }
 }
 
 @media screen and (max-width:375px){
@@ -94,6 +98,10 @@
     .add_button{
         top: 130%;
         text-wrap: nowrap;
+    }
+
+    h1{
+        font-size: 1.5rem!important;
     }
 }
 
@@ -143,4 +151,10 @@
 }
 .negative-index{
     z-index: 0;
+}
+
+
+h1{
+    font-weight: 600;
+    font-size: 4rem;
 }
