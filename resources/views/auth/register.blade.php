@@ -60,7 +60,7 @@
                                 <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
                                 <div class="position-relative">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Inserisci Password" autocomplete="new-password">
-                                    <div id="visible" class="position-absolute bottom-0 end-0 translate-middle" style="cursor: pointer">Shows</div>
+                                    <div id="visible" class="position-absolute" style="cursor: pointer">Shows</div>
                                     <div id="passwordError" class="d-none text-danger" role="alert"></div>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
