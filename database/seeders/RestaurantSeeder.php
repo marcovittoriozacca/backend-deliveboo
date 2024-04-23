@@ -15,14 +15,16 @@ class RestaurantSeeder extends Seeder
     public function run(): void
     {
         for ($i=0; $i < 5; $i++) { 
-            $name = fake()->unique()->name();
+            $name = fake()->unique()->company();
             Restaurant::create([
                 'activity_name' => $name,
                 'slug' => Str::slug($name, '-'),
                 'address' => fake()->address(),
-                'piva' =>  fake()->unique()->randomNumber(),
+                'piva' =>  fake()->unique()->numberBetween(10000000000, 99999999999),
+                'image' => null,
                 'user_id' => $i+1,
             ]);
         }
+
     }
 }

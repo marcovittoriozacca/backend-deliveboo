@@ -13,8 +13,11 @@
     <div class="position-relative negative-index">
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
         <figure class="mb-0 photo-max-h overflow-hidden">
+            @if ($dishes[0]->restaurant->image)
             <div style="background-image:url({{asset('/storage/'. $dishes[0]->restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
-            {{-- {{ $dishes[0]->restaurant->image }} --}}
+            @else
+            <div style="background-image:url(https://www.courmayeurmontblanc.it/wp-content/uploads/2022/03/ristoranti-e-chalet-a-courmayeur5522.jpeg)" class="h-100 menu-restaurant-banner"></div>
+            @endif
         </figure>
 
         {{-- informazioni generali del ristoranti --}}
@@ -51,11 +54,10 @@
                         {{-- piatto --}}
                         <div class="bg_card p-4 rounded-3">
                             <figure class="mb-0 figure_plate">
-                                {{-- <img src="{{ $dishes->image }}" alt="immagine-piatto"> --}}
                                 @if($dish->image)
                                     <img class="img-fluid rounded-2" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
                                 @else
-                                    <img class="img-fluid rounded-2" src="/pizza_card.webp" alt="immagine-piatto">
+                                    <img class="img-fluid rounded-2" src="/template-dish.webp" alt="immagine-piatto">
                                 @endif
                             </figure>
 
