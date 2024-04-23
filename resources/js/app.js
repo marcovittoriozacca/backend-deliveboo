@@ -1,7 +1,7 @@
 import './bootstrap';
 import '~resources/scss/app.scss';
 import * as bootstrap from 'bootstrap';
-import { isNumber } from 'lodash';
+import { forEach, isNumber } from 'lodash';
 import.meta.glob([
     '../img/**'
 ])
@@ -91,6 +91,7 @@ if(registerForm){
         let address = document.getElementById('address').value;
         let piva = document.getElementById('piva').value;
         let image = document.getElementById('image');
+        const allowedExtensions = ['image/jpg','image/jpeg','image/jpe','image/webp','image/heif','image/bmp','image/tiff','image/tif','image/xbm','image/png','image/svg'];
         let activityName = document.getElementById('activity_name').value;
         let typologies = document.getElementById('typologies');
         let typologiesArray = Array.from(typologies.selectedOptions).map(option => option.value);
@@ -186,7 +187,7 @@ if(registerForm){
         }
 
         //validazione della partita iva
-        if (!piva || piva.length > 11 || isNaN(piva)) {
+        if (!piva || piva.length != 11 || isNaN(piva)) {
             pivaError.innerText = 'Inserisci una P.IVA valida';
             pivaError.classList.replace('d-none', 'd-block')
             event.preventDefault();
@@ -196,7 +197,7 @@ if(registerForm){
         }
 
         //validazione dell'immagine
-        if (!image.files[0] || /\.(jpg|jpeg|jpe|webp|heif|bmp|tiff|tif|xbm|png|svg)$/i.exec(image.name)) {
+        if (!image.files[0] || !allowedExtensions.includes(image.files[0].type)) {
             imageError.innerText = "Inserisci un'Immagine valida";
             imageError.classList.replace('d-none', 'd-block')
             event.preventDefault();
@@ -210,7 +211,7 @@ if(registerForm){
 
 
 // Aggiunta la possibilità di vedere la password in chiaro nella registrazione
-if(window.location.href === 'http://127.0.0.1:8000/register' || window.location.href === 'http://127.0.0.1:8000/login'){
+if(window.location.href === 'http://127.0.0.1:8000/register'){
 let button_visib=document.getElementById("visible");
 button_visib.addEventListener("click",function(){
     if(password.type=="password"){
@@ -223,3 +224,99 @@ button_visib.addEventListener("click",function(){
 })
 }
 
+const dishForm = document.getElementById('dish-form');
+if(dishForm){
+    const categoryValuesArray = document.querySelectorAll('.category-option')
+    let categories_values = [];
+    categoryValuesArray.forEach((category) => {
+        categories_values.push(category.value);
+    })
+
+    dishForm.addEventListener('submit', function(event){
+        let name = document.getElementById('name').value;
+        let description = document.getElementById('description').value;
+        let ingredient = document.getElementById('ingredient').value;
+        let image = document.getElementById('image');
+        const allowedExtensions = ['image/jpg','image/jpeg','image/jpe','image/webp','image/heif','image/bmp','image/tiff','image/tif','image/xbm','image/png','image/svg'];
+        let price = document.getElementById('price').value;
+        let category = document.getElementById('category').value;
+        
+        
+        const nameError = document.getElementById('nameError');
+        const descriptionError = document.getElementById('descriptionError');
+        const ingredientError = document.getElementById('ingredientError');
+        const imageError = document.getElementById('imageError');
+        const priceError = document.getElementById('priceError');
+        const categoryError = document.getElementById('categoryError');
+
+
+
+        //validazione del nome
+        if (!name) {
+            nameError.innerText = 'Inserisci un Nome';
+            nameError.classList.replace('d-none', 'd-block')
+            event.preventDefault();
+        } else {
+            nameError.innerText = '';
+            nameError.classList.replace('d-block', 'd-none')
+        }
+
+        console.log(categories_values)
+        //validazione della categoria
+        if (!category || !categories_values.includes(category)) {
+            categoryError.innerText = 'Inserisci una Categoria';
+            categoryError.classList.replace('d-none', 'd-block')
+            event.preventDefault();
+        } else {
+            categoryError.innerText = '';
+            categoryError.classList.replace('d-block', 'd-none')
+        }
+
+        //validazione della descrizione
+        if (!description) {
+            descriptionError.innerText = 'Inserisci una Descrizione';
+            descriptionError.classList.replace('d-none', 'd-block')
+            event.preventDefault();
+        }else if(description.value > 255){
+            descriptionError.innerText = 'Inserisci una descrizione più breve';
+            descriptionError.classList.replace('d-none', 'd-block')
+            event.preventDefault();
+        }
+        else {
+            descriptionError.innerText = '';
+            descriptionError.classList.replace('d-block', 'd-none')
+        }
+
+        //validazione degli ingredienti
+        if (!ingredient) {
+            ingredientError.innerText = 'Inserisci gli ingredienti';
+            ingredientError.classList.replace('d-none', 'd-block')
+            event.preventDefault();
+        } else {
+            ingredientError.innerText = '';
+            ingredientError.classList.replace('d-block', 'd-none')
+        }
+
+        //validazione dell'immagine
+        if(image.files[0]){
+            if (!allowedExtensions.includes(image.files[0].type)) {
+                imageError.innerText = "Inserisci un'Immagine valida";
+                imageError.classList.replace('d-none', 'd-block')
+                event.preventDefault();
+            } else {
+                imageError.innerText = '';
+                imageError.classList.replace('d-block', 'd-none')
+            }
+        }
+
+        //validazione del prezzo
+        if (!price || price > 1000) {
+            priceError.innerText = "Inserisci un prezzo valido";
+            priceError.classList.replace('d-none', 'd-block')
+            event.preventDefault();
+        } else {
+            priceError.innerText = '';
+            priceError.classList.replace('d-block', 'd-none')
+        }
+    })
+}

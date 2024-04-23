@@ -5,7 +5,7 @@
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Aggiungi un piatto</h1>
-    <form action="{{ route('dishes.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+    <form id="dish-form" action="{{ route('dishes.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
         @csrf
         <div class="container container_form p-3 py-3 p-lg-5">
             <div class="d-flex justify-content-between gap-5 flex-column flex-lg-row">
@@ -17,29 +17,32 @@
                         type="text"
                         class="form-control @error('name') is-invalid @enderror"
                         id="name"
-                        required
+                        
                         maxlength="255"
                         autocomplete="off"
                         placeholder="inserisci il nome"
                         value="{{ old('name')? old('name') : '' }}"
                     >
+                    <div id="nameError" class="d-none text-danger" role="alert"></div>
                     @error ('name')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
-                {{-- edit categorie - ancora da sistemare --}}
+                {{-- edit categorie--}}
                 <div class="w-100">
-                    <label class="mb-2" for="form-select">Categoria<span class="text-danger"> *</span></label>
-                    <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" required autocomplete="off">
+                    <label class="mb-2" for="category">Categoria<span class="text-danger"> *</span></label>
+                    <select id="category" class="form-select @error('category_id') is-invalid @enderror" name="category_id"  autocomplete="off">
                         @foreach ($categories as $category)
                         <option
                             value="{{ $category->id }}"
+                            class="category-option"
                             @if (old('category_id') == $category->id) selected @endif
                         >
                         {{ $category->name }}</option>
                         @endforeach
                     </select>
+                    <div id="categoryError" class="d-none text-danger" role="alert"></div>
                     @error ('category_id')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -54,9 +57,10 @@
                     class="form-control @error ('description') is-invalid @enderror"
                     id="description"
                     rows="10"
-                    required
+                    
                     autocomplete="off"
                     maxlength="1200">{{ old('description')? old('description') : '' }}</textarea>
+                    <div id="descriptionError" class="d-none text-danger" role="alert"></div>
                     @error ('description')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -71,20 +75,22 @@
                     class="form-control @error ('ingredient') @enderror"
                     id="ingredient"
                     placeholder="inserisci il nome"
-                    required
+                    
                     maxlength="255"
                     autocomplete="off"
                     value="{{ old('ingredient')? old('ingredient') : '' }}"
                 >
+                <div id="ingredientError" class="d-none text-danger" role="alert"></div>
                 @error ('ingredient')
                 <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
 
-            {{-- edit immagine - ancora da sistemare --}}
+            {{-- edit immagine --}}
             <div class="input-group my-5 d-flex flex-column">
                 <label for="image" class="mb-2">Immagine</label>
-                <input type="file" class="form-control w-100 rounded" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" autocomplete="off" name="image" aria-label="Upload">
+                <input type="file" class="form-control w-100 rounded" id="image" aria-describedby="inputGroupFileAddon04" autocomplete="off" name="image" aria-label="Upload">
+                <div id="imageError" class="d-none text-danger" role="alert"></div>
             </div>
 
             {{-- edit prezzo --}}
@@ -97,11 +103,12 @@
                         step=".01"
                         class="form-control @error ('price') is-invalid @enderror"
                         id="price"
-                        required
+                        
                         min="0"
                         autocomplete="off"
                         value="{{ old('price')? old('price') : '' }}"
                     >
+                    <div id="priceError" class="d-none text-danger" role="alert"></div>
                     @error ('price')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
