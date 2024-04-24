@@ -71,76 +71,78 @@
 
         </div>
     </div>
-
-
-    {{-- sezione piatti --}}
-    <div class="container dishes-container">
-        <div class="row row-gap-4 py-3">
-            @foreach ($dishes as $dish)
-                @if($dish->visible)
-                    <div class="col-12 col-md-6 col-lg-4">
-                        {{-- piatto --}}
-                        <div class="bg_card p-4 rounded-3 h-100 d-flex flex-column  row-gap-2 justify-content-between">
-                            <figure class="mb-0 figure_plate">
+    <div class="custom-table-container">
+        <div class="rounded overflow-hidden dishes-container">
+            <div class="table-responsive w-100">
+                <table class="table table-warning mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="ps-4 py-3" style="width: 150px">Nome</th>
+                            <th scope="col" class="py-3" style="width: 200px">Immagine</th>
+                            <th scope="col" class="py-3" style="width: 450px">Descrizione</th>
+                            <th scope="col" class="py-3" style="width: 350px">Ingredienti</th>
+                            <th scope="col" class="py-3" style="width: 200px">Categoria</th>
+                            <th scope="col" class="py-3" style="width: 200px">Prezzo</th>
+                            <th scope="col" class="py-3" style="width: 180px">Disponibilità</th>
+                            <th scope="col" class="text-center pe-4 py-3" style="width: 150px">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($dishes as $dish)    
+                        <tr class="">
+                            <td class="align-middle ps-4">{{ $dish->name }}</td>
+                            <td class="align-middle">
                                 @if($dish->image)
-                                    <img class=" rounded-2 dish-image" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
+                                <a target="_blank" href="{{asset('/storage/'. $dish->image)}}">
+                                    <img class="table-dish-img rounded" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
+                                </a>
                                 @else
-                                    <img class="img-fluid rounded-2" src="/template-dish.webp" alt="immagine-piatto">
+                                <img class="table-dish-img rounded" src="/template-dish.webp" alt="immagine-piatto">
                                 @endif
-                            </figure>
-
-                            <div class="d-flex align-items-center justify-content-between my-2">
-                                <h3 class="mb-0 text-white">
-                                    {{ $dish->name }}
-                                </h3>
-                                <p class="mb-0 text-white">
-                                    {{ $dish->price }}€
-                                </p>
-                            </div>
-
-                            <div class="bg-body-tertiary text-dark rounded-2 my-2 py-2 text-center">
-                                {{-- limitare campo a 255 --}}
-                                <p class="mb-0 text-truncate">{{ $dish->description }}</p>
-                            </div>
-                            <div>
-                                <p class="mb-0 text-secondary">Ingredienti: <span class="text-white">{{ $dish->ingredient }}</span></p>
-                            </div>
-
-                            <div class="my-3">
-                                <p class="mb-0 d-inline-block rounded-pill py-1 px-2 text-white bg-base-orange">{{ $dish->category->name }}</p>
-                            </div>
-
-                            <div class="row row-gap-3 mt-auto">
-                                <div class="col-12 col-xl-6">
-                                    <a href="{{ route('dishes.edit', $dish->slug) }}">
-                                        <div class="btn-base-gray py-3 text-center rounded">
-                                            Modifica Piatto
-                                        </div>
-                                    </a>
+                            </td>
+                            <td class="align-middle">{{ $dish->description }}</td>
+                            <td class="align-middle">{{ $dish->ingredient }}</td>
+                            <td class="align-middle">{{ $dish->category->name }}</td>
+                            <td class="align-middle">{{ $dish->price }}€</td>
+                            <td class="align-middle">
+                                <div class="px-2 rounded-pill text-white text-center @if($dish->visible == 0) bg-danger @else bg-success @endif">
+                                    <span>
+                                        {{ ($dish->visible)? 'Disponibile' : 'Non Disponibile' }}
+                                    </span>
                                 </div>
-                                <div class="col-12 col-xl-6">
-                                    {{-- ancora da modificare e ultimare --}}
+                            </td>
+        
+                            <td class="align-middle pe-4">
+                                <div class="d-flex align-items-center justify-content-center column-gap-2">
+                                    {{-- edit button --}}
+                                    <a href="{{ route('dishes.edit', $dish->slug) }}" class="btn btn-warning">
+                                        <i class="fas fa-pen-to-square text-white"></i>
+                                    </a>
+    
+                                    {{-- delete modal + button --}}
                                     <button
-                                        type="button"
-                                        class="btn btn-danger w-100 py-3 text-center delete-button"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#delete-modal"
-                                        data-delete-id='{{ $dish->id }}'
-                                        data-delete-path='dishes'
-                                        data-delete-name='{{ $dish->name }}'
+                                    type="button"
+                                    class="btn btn-danger text-center delete-button"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#delete-modal"
+                                    data-delete-id='{{ $dish->id }}'
+                                    data-delete-path='dishes'
+                                    data-delete-name='{{ $dish->name }}'
                                     >
-                                    Rimuovi Piatto
+                                    <i class="fas fa-trash-can"></i>
                                     </button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            @endforeach
+                            </td>
+        
+        
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
-    @include('partials.delete-modal');
+    @include('partials.delete-modal')
     @endif
 
 </div>

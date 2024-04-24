@@ -16,7 +16,7 @@
         @guest
         <a class="btn-register btn btn-lg" href="{{ route('register') }}">{{ __('Register') }}</a>
         @else
-        <a class="btn-register btn btn-lg" href="{{ route('dishes.index') }}">{{ __('Ossera i tuoi piatti!') }}</a>   
+        <a class="btn-register btn btn-lg" href="{{ route('dishes.index') }}">{{ __('Osserva i tuoi piatti!') }}</a>   
         @endguest
         {{-- stima delle statistiche --}}
         <div class="m-5 d-flex align-items-center">

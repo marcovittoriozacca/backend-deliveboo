@@ -28,6 +28,7 @@ class UpdateDishRequest extends FormRequest
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,jpe,webp,heif,bmp,tiff,tif,xbm,png,svg', 'max:2000'],
             'price' => ['required', 'numeric', 'min:0'],
             'category_id' => ['required', 'exists:App\Models\Category,id'],
+            'visible' => ['nullable', 'min:0', 'max:1'],
         ];
     }
 
@@ -60,6 +61,9 @@ class UpdateDishRequest extends FormRequest
 
             'category_id.required' => 'Inserisci la Categoria del piatto',
             'category_id.exists' => 'Inserisci una categoria valida',
+
+            'visible.min' => 'Valori accettati: 0 e 1',
+            'visible.max' => 'Valori accettati: 0 e 1'
         ];
     }
 }
