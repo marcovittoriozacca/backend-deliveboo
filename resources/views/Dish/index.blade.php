@@ -8,7 +8,7 @@
     @if (count($dishes) < 1)
     <div class="position-relative negative-index">
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
-        <figure class="mb-0 photo-max-h overflow-hidden">
+        <figure class="mb-0 photo-max-h overflow-hidden m-0">
             @if ($restaurant->image )
             <div style="background-image:url({{asset('/storage/'. $restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
             @else
@@ -43,7 +43,7 @@
 
     <div class="position-relative negative-index">
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
-        <figure class="mb-0 photo-max-h overflow-hidden">
+        <figure class="mb-0 photo-max-h overflow-hidden m-0">
             @if ($dishes[0]->restaurant->image)
             <div style="background-image:url({{asset('/storage/'. $dishes[0]->restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
             @else

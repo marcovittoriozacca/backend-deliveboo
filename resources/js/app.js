@@ -261,7 +261,6 @@ if(dishForm){
             nameError.classList.replace('d-block', 'd-none')
         }
 
-        console.log(categories_values)
         //validazione della categoria
         if (!category || !categories_values.includes(category)) {
             categoryError.innerText = 'Inserisci una Categoria';
@@ -308,7 +307,6 @@ if(dishForm){
                 imageError.classList.replace('d-block', 'd-none')
             }
         }
-
         //validazione del prezzo
         if (!price || price > 1000) {
             priceError.innerText = "Inserisci un prezzo valido";

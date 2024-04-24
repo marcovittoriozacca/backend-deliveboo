@@ -17,7 +17,7 @@
                         type="text"
                         class="form-control @error('name') is-invalid @enderror"
                         id="name"
-                        
+                        required
                         maxlength="255"
                         autocomplete="off"
                         placeholder="inserisci il nome"
@@ -32,7 +32,7 @@
                 {{-- edit categorie--}}
                 <div class="w-100">
                     <label class="mb-2" for="category">Categoria<span class="text-danger"> *</span></label>
-                    <select id="category" class="form-select @error('category_id') is-invalid @enderror" name="category_id"  autocomplete="off">
+                    <select id="category" class="form-select @error('category_id') is-invalid @enderror" name="category_id" required autocomplete="off">
                         @foreach ($categories as $category)
                         <option
                             value="{{ $category->id }}"
@@ -57,7 +57,7 @@
                     class="form-control @error ('description') is-invalid @enderror"
                     id="description"
                     rows="10"
-                    
+                    required
                     autocomplete="off"
                     maxlength="1200">{{ old('description')? old('description') : '' }}</textarea>
                     <div id="descriptionError" class="d-none text-danger" role="alert"></div>
@@ -75,7 +75,7 @@
                     class="form-control @error ('ingredient') @enderror"
                     id="ingredient"
                     placeholder="inserisci il nome"
-                    
+                    required
                     maxlength="255"
                     autocomplete="off"
                     value="{{ old('ingredient')? old('ingredient') : '' }}"
@@ -103,7 +103,7 @@
                         step=".01"
                         class="form-control @error ('price') is-invalid @enderror"
                         id="price"
-                        
+                        required
                         min="0"
                         autocomplete="off"
                         value="{{ old('price')? old('price') : '' }}"

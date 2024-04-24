@@ -5,7 +5,7 @@
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Modifica: {{ $dish->name }}</h1>
-    <form action="{{ route('dishes.update', $dish->slug) }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+    <form id="dish-form" action="{{ route('dishes.update', $dish->slug) }}" method="POST" enctype="multipart/form-data" autocomplete="off">
         @csrf
         @method('PUT')
         <div class="container container_form p-3 py-3 p-lg-5">
@@ -24,6 +24,7 @@
                         value="{{ old('name', $dish->name) }}"
                         autocomplete="off"
                     >
+                    <div id="nameError" class="d-none text-danger" role="alert"></div>
                     @error ('name')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -38,6 +39,7 @@
                         @endif
                         <option
                             value="{{ $category->id }}"
+                            class="category-option"
                             @if (old('category_id', $dish->category_id) == $category->id) selected @endif
                         >
                         {{ $category->name }}
@@ -45,6 +47,7 @@
                             {{ $category->name }}</option>
                         @endforeach
                     </select>
+                    <div id="categoryError" class="d-none text-danger" role="alert"></div>
                     @error ('category_id')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -62,6 +65,7 @@
                     required
                     autocomplete="off"
                     maxlength="255">{{ old('description', $dish->description) }}</textarea>
+                    <div id="descriptionError" class="d-none text-danger" role="alert"></div>
                     @error ('description')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -81,6 +85,7 @@
                     autocomplete="off"
                     value="{{ old('ingredient', $dish->ingredient) }}"
                 >
+                <div id="ingredientError" class="d-none text-danger" role="alert"></div>
                 @error ('ingredient')
                 <p class="text-danger">{{ $message }}</p>
                 @enderror
@@ -89,7 +94,8 @@
             {{-- edit immagine --}}
             <div class="input-group my-5 d-flex flex-column">
                 <label for="image" class="mb-2">Immagine</label>
-                <input type="file" class="form-control w-100 rounded" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" autocomplete="off" name="image" aria-label="Upload">
+                <input type="file" class="form-control w-100 rounded" id="image" aria-describedby="inputGroupFileAddon04" autocomplete="off" name="image" aria-label="Upload">
+                <div id="imageError" class="d-none text-danger" role="alert"></div>
             </div>
 
             {{-- edit prezzo --}}
@@ -107,6 +113,7 @@
                         autocomplete="off"
                         value="{{ old('price', $dish->price) }}"
                     >
+                    <div id="priceError" class="d-none text-danger" role="alert"></div>
                     @error ('price')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
