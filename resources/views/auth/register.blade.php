@@ -95,7 +95,7 @@
 
                             {{-- input Nome Ristorante --}}
                             <div class="mb-4 row d-flex flex-column col-lg-6">
-                                <label for="activity_name" class="col-md-6 col-form-label text-md-right">{{ __('Nome del ristorante') }}<span class="text-danger"> *</span></label>
+                                <label for="activity_name" class="col-md-12 col-form-label text-md-right">{{ __('Nome del ristorante') }}<span class="text-danger"> *</span></label>
 
                                 <div class="">
                                     <input id="activity_name" type="text" class="form-control @error('activity_name') is-invalid @enderror" name="activity_name" value="{{ old('activity_name') }}" autocomplete="off" placeholder="Inserisci Nome Attività" autofocus required>
@@ -127,7 +127,7 @@
 
                             {{-- input Indirizzo Ristorante --}}
                             <div class="mb-4 row d-flex flex-column col-lg-6">
-                                <label for="address" class="col-md-6 col-form-label text-md-right">{{ __('Indirizzo del ristorante') }}<span class="text-danger"> *</span></label>
+                                <label for="address" class="col-md-12 col-form-label text-md-right">{{ __('Indirizzo del ristorante') }}<span class="text-danger"> *</span></label>
 
                                 <div class="">
                                     <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="off" placeholder="Inserisci Indirizzo Attività" autofocus required>
@@ -142,7 +142,7 @@
 
                             {{-- input P.IVA Ristorante --}}
                             <div class="mb-4 row d-flex flex-column col-lg-6">
-                                <label for="piva" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva') }}<span class="text-danger"> *</span></label>
+                                <label for="piva" class="col-md-12 col-form-label text-md-right">{{ __('Partita Iva') }}<span class="text-danger"> *</span></label>
 
                                 <div class="">
                                     <input id="piva" type="text" class="form-control @error('piva') is-invalid @enderror" name="piva" value="{{ old('piva') }}" placeholder="Inserisci Partita Iva" autocomplete="off" autofocus maxlength="11" required>
@@ -157,7 +157,7 @@
 
                             {{-- input Immagine Ristorante - Ancora da ultimare --}}
                             <div class="mb-4 row d-flex flex-column col-lg-6">
-                                <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Immagine') }}<span class="text-danger"> *</span></label>
+                                <label for="image" class="col-md-12 col-form-label text-md-right">{{ __('Immagine') }}<span class="text-danger"> *</span></label>
 
                                 <div class="">
                                     <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="off" autofocus required>
@@ -173,7 +173,7 @@
                         <div class="mb-4 row mb-0">
                             <div>
                                 <button type="submit" class="w-100 btn button_register text-light">
-                                    {{ __('Register') }}
+                                    {{ __('Registrati') }}
                                 </button>
                             </div>
                         </div>
