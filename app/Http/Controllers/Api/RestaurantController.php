@@ -20,10 +20,10 @@ class RestaurantController extends Controller
 
     public function type(){
 
-        $Type = Type::all('id','slug','image');
+        $type = Type::all('id','slug','image');
         return response()->json([
             'success'=> true,
-            'Type'=> $Type
+            'type'=> $type
         ]);
     }
 }
