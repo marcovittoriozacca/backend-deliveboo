@@ -173,7 +173,7 @@
                         <div class="mb-4 row mb-0">
                             <div>
                                 <button type="submit" class="w-100 btn button_register text-light">
-                                    {{ __('Register') }}
+                                    {{ __('Registrati') }}
                                 </button>
                             </div>
                         </div>

@@ -45,7 +45,7 @@
                         <div class=" px-3 px-lg-5">
                             <div class="d-flex flex-column align-items-center">
                                 <button id="submitBtn" type="submit" class="button_login btn text-light w-100">
-                                    {{ __('Login') }}
+                                    {{ __('Accedi') }}
                                 </button>
 
                                 <div class="mb-1 mt-4">

@@ -145,7 +145,7 @@
 }
 
 .dishes-container{
-    margin-top: -5em;
+    margin-top: -6em;
     z-index: 1;
     position: relative;
 }
@@ -161,4 +161,18 @@ h1{
 
 .custom-top-banner{
     top: 35%;
+}
+
+
+
+.table-dish-img{
+    width: 100px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+}
+
+.custom-table-container{
+    width: 95%;
+    margin: 0 auto;
 }
