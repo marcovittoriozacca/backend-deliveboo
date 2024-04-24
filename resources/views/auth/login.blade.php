@@ -17,11 +17,11 @@
 
                                 <div>
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="off" autofocus required>
-                                    <div id="emailError" class="d-none text-danger" role="alert"></div>
+                                    <div id="emailError" class="d-none text-white" role="alert"></div>
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
                             </div>
@@ -31,11 +31,11 @@
 
                                 <div>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="off">
-                                    <div id="passwordError" class="d-none text-danger" role="alert"></div>
+                                    <div id="passwordError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
                             </div>
