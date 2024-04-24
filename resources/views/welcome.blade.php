@@ -13,7 +13,11 @@
 
         <p class="col-md-8 fs-5 mb-5">Scopri il gusto a domicilio: ordina il meglio della cucina direttamente a casa tua. Esperienze culinarie uniche, comodamente servite sulla tua tavola. Semplice, veloce, delizioso!
         </p>
+        @guest
         <a class="btn-register btn btn-lg" href="{{ route('register') }}">{{ __('Register') }}</a>
+        @else
+        <a class="btn-register btn btn-lg" href="{{ route('dishes.index') }}">{{ __('Ossera i tuoi piatti!') }}</a>   
+        @endguest
         {{-- stima delle statistiche --}}
         <div class="m-5 d-flex align-items-center">
             <div class="d-flex row">
