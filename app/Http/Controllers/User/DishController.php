@@ -21,7 +21,7 @@ class DishController extends Controller
     public function index()
     {
         //prendiamo tutti i piatti appartenenti al ristorante dell'utente, con annesse informazioni del ristorante stesso e delle sue categorie
-        $dishes = Dish::with('restaurant','category')->where('restaurant_id', Auth::id())->get();
+        $dishes = Dish::with('restaurant','category')->where('restaurant_id', Auth::id())->where('deleted_at', null)->get();
 
         //prendiamo il ristorante dell'utente per una visualizzazione dei dati corretta
         $restaurant = Restaurant::where('id', Auth::id())->first();
@@ -60,13 +60,13 @@ class DishController extends Controller
             $new_dish['slug'] = Str::slug($new_dish['name'].'-'.$last_dish->id+1, '-');
         }
 
-        //in questo modo ogni slug sarà comunque univoco e nella barra di ricerca avremo comunque il nome dell'elemento
-
-        //visibilità dell'elemento su true
-        $new_dish['visible'] = true;
         //collegamento al ristorante di appartenenza
         $new_dish['restaurant_id'] = Auth::id();
-        
+
+        if(!key_exists('visible', $new_dish)){
+            $new_dish['visible'] = 0;
+        }
+
         //aggiunta dell'immagine, se dovesse essere stata caricata. In caso contrario, nella view esiste un template di fallback
         if($request->hasFile('image')){
             $path = Storage::disk('public')->put('dish_images', $request->image);
@@ -113,15 +113,17 @@ class DishController extends Controller
         }
         $updated_dish = $request->validated();
         
-
         $updated_dish['slug'] = Str::slug($updated_dish['name'] ,'-');
 
-        $check_dishes = Dish::with('restaurant')->where('restaurant_id', Auth::id())->where('slug', $updated_dish['slug'])->get();
+        $check_dishes = Dish::with('restaurant')->where('restaurant_id', Auth::id())->where('slug', $updated_dish['slug'])->whereNot('id', $dish->id)->get();
         if(count($check_dishes) >= 1){
             $updated_dish['slug'] = Str::slug($updated_dish['name'].'-'.$dish->id, '-');
         }
-
-
+        
+        if(!key_exists('visible', $updated_dish)){
+            $updated_dish['visible'] = 0;
+        }
+        
         if (key_exists("image", $updated_dish) ){
             if($dish->image){
                 Storage::disk('public')->delete($dish->image);
@@ -145,16 +147,18 @@ class DishController extends Controller
 
     //cancella in modo fittizio il record, non mostrandolo più nel menù ma tenendolo comunque in memoria nel database
     public function softDelete(Dish $dish){
-        $updated_dish = $dish->toArray();
-        
-        $updated_dish['visible'] = 0;
-        $updated_dish['slug'] = $dish['slug'].'-'.$dish['id'];
-        if($updated_dish['image']){
-            Storage::disk('public')->delete($updated_dish['image']);
-            $updated_dish['image'] = null;
-        }
-        $dish->update($updated_dish);
-        $dish->save();
+        $dish->delete();
         return redirect()->route('dishes.index');
+        
+        // $updated_dish = $dish->toArray();
+        // $updated_dish['visible'] = 0;
+        // $updated_dish['slug'] = $dish['slug'].'-'.$dish['id'];
+        // if($updated_dish['image']){
+        //     Storage::disk('public')->delete($updated_dish['image']);
+        //     $updated_dish['image'] = null;
+        // }
+        // $dish->update($updated_dish);
+        // $dish->save();
+        // return redirect()->route('dishes.index');
     }
 }

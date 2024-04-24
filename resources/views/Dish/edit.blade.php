@@ -119,6 +119,23 @@
                     @enderror
                 </div>
             </div>
+
+
+            {{-- visibile / disponibilità del prodotto --}}
+            <div class="mb-4">
+                <label class="form-check-label" for="dish-visible"> Piatto Disponibile </label>
+                    <div class="form-check mb-2">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="dish-visible"
+                            name="visible"
+                            @if(old('visible', $dish->visible) == 1) checked @endif
+                        />
+                    </div>
+            </div>
+
             <div class="text-center w-100">
                 <button type="submit" class="btn btn-warning w-50 white">Modifica</button>
             </div>

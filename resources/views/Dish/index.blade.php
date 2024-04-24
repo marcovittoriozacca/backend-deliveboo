@@ -77,7 +77,7 @@
     <div class="container dishes-container">
         <div class="row row-gap-4 py-3">
             @foreach ($dishes as $dish)
-                @if($dish->visible)
+                
                     <div class="col-12 col-md-6 col-lg-4">
                         {{-- piatto --}}
                         <div class="bg_card p-4 rounded-3 h-100 d-flex flex-column  row-gap-2 justify-content-between">
@@ -106,8 +106,11 @@
                                 <p class="mb-0 text-secondary">Ingredienti: <span class="text-white">{{ $dish->ingredient }}</span></p>
                             </div>
 
-                            <div class="my-3">
+                            <div class="my-3 d-flex align-items-center justify-content-between ">
                                 <p class="mb-0 d-inline-block rounded-pill py-1 px-2 text-white bg-base-orange">{{ $dish->category->name }}</p>
+                                <div class="rounded-pill px-4 py-1 @if($dish->visible == 0) bg-danger text-white @else bg-success @endif">
+                                    {{ ($dish->visible)? 'Disponibile' : 'Non Disponibile' }}
+                                </div>
                             </div>
 
                             <div class="row row-gap-3 mt-auto">
@@ -135,7 +138,7 @@
                             </div>
                         </div>
                     </div>
-                @endif
+                
             @endforeach
         </div>
     </div>
