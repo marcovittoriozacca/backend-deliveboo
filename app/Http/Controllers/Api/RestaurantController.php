@@ -28,8 +28,15 @@ class RestaurantController extends Controller
     }
 
     public function dishes($restaurant){
-        
-        $dishes = Restaurant::with('dish', 'types')->where('id', $restaurant)->get();
+        //presa dei dati tramite id
+        // $restaurant = Restaurant::with('types')->where('id', $restaurant)->first();
+
+        //presa dei dati tramite slug
+        $restaurant_api = Restaurant::with('types')->where('slug', $restaurant)->first();
+        ///////------
+
+        $dishes = Dish::with('category')->where('restaurant_id', $restaurant_api->id)->get();
+
         if(count($dishes) < 1){
             return response()->json([
                 'success' => false,
@@ -39,6 +46,7 @@ class RestaurantController extends Controller
             return response()->json([
                 'success' => true,
                 'dishes' => $dishes,
+                'restaurant' => $restaurant_api
             ]);
         }
 
