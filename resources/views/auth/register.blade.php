@@ -63,10 +63,10 @@
                                     <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}<span class="text-danger"> *</span></label>
                                     <div id="rule">
                                         <ul class="mb-0 pb-1">
-                                            <li>Inserisci un carattere speciale(@!#/)</li>
-                                            <li>Inserisci almeno un carattere maiuscolo</li>
-                                            <li>Inserisci almeno 8 carateri</li>
-                                            <li>Inserisci almeno un numero</li>
+                                            <li id="speciale">Inserisci un carattere speciale(@!#/)</li>
+                                            <li id="maiuscolo">Inserisci almeno un carattere maiuscolo</li>
+                                            <li id="lung">Inserisci almeno 8 carateri</li>
+                                            <li id="numero">Inserisci almeno un numero</li>
                                         </ul>
                                     </div>
                                 </div>
