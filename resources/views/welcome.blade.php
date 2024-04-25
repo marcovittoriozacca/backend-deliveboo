@@ -11,15 +11,19 @@
             Deliveboo
         </h1>
 
-        <p class="col-md-8 fs-5 mb-5">Scopri il gusto a domicilio: ordina il meglio della cucina direttamente a casa tua. Esperienze culinarie uniche, comodamente servite sulla tua tavola. Semplice, veloce, delizioso!
+        <p class="col-md-8 fs-5 mb-5">
+            🌟 Scopri i vantaggi di essere partner di Deliveboo!🌟
+            <br>
+
+            Espandi il tuo mercato, aumenta le vendite e goditi una maggiore visibilità. Con flessibilità operativa e feedback preziosi dai clienti. Diventa partner oggi e porta il tuo business al prossimo livello! 🚀🍔🌮
         </p>
         @guest
         <a class="btn-register btn btn-lg" href="{{ route('register') }}">{{ __('Register') }}</a>
         @else
-        <a class="btn-register btn btn-lg" href="{{ route('dishes.index') }}">{{ __('Osserva i tuoi piatti!') }}</a>   
+        <a class="btn-register btn btn-lg" href="{{ route('dishes.index') }}">{{ __('Osserva i tuoi piatti!') }}</a>
         @endguest
         {{-- stima delle statistiche --}}
-        <div class="m-5 d-flex align-items-center">
+        <div class="m-5 d-flex align-items-center m-xs-0 estimateContainer gap-3">
             <div class="d-flex row">
                 <span class="estimate-number">20k+</span>
                 <span>orders completed</span>
@@ -63,9 +67,9 @@
               </div>
             </div>
             <div class="card__content pt-3">
-                <i class="fa-solid fa-location-dot" style="color: #000000"></i>
-                <h3 class="py-3">Metti la tua posizione</h3>
-                <p>Inserisci il luogo in cui desideri ricevere l'ordine</p>
+                <i class="fa-solid fa-address-card" style="color: #000000;"></i>
+                <h3 class="py-3">Registration</h3>
+                <p>Registrati e accedi al sito web o all'applicazione del servizio</p>
             </div>
           </div>
           {{-- seconda card --}}
@@ -83,8 +87,8 @@
             </div>
             <div class="card__content pt-3">
                 <i class="fa-solid fa-utensils"></i>
-                <h3 class="py-3">Scegli cosa mangiare</h3>
-                <p>scegli tra tutte le centinaia di ristoranti partner</p>
+                <h3 class="py-3">Crea il profilo</h3>
+                <p>Inserisci le informazioni del ristorante</p>
             </div>
           </div>
           {{-- terza card  --}}
@@ -101,9 +105,9 @@
               </div>
             </div>
             <div class="card__content align-items-center pt-3">
-                <i class="fa-solid fa-credit-card" style="color: #000000"></i>
-                <h3 class="py-3">Fai il pagamento</h3>
-                <p>Effetua il pagamento per ricevere l'ordine a casa</p>
+                <i class="fa-solid fa-handshake-simple" style="color: #000000;"></i>
+                <h3 class="py-3">Ordini</h3>
+                <p>Ora sei partner ufficiale e puoi ricevere ordini</p>
             </div>
           </div>
     </div>
