@@ -30,7 +30,6 @@ class RestaurantController extends Controller
     public function dishes($restaurant){
         
         $dishes = Restaurant::with('dish', 'types')->where('id', $restaurant)->get();
-        dd($dishes);
         return response()->json([
             'success' => true,
             'dishes' => $dishes,
