@@ -30,10 +30,17 @@ class RestaurantController extends Controller
     public function dishes($restaurant){
         
         $dishes = Restaurant::with('dish', 'types')->where('id', $restaurant)->get();
-        return response()->json([
-            'success' => true,
-            'dishes' => $dishes,
-        ]);
+        if(count($dishes) < 1){
+            return response()->json([
+                'success' => false,
+                "error" => 'No restaurant available with that id',
+            ]);
+        }else{
+            return response()->json([
+                'success' => true,
+                'dishes' => $dishes,
+            ]);
+        }
 
     }
 }
