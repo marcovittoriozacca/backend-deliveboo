@@ -141,54 +141,62 @@ if(registerForm){
             emailError.classList.replace('d-block', 'd-none')
         }
 
-        // Validazione della password
-         if (!password || !validatePassword(password) || password.length<8) {
+        // // Validazione della password
+        //  if (!password || !validatePassword(password) || password.length<8) {
+        //      passwordError.innerText = 'Inserisci una Password valida';
+        //      passwordError.classList.replace('d-none', 'd-block')
+        //      event.preventDefault();
+        //  } else {
+        //      passwordError.innerText = '';
+        //      passwordError.classList.replace('d-block', 'd-none')
+        //  }
+
+        function validaPassword(password) {
+            const regexCarattereSpeciale = /[@!#\/]/;
+            const regexMaiuscolo = /[A-Z]/;
+            const regexNumero = /[0-9]/;
+
+            let valido = true;
+
+            if (password.length < 8) {
+                document.getElementById('lung').style.color="red";
+                valido = false;
+            }else{
+                document.getElementById('lung').style.color="green";
+            }
+
+           if (!regexCarattereSpeciale.test(password)) {
+                document.getElementById('speciale').style.color="red";
+                valido = false;
+            }else{
+                document.getElementById('speciale').style.color="green";
+            }
+
+            if (!regexMaiuscolo.test(password)) {
+                document.getElementById('maiuscolo').style.color="red";
+                 valido = false;
+            }else{
+                document.getElementById('maiuscolo').style.color="green";
+            }
+
+             if (!regexNumero.test(password)) {
+                 document.getElementById('numero').style.color="red";
+                valido = false;
+             }else{
+                document.getElementById('numero').style.color="green";
+            }
+
+             return valido;
+         }
+
+         if (validaPassword(password)) {
+             passwordError.innerText = '';
+             passwordError.classList.replace('d-block', 'd-none')
+         } else {
              passwordError.innerText = 'Inserisci una Password valida';
              passwordError.classList.replace('d-none', 'd-block')
              event.preventDefault();
-         } else {
-             passwordError.innerText = '';
-             passwordError.classList.replace('d-block', 'd-none')
          }
-
-        // function validaPassword(password) {
-        //     const regexCarattereSpeciale = /[@!#\/]/;
-        //     const regexMaiuscolo = /[A-Z]/;
-        //     const regexNumero = /[0-9]/;
-
-        //     let valido = true;
-
-        //     if (password.length < 8) {
-        //         document.getElementById('lung').style.color="red";
-        //         valido = false;
-        //     }
-
-        //     if (!regexCarattereSpeciale.test(password)) {
-        //         document.getElementById('speciale').style.color="red";
-        //         valido = false;
-        //     }
-
-        //     if (!regexMaiuscolo.test(password)) {
-        //         document.getElementById('maiuscolo').style.color="red";
-        //         valido = false;
-        //     }
-
-        //     if (!regexNumero.test(password)) {
-        //         document.getElementById('numero').style.color="red";
-        //         valido = false;
-        //     }
-
-        //     return valido;
-        // }
-
-        // if (validaPassword(password)) {
-        //     passwordError.innerText = '';
-        //     passwordError.classList.replace('d-block', 'd-none')
-        // } else {
-        //     passwordError.innerText = 'Inserisci una Password valida';
-        //     passwordError.classList.replace('d-none', 'd-block')
-        //     event.preventDefault();
-        // }
 
 
 
