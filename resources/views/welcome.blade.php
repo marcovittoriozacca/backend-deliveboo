@@ -26,17 +26,17 @@
         <div class="m-5 d-flex align-items-center m-xs-0 estimateContainer gap-3">
             <div class="d-flex row">
                 <span class="estimate-number">20k+</span>
-                <span>orders completed</span>
+                <span>Ordini completati</span>
             </div>
             <div class="vl"></div>
             <div  class="d-flex row">
                 <span class="estimate-number">10k+</span>
-                <span>regular visitor</span>
+                <span>Utenti attivi</span>
             </div>
             <div class="vl"></div>
             <div  class="d-flex row">
                 <span class="estimate-number">30k+</span>
-                <span>Happy customers</span>
+                <span>Clienti soddisfatti</span>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
 </div>
 {{-- seconda sezione (come funziona) --}}
 <div class="welcomeSection2 p-4 text-center">
-    <h1>how it works</h1>
+    <h1>Come funziona</h1>
     <p>Con deliveboo, puoi ordinare cibo da ristoranti locali direttamente dal tuo dispositivo, pagare online e ricevere consegne comodamente a casa tua.
     </p>
     <div class="cardContainer d-flex justify-content-center mt-5 p-5">
@@ -68,7 +68,7 @@
             </div>
             <div class="card__content pt-3">
                 <i class="fa-solid fa-address-card" style="color: #000000;"></i>
-                <h3 class="py-3">Registration</h3>
+                <h3 class="py-3">Registrazione</h3>
                 <p>Registrati e accedi al sito web o all'applicazione del servizio</p>
             </div>
           </div>
