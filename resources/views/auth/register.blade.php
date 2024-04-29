@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="position-relative">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Inserisci Password" autocomplete="off" required>
-                                    <div id="visible" class="position-absolute" style="cursor: pointer">Shows</div>
+                                    <div id="visible" class="position-absolute" style="cursor: pointer">Mostra</div>
                                     <div id="passwordError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('password')
                                     <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
@@ -85,7 +85,7 @@
 
                             {{-- input Conferma Password Utente --}}
                             <div class="mb-4 row d-flex flex-column col-lg-6">
-                                <label for="password-confirm" class="col-md-12 col-form-label text-md-right">{{ __('Confirm Password') }}<span class="text-danger"> *</span></label>
+                                <label for="password-confirm" class="col-md-12 col-form-label text-md-right">{{ __('Ripeti password') }}<span class="text-danger"> *</span></label>
 
                                 <div class="">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Ripeti Password" autocomplete="off" required>
