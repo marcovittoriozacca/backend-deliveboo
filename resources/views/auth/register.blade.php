@@ -18,11 +18,11 @@
 
                                 <div>
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="off" required placeholder="Inserisci Nome" autofocus>
-                                    <div id="nameError" class="d-none text-danger" role="alert"></div>
+                                    <div id="nameError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
                             </div>
@@ -33,11 +33,11 @@
 
                                 <div class="">
                                     <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" autocomplete="off" placeholder="Inserisci Cognome" autofocus required>
-                                    <div id="surnameError" class="d-none text-danger" role="alert"></div>
+                                    <div id="surnameError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('surname')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
                             </div>
@@ -48,11 +48,11 @@
 
                                 <div class="">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Inserisci Email" autocomplete="off" required>
-                                    <div id="emailError" class="d-none text-danger" role="alert"></div>
+                                    <div id="emailError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
                             </div>
@@ -73,11 +73,11 @@
                                 <div class="position-relative">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Inserisci Password" autocomplete="off" required>
                                     <div id="visible" class="position-absolute" style="cursor: pointer">Shows</div>
-                                    <div id="passwordError" class="d-none text-danger" role="alert"></div>
+                                    <div id="passwordError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
 
@@ -89,7 +89,7 @@
 
                                 <div class="">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Ripeti Password" autocomplete="off" required>
-                                    <div id="passwordConfirmError" class="d-none text-danger" role="alert"></div>
+                                    <div id="passwordConfirmError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                 </div>
                             </div>
 
@@ -99,11 +99,11 @@
 
                                 <div class="">
                                     <input id="activity_name" type="text" class="form-control @error('activity_name') is-invalid @enderror" name="activity_name" value="{{ old('activity_name') }}" autocomplete="off" placeholder="Inserisci Nome Attività" autofocus required>
-                                    <div id="activityNameError" class="d-none text-danger" role="alert"></div>
+                                    <div id="activityNameError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('activity_name')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
                             </div>
@@ -131,11 +131,11 @@
 
                                 <div class="">
                                     <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="off" placeholder="Inserisci Indirizzo Attività" autofocus required>
-                                    <div id="addressError" class="d-none text-danger" role="alert"></div>
+                                    <div id="addressError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('address')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
                             </div>
@@ -146,11 +146,11 @@
 
                                 <div class="">
                                     <input id="piva" type="text" class="form-control @error('piva') is-invalid @enderror" name="piva" value="{{ old('piva') }}" placeholder="Inserisci Partita Iva" autocomplete="off" autofocus maxlength="11" required>
-                                    <div id="pivaError" class="d-none text-danger" role="alert"></div>
+                                    <div id="pivaError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('piva')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
                             </div>
@@ -161,11 +161,11 @@
 
                                 <div class="">
                                     <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="off" autofocus required>
-                                    <div id="imageError" class="d-none text-danger" role="alert"></div>
+                                    <div id="imageError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('image')
-                                    <span class="invalid-feedback" role="alert">
+                                    <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </div>
                                     @enderror
                                 </div>
                             </div>
