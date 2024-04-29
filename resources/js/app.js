@@ -141,16 +141,7 @@ if(registerForm){
             emailError.classList.replace('d-block', 'd-none')
         }
 
-        // // Validazione della password
-        //  if (!password || !validatePassword(password) || password.length<8) {
-        //      passwordError.innerText = 'Inserisci una Password valida';
-        //      passwordError.classList.replace('d-none', 'd-block')
-        //      event.preventDefault();
-        //  } else {
-        //      passwordError.innerText = '';
-        //      passwordError.classList.replace('d-block', 'd-none')
-        //  }
-
+        // Validazione della password
         function validaPassword(password) {
             const regexCarattereSpeciale = /[@!#\/]/;
             const regexMaiuscolo = /[A-Z]/;
