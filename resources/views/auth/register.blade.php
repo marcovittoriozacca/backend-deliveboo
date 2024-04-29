@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="position-relative">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Inserisci Password" autocomplete="off" required>
-                                    <div id="visible" class="position-absolute" style="cursor: pointer">Shows</div>
+                                    <div id="visible" class="position-absolute" style="cursor: pointer">Mostra</div>
                                     <div id="passwordError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('password')
                                     <div class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert">
