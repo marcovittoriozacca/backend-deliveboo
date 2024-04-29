@@ -110,7 +110,7 @@
 
                             {{-- input Tipololgie Ristorante (many to many) --}}
                             <div class="mb-3 row d-flex flex-column col-lg-6 px-4">
-                                <label for="typologies" class="form-label">{{ __('Tipologie') }}<span class="bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2"> *</span></label>
+                                <label for="typologies" class="form-label">{{ __('Tipologie') }}<span class="text-danger"> *</span></label>
                                 <select
                                     multiple
                                     class="form-select form-select-lg "
