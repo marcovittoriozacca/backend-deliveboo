@@ -50,7 +50,7 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="link-orange" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="link-orange" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
