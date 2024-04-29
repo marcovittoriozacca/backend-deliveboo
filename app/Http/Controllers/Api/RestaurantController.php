@@ -27,6 +27,25 @@ class RestaurantController extends Controller
         ]);
     }
 
+    public function getFilteredTypologies(Request $request){
+        $types = $request->type;
+        //questa funzione restituisce prima le tipologie e poi i ristoranti associati come array interni, orribile da vedere
+        // $restaurants = Type::whereIn('slug', $typologies)->with('restaurants')->get();
+        
+        //in questa abbiamo ogni ristorante con le tipologie associate, contenuto nell'array types passato da vue a laravel. Poi con una funzione anonima di php 
+        //(simili a quelle di Js che iterano ogni elemento - whereHas), andiamo a iterare ogni elemento di types e prendiamo tutti i ristoranti che hanno almeno
+        //una delle tipologie dichiarate nell'array types
+        $restaurants = Restaurant::with('types')->whereHas('types', function ($query) use ($types) {
+            $query->whereIn('slug', $types);
+        })->get();
+        return response()->json([
+            'success' => true,
+            'restaurants' => $restaurants,
+        ]);
+
+    }
+
+
     public function dishes($restaurant){
         //presa dei dati tramite id
         // $restaurant = Restaurant::with('types')->where('id', $restaurant)->first();
