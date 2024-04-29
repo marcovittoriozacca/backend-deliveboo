@@ -25,5 +25,6 @@ Route::get('/restaurants', [RestaurantController::class, 'index']);
 //tipologie dei ristoranti utilizzati per il filtraggo nella Home Page di VUE
 Route::get('/type', [RestaurantController::class, 'type']);
 
+Route::get('/filtertypologies', [RestaurantController::class, 'getFilteredTypologies']);
 //singolo ristorante preso tramite chiamata API da usare nella SHOW del menù
 Route::get('restaurant/{dishes}', [RestaurantController::class, 'dishes']);
