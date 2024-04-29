@@ -121,12 +121,12 @@
     }
 
     .estimateContainer{
-        gap: 15px;
+        gap: 10px;
     }
 
     .cardNavy,
     .cardOrange{
-    width: 330px;
+    min-width: 150px;
     height: auto;
     }
 }
@@ -141,5 +141,41 @@
 
     .estimateContainer{
        gap: 15px;
+    }
+}
+
+@media screen and (max-width:480px){
+
+    .cardContainer{
+       flex-direction: column;
+       align-items: center;
+       gap: 10px;
+    }
+
+    .estimateContainer{
+       display: flex;
+       flex-direction: column;
+       .vl{
+        display: none;
+       }
+    }
+
+    .jumbotron{
+        height: auto;
+    }
+
+    .cardNavy,
+    .cardOrange{
+    width: 200px;
+    height: auto;
+    }
+}
+
+@media screen and (max-width:230px){
+
+    .cardNavy,
+    .cardOrange{
+    width: 150px;
+    height: auto;
     }
 }
