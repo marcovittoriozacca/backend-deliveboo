@@ -85,7 +85,7 @@
 
                             {{-- input Conferma Password Utente --}}
                             <div class="mb-4 row d-flex flex-column col-lg-6">
-                                <label for="password-confirm" class="col-md-12 col-form-label text-md-right">{{ __('Confirm Password') }}<span class="text-danger"> *</span></label>
+                                <label for="password-confirm" class="col-md-12 col-form-label text-md-right">{{ __('Ripeti password') }}<span class="text-danger"> *</span></label>
 
                                 <div class="">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Ripeti Password" autocomplete="off" required>
