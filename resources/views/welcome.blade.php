@@ -18,7 +18,7 @@
             Espandi il tuo mercato, aumenta le vendite e goditi una maggiore visibilità. Con flessibilità operativa e feedback preziosi dai clienti. Diventa partner oggi e porta il tuo business al prossimo livello! 🚀🍔🌮
         </p>
         @guest
-        <a class="btn-register btn btn-lg" href="{{ route('register') }}">{{ __('Register') }}</a>
+        <a class="btn-register btn btn-lg" href="{{ route('register') }}">{{ __('Registrati') }}</a>
         @else
         <a class="btn-register btn btn-lg" href="{{ route('dishes.index') }}">{{ __('Osserva i tuoi piatti!') }}</a>
         @endguest
