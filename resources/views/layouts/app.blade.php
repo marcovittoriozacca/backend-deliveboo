@@ -67,7 +67,7 @@
                             </div>
                             <a class="dropdown-item link-orange text-center" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
                             <a class="dropdown-item link-orange text-center" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Disconnetti') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
