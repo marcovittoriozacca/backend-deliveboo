@@ -77,10 +77,9 @@
                 <table class="table table-warning mb-0">
                     <thead>
                         <tr>
-                            <th scope="col" class="ps-4 py-3" style="width: 150px">Nome</th>
                             <th scope="col" class="py-3" style="width: 200px">Immagine</th>
+                            <th scope="col" class="ps-4 py-3" style="width: 150px">Nome</th>
                             <th scope="col" class="py-3" style="width: 450px">Descrizione</th>
-                            <th scope="col" class="py-3" style="width: 350px">Ingredienti</th>
                             <th scope="col" class="py-3" style="width: 200px">Categoria</th>
                             <th scope="col" class="py-3" style="width: 200px">Prezzo</th>
                             <th scope="col" class="py-3" style="width: 180px">Disponibilità</th>
@@ -88,9 +87,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dishes as $dish)    
+                        @foreach ($dishes as $dish)
                         <tr class="">
-                            <td class="align-middle ps-4">{{ $dish->name }}</td>
+
                             <td class="align-middle">
                                 @if($dish->image)
                                 <a target="_blank" href="{{asset('/storage/'. $dish->image)}}">
@@ -100,25 +99,25 @@
                                 <img class="table-dish-img rounded" src="/template-dish.webp" alt="immagine-piatto">
                                 @endif
                             </td>
+                            <td class="align-middle ps-4">{{ $dish->name }}</td>
                             <td class="align-middle">{{ $dish->description }}</td>
-                            <td class="align-middle">{{ $dish->ingredient }}</td>
                             <td class="align-middle">{{ $dish->category->name }}</td>
                             <td class="align-middle">{{ $dish->price }}€</td>
                             <td class="align-middle">
-                                <div class="px-2 rounded-pill text-white text-center @if($dish->visible == 0) bg-danger @else bg-success @endif">
+                                <div class="ms-4 d-flex justify-content-center available px-2 rounded-pill text-white text-center @if($dish->visible == 0) bg-danger @else bg-success @endif">
                                     <span>
-                                        {{ ($dish->visible)? 'Disponibile' : 'Non Disponibile' }}
+
                                     </span>
                                 </div>
                             </td>
-        
+
                             <td class="align-middle pe-4">
                                 <div class="d-flex align-items-center justify-content-center column-gap-2">
                                     {{-- edit button --}}
                                     <a href="{{ route('dishes.edit', $dish->slug) }}" class="btn btn-warning">
                                         <i class="fas fa-pen-to-square text-white"></i>
                                     </a>
-    
+
                                     {{-- delete modal + button --}}
                                     <button
                                     type="button"
@@ -133,8 +132,8 @@
                                     </button>
                                 </div>
                             </td>
-        
-        
+
+
                         </tr>
                         @endforeach
                     </tbody>
