@@ -23,6 +23,7 @@
                                 <th scope="col" class="ps-4 py-3" style="width: 150px">Nome</th>
                                 <th scope="col" class="py-3" style="width: 200px">Prezzo totale</th>
                                 <th scope="col" class="py-3" style="width: 180px">Address</th>
+                                <th scope="col" class="py-3" style="width: 180px">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,13 @@
                                 <td class="align-middle ps-4">{{ $order[0]->email }}</td>
                                 <td class="align-middle">{{ $order[0]->total_price }}€</td>
                                 <td class="align-middle">{{ $order[0]->address }}</td>
+                                <td class="align-middle">
+                                @if($order[0]->status)
+                                    <span class="badge rounded-pill text-bg-success">Consegnato</span>
+                                @else
+                                    <span class="badge rounded-pill text-bg-danger">Non Consegnato</span>
+                                @endif
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
