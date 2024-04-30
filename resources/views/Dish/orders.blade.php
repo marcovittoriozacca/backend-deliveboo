@@ -3,23 +3,36 @@
 @section('title', 'Ordini')
 
 @section('content')
-<div class="d-flex flex-column">
+<div class="d-flex flex-column position-relative create_main pb-5">
 
 
-    <div class="mb-5">
-        <h1>{{$restaurant->activity_name}}</h1>
-        <h2>{{$restaurant->address}}</h2>
-        <h3>{{$restaurant->piva}}</h3>
+    <div class="text-center position-relative negative-index position-relative negative-index">
+        <figure class="mb-0 photo-max-h overflow-hidden m-0">
+            @if ($restaurant->image )
+            <div style="background-image:url({{asset('/storage/'. $restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
+            @else
+            <div style="background-image:url('/restaurant_bg_1.jpg')" class="h-100 menu-restaurant-banner"></div>
+            @endif
+        </figure>
+
+
+        <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
+            <h1 class="text-uppercase">{{$restaurant->activity_name}}</h1>
+            <h3>{{$restaurant->address}}</h3>
+            <h4>p.iva:{{$restaurant->piva}}</h4>
+
+        </div>
     </div>
 
 
-    <div class="mt-5">
+    <div>
         <div class="custom-table-container">
             <div class="rounded overflow-hidden dishes-container">
                 <div class="table-responsive w-100">
                     <table class="table table-warning mb-0">
                         <thead>
                             <tr>
+
                                 <th scope="col" class="py-3" style="width: 200px">Id</th>
                                 <th scope="col" class="ps-4 py-3" style="width: 150px">Nome</th>
                                 <th scope="col" class="py-3" style="width: 200px">Prezzo totale</th>
@@ -28,7 +41,9 @@
                         </thead>
                         <tbody>
                             @foreach ($orders as $order)
-                            <tr class="">
+                            <tr>
+
+
                                 <td class="align-middle ps-4"><a href="{{ route('orders.show', $order[0]->id) }}">{{ $order[0]->id }}</a></td>
                                 <td class="align-middle ps-4">{{ $order[0]->email }}</td>
                                 <td class="align-middle">{{ $order[0]->total_price }}€</td>
