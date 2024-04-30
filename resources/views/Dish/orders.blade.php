@@ -47,6 +47,7 @@
                 </div>
             </div>
         </div>
-</div>
+    </div>
+    <a class="text-center btn-base-orange rounded w-25 py-2" href="{{ route('orders-chart') }}">Grafico Ordini</a>
 </div>
 @endsection
