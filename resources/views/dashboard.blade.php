@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="d-none d-lg-block">
-                                <a class="d-lg-block text-center btn-base-orange rounded py-3" href="{{ route('dishes.index') }}">Osserva gli ordini</a>
+                                <a class="d-lg-block text-center btn-base-orange rounded py-3" href="/orders">Osserva gli ordini</a>
                             </div>
                         </div>
 
@@ -57,7 +57,7 @@
                             <img class="img-fluid rounded" src="/restaurant_bg_1.jpg" alt="restaurant-img">
                             @endif
                             <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute" href="{{ route('dishes.index') }}">Menù</a>
-                            <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute dashboard_links_mt" href="{{ route('dishes.index') }}">Ordini</a>
+                            <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute dashboard_links_mt" href="/orders">Ordini</a>
                         </figure>
                     </div>
                 </div>
