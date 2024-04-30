@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
-
+use App\Models\Restaurant;
+use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     /**
@@ -14,7 +16,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders=Order::with(['dishes' => function ($query) {
+            $query->where('restaurant_id', Auth::id());
+        }])->get()->groupBy('id');
+        $restaurant=Restaurant::all()->where('id',Auth::id())->first();
+        return view('dish.orders',compact('orders','restaurant'));
     }
 
     /**
@@ -36,9 +42,14 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(Order $id)
     {
-        //
+
+        $orders=Order::with(['dishes' => function ($query) {
+            $query->where('restaurant_id', Auth::id());
+        }])->where('id',$id->id)->get();
+
+        return view('Dish.singleorder',compact('orders'));
     }
 
     /**
