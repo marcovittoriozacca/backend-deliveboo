@@ -25,13 +25,15 @@
                                 <th scope="col" class="py-3" style="width: 180px">Image</th>
                                 <th scope="col" class="ps-4 py-3" style="width: 150px">Id piatto</th>
                                 <th scope="col" class="py-3" style="width: 200px">Nome</th>
-                                <th scope="col" class="py-3" style="width: 200px">categoria</th>
+                                <th scope="col" class="py-3" style="width: 200px">Categoria</th>
                                 <th scope="col" class="py-3" style="width: 200px">Prezzo</th>
+                                <th scope="col" class="py-3" style="width: 200px">Quantità</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($orders as $order)
+
                                 @foreach ($order->dishes as $dish)
                             <tr>
 
@@ -49,7 +51,8 @@
                                 <td class="align-middle ps-4">{{ $dish->id }}</a></td>
                                 <td class="align-middle ps-4">{{ $dish->name }}</td>
                                 <td class="align-middle ps-4">{{ $dish->category->name }}</a></td>
-                                <td class="align-middle ps-4">{{ $dish->price }}</td>
+                                <td class="align-middle ps-4">{{ $dish->pivot->price }}</td>
+                                <td class="align-middle ps-4">{{ $dish->pivot->quantity }}</td>
                             </tr>
                                 @endforeach
                             @endforeach

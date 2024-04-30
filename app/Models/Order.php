@@ -23,7 +23,7 @@ class Order extends Model
     ];
 
     public function dishes() :BelongsToMany {
-        return $this->belongsToMany(Dish::class);
+        return $this->belongsToMany(Dish::class)->withPivot('quantity','price');
     }
 
     public function restaurant() :HasMany {

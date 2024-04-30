@@ -26,9 +26,11 @@
 
 
     <div>
+
         <div class="custom-table-container">
             <div class="rounded overflow-hidden dishes-container">
                 <div class="table-responsive w-100">
+                    <h4 class="text-end bg-base-orange pe-5 mb-0">Totale ordini: <span>{{count($orders)}}</span></h4>
                     <table class="table table-warning mb-0">
                         <thead>
                             <tr>
@@ -43,11 +45,10 @@
                             @foreach ($orders as $order)
                             <tr>
 
-
                                 <td class="align-middle ps-4"><a style="text-decoration:underline; color:blue"  href="{{ route('orders.show', $order[0]->id) }}">{{ $order[0]->id }}</a></td>
                                 <td class="align-middle ps-4">{{ $order[0]->email }}</td>
                                 <td class="align-middle">{{ $order[0]->total_price }}€</td>
-                                <td class="align-middle" rel="reply-to" >{{ $order[0]->address }}</td>
+                                <td class="align-middle">{{ $order[0]->address }}</td>
 
                                 <td class="align-middle">
                                     <div class="ms-2 d-flex justify-content-center available px-2 rounded-pill text-white text-center @if($order[0]->status == 0) bg-danger @else bg-success @endif">
@@ -60,6 +61,7 @@
                             @endforeach
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
