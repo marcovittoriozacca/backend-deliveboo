@@ -32,11 +32,11 @@
                     <table class="table table-warning mb-0">
                         <thead>
                             <tr>
-
                                 <th scope="col" class="py-3" style="width: 200px">Id</th>
                                 <th scope="col" class="ps-4 py-3" style="width: 150px">Nome</th>
                                 <th scope="col" class="py-3" style="width: 200px">Prezzo totale</th>
                                 <th scope="col" class="py-3" style="width: 180px">Address</th>
+                                <th scope="col" class="py-3" style="width: 180px">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,10 +44,18 @@
                             <tr>
 
 
-                                <td class="align-middle ps-4"><a href="{{ route('orders.show', $order[0]->id) }}">{{ $order[0]->id }}</a></td>
+                                <td class="align-middle ps-4"><a style="text-decoration:underline; color:blue"  href="{{ route('orders.show', $order[0]->id) }}">{{ $order[0]->id }}</a></td>
                                 <td class="align-middle ps-4">{{ $order[0]->email }}</td>
                                 <td class="align-middle">{{ $order[0]->total_price }}€</td>
-                                <td class="align-middle">{{ $order[0]->address }}€</td>
+                                <td class="align-middle" rel="reply-to" >{{ $order[0]->address }}</td>
+
+                                <td class="align-middle">
+                                    <div class="ms-2 d-flex justify-content-center available px-2 rounded-pill text-white text-center @if($order[0]->status == 0) bg-danger @else bg-success @endif">
+                                        <span>
+
+                                        </span>
+                                    </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
