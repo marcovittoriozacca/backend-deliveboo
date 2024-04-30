@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //ristoranti da mostrare nella Home Page di VUE
 Route::get('/restaurants', [RestaurantController::class, 'index']);
-
+Route::get('/restaurantsid/{id}', [RestaurantController::class, 'restaurantid']);
 //tipologie dei ristoranti utilizzati per il filtraggo nella Home Page di VUE
 Route::get('/type', [RestaurantController::class, 'type']);
 

@@ -20,6 +20,7 @@ class OrderController extends Controller
             $query->where('restaurant_id', Auth::id());
         }])->get()->groupBy('id');
         $restaurant=Restaurant::all()->where('id',Auth::id())->first();
+
         return view('dish.orders',compact('orders','restaurant'));
     }
 
