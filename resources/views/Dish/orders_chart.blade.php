@@ -31,7 +31,8 @@
           beginAtZero: true,
           stepSize: 1 //1 serve a visualizzare solo i numeri interi
         }
-      }
+      },
+      barPercentage: 0.3, //larghezza delle colonne
     }
   });
 </script>
