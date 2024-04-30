@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\User\DishController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\RestaurantController;

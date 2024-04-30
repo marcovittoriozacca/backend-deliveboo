@@ -30,3 +30,8 @@ Route::get('/filtertypologies', [RestaurantController::class, 'getFilteredTypolo
 
 //singolo ristorante preso tramite chiamata API da usare nella SHOW del menù
 Route::get('restaurant/{dishes}', [RestaurantController::class, 'dishes']);
+
+
+Route::get('/braintree/get-token', [BraintreeController::class, 'getToken']);
+
+Route::post('/braintree/payment', [BraintreeController::class, 'payment']);
