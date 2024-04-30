@@ -24,6 +24,32 @@ class OrderController extends Controller
         return view('dish.orders',compact('orders','restaurant'));
     }
 
+
+
+    public function ordersChart()
+    {
+        // Ottieni tutti gli ordini dal database
+        $orders = Order::all();
+
+        // Raggruppa gli ordini per mese e anno e conta il numero di ordini
+        $ordersCount = $orders->groupBy(function ($order) {
+            return $order->created_at->format('Y-m'); // Chiave basata sul timestamp Unix
+        })->map(function ($group) {
+            return $group->count();
+        });
+
+        // Ordina le chiavi (timestamp Unix) in ordine cronologico
+        $ordersCount = $ordersCount->sortKeys();
+
+        // Estrai le etichette (mese/anno) e i dati (numero di ordini) dal conteggio
+        $labels = $ordersCount->keys();
+        $data = $ordersCount->values();
+
+        // Passa i dati alla vista
+        return view('dish.orders_chart', compact('labels', 'data'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */

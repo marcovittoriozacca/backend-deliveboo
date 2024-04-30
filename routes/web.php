@@ -27,6 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/dashboard', [RestaurantController::class, 'index']);
     Route::get('/orders', [OrderController::class, 'index']);
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+    Route::get('/orders-chart', [OrderController::class, 'ordersChart'])->name('orders-chart');
 });
 
 
