@@ -32,4 +32,6 @@ Route::get('/filtertypologies', [RestaurantController::class, 'getFilteredTypolo
 Route::get('restaurant/{dishes}', [RestaurantController::class, 'dishes']);
 
 
-Route::post('/braintree/get-token', [BraintreeController::class, 'getToken']);
+Route::get('/braintree/get-token', [BraintreeController::class, 'getToken']);
+
+Route::post('/braintree/payment', [BraintreeController::class, 'payment']);
