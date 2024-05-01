@@ -16,9 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders=Order::with(['dishes' => function ($query) {
+        $orders = Order::whereHas('dishes', function ($query) {
             $query->where('restaurant_id', Auth::id());
-        }])->get()->groupBy('id');
+            })->get();
         $restaurant=Restaurant::all()->where('id',Auth::id())->first();
 
         return view('dish.orders',compact('orders','restaurant'));
@@ -75,7 +75,6 @@ class OrderController extends Controller
         $orders=Order::with(['dishes' => function ($query) {
             $query->where('restaurant_id', Auth::id());
         }])->where('id',$id->id)->get();
-
         return view('Dish.singleorder',compact('orders'));
     }
 
