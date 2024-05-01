@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BraintreeController extends Controller
 {
@@ -35,8 +37,11 @@ class BraintreeController extends Controller
         ]);
 
         $total_amount = 0;
-        // //da array di oggetti ad array associativo
-        foreach ($request->cart as $plate) {
+        //da array di oggetti ad array associativo
+        foreach ($request->cart as $index => $plate) {
+            if($index == 0){
+                $rest_id = $plate['restaurant_id'];
+            }
             $total_amount = $plate['price'] * $plate['quantity'] + $total_amount;
         }
 
@@ -52,7 +57,29 @@ class BraintreeController extends Controller
         // Controlla se la transazione è stata accettata
         if ($result->success) {
             // La transazione è stata accettata, procedi con il successo
-            return response()->json(['success' => true, 'transaction_id' => $result->transaction->id, 'cart' => $total_amount]);
+            $new_order = Order::create([
+                "full_name" => $request->full_name,
+                "email" => $request->email,
+                "address" => $request->address,
+                "tel_number" => $request->tel,
+                "description" => $request->description,
+                "date" => date("Y-m-d H:i:s"),
+                "status" => 1,
+                "total_price" => $total_amount,
+                "restaurant_id" => $rest_id,
+
+            ]);
+            $tab_orders = $new_order;
+            foreach ($request->cart as $record) {
+                $tab_orders->dishes()->attach($record['id'] ,
+                [
+                    "quantity" => $record['quantity'],
+                    "price" => $record['price'],
+                    "name" => $record['name'],
+                ]);
+            }
+
+            return response()->json(['success' => true, 'transaction_id' => $result->transaction->id]);
         } else {
             // La transazione è stata rifiutata, gestisci di conseguenza
             $errorMessage = $result->message;
