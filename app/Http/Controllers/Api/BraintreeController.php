@@ -34,9 +34,15 @@ class BraintreeController extends Controller
             'privateKey' => env('BRAINTREE_PRIVATE_KEY'),
         ]);
 
+        $total_amount = 0;
+        // //da array di oggetti ad array associativo
+        foreach ($request->cart as $plate) {
+            $total_amount = $plate['price'] * $plate['quantity'] + $total_amount;
+        }
+
         // Effettua la transazione
         $result = $gateway->transaction()->sale([
-            'amount' => 10,
+            'amount' => $total_amount,
             'paymentMethodNonce' => $nonce,
             'options' => [
                 'submitForSettlement' => true
@@ -46,7 +52,7 @@ class BraintreeController extends Controller
         // Controlla se la transazione è stata accettata
         if ($result->success) {
             // La transazione è stata accettata, procedi con il successo
-            return response()->json(['success' => true, 'transaction_id' => $result->transaction->id]);
+            return response()->json(['success' => true, 'transaction_id' => $result->transaction->id, 'cart' => $total_amount]);
         } else {
             // La transazione è stata rifiutata, gestisci di conseguenza
             $errorMessage = $result->message;
