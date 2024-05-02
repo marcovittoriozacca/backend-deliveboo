@@ -30,7 +30,7 @@
         <div class="custom-table-container">
             <div class="rounded overflow-hidden dishes-container">
                 <div class="table-responsive w-100">
-                    <h4 class="text-end bg-base-orange pe-5 mb-0">Totale ordini: <span>{{count($orders)}}</span></h4>
+                    <h4 class="text-center bg-base-orange py-3 mb-0">Totale ordini: <span>{{count($orders)}}</span></h4>
                     <table class="table table-warning mb-0">
                         <thead>
                             <tr>
@@ -72,6 +72,6 @@
             </div>
         </div>
     </div>
-    <a class="text-center btn-base-orange rounded w-25 py-2" href="{{ route('orders-chart') }}">Grafico Ordini</a>
+    <a class="text-center btn-base-orange rounded w-25 m-0 m-auto py-2" href="{{ route('orders-chart') }}">Grafico Ordini</a>
 </div>
 @endsection
