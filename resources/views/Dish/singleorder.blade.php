@@ -3,7 +3,7 @@
 @section('title', 'Ordini')
 
 @section('content')
-<div class="d-flex flex-column gap-5 container-fluid px-0 position-relative">
+<div class="d-flex flex-column gap-5 container-fluid px-0 position-relative bg-blue">
 
     <div class="text-center position-relative negative-index position-relative negative-index bg-base-orange" style="height: 400px">
         <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded" >
