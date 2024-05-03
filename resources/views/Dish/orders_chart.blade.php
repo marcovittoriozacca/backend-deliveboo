@@ -37,7 +37,7 @@
         label: 'Totale ordini anno/mese',
         data: {!! json_encode($ordersData) !!},
         backgroundColor: 'rgba(245, 129, 21, 0.8)', // Colore di sfondo
-        borderColor: 'rgba(245, 129, 21, 1)', // Colore del bordo
+        borderColor: 'Black', // Colore del bordo
         borderWidth: 1
       }]
     },
@@ -68,7 +68,7 @@
         label: 'Numero ordini per ogin piatto',
         data: {!! json_encode($dishesData) !!},
         backgroundColor: dishesRandomColors, // Colore di sfondo
-        borderColor: 'rgba(245, 129, 21, 1)', // Colore del bordo
+        borderColor: 'Black', // Colore del bordo
         borderWidth: 1
       }]
     },
@@ -95,7 +95,7 @@
         label: 'Numero ordini per orario',
         data: {!! json_encode($hoursData) !!},
         backgroundColor: 'rgba(245, 129, 21, 0.8)', // Colore di sfondo
-        borderColor: 'rgba(245, 129, 21, 1)', // Colore del bordo
+        borderColor: 'Black', // Colore del bordo
         borderWidth: 1
       }]
     },
