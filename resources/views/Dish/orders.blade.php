@@ -63,7 +63,7 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td class="align-middle">{{ $order->created_at->format('d/m/Y H:i') }}</td>
+                                <td class="align-middle">{{ $order->created_at->format('d/m/Y') }}</td>
                                 <td class="align-middle">{{ $order->created_at->format('H:i') }}</td>
                             </tr>
                             @endforeach
