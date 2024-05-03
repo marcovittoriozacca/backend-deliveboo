@@ -8,6 +8,7 @@ use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
 use App\Models\Restaurant;
+use App\Models\Dish;
 use Illuminate\Http\Request;
 class OrderController extends Controller
 {
@@ -62,15 +63,50 @@ class OrderController extends Controller
             return $group->count();
         });
 
+        // Inizializza un array vuoto per conteggiare le vendite di ogni piatto
+        $salesByDish = [];
+
+        // Itera attraverso gli ordini
+        foreach ($orders as $order) {
+            // Ottieni i piatti associati a ciascun ordine insieme alla quantità ordinata
+            $dishes = $order->dishes()->withPivot('quantity')->get();
+
+            // Itera attraverso i piatti e aggiorna il conteggio delle vendite per ciascun piatto
+            foreach ($dishes as $dish) {
+                $dishId = $dish->id;
+                $quantity = $dish->pivot->quantity;
+                // Se il piatto non è ancora presente nell'array, inizializza il conteggio con la quantità ordinata
+                if (!isset($salesByDish[$dishId])) {
+                    $salesByDish[$dishId] = $quantity;
+                } else {
+                    // Altrimenti, aggiungi la quantità ordinata al conteggio esistente
+                    $salesByDish[$dishId] += $quantity;
+                }
+            }
+        }
+
+        // Ordina i dati in base al numero di vendite, in ordine decrescente
+        arsort($salesByDish);
+
+        // Estrai i nomi dei piatti e i dati (numero di vendite) dal conteggio
+        $dishesLabels = [];
+        $dishesData = [];
+        foreach ($salesByDish as $dishId => $sales) {
+            $dish = Dish::find($dishId);
+            $dishesLabels[] = $dish->name;
+            $dishesData[] = $sales;
+        }
+
+
         // Ordina le chiavi (timestamp Unix) in ordine cronologico
         $ordersCount = $ordersCount->sortKeys();
 
         // Estrai le etichette (mese/anno) e i dati (numero di ordini) dal conteggio
-        $labels = $ordersCount->keys();
-        $data = $ordersCount->values();
+        $ordersLabels = $ordersCount->keys();
+        $ordersData = $ordersCount->values();
 
         // Passa i dati alla vista
-        return view('dish.orders_chart', compact('labels', 'data'));
+        return view('dish.orders_chart', compact('ordersLabels', 'ordersData', 'dishesLabels', 'dishesData'));
     }
 
 
