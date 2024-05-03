@@ -23,11 +23,9 @@
                         <thead>
                             <tr>
                     
-                            <th scope="col" class="py-3 ps-4" style="width: 200px">Nome</th>
+                            <th scope="col" class="py-3 text-center" style="width: 200px">Nome</th>
                     
-                            <th scope="col" class="py-3 ps-4" style="width: 200px">Quantità</th>
-
-                            <th scope="col" class="py-3 ps-4" style="width: 200px">Orario</th>
+                            <th scope="col" class="py-3 text-center" style="width: 200px">Quantità</th>
 
                             </tr>
                         </thead>
@@ -36,9 +34,8 @@
 
                                 @foreach ($order->dishes as $dish)
                             <tr>
-                                <td class="align-middle ps-4">{{ $dish->name }}</td>
-                                <td class="align-middle ps-4">{{ $dish->pivot->quantity }}</td>
-                                <td class="align-middle ps-4">{{ $order->created_at->format('H:i') }}</td>
+                                <td class="align-middle text-center">{{ $dish->name }}</td>
+                                <td class="align-middle text-center">{{ $dish->pivot->quantity }}</td>
                             </tr>
                                 @endforeach
                             @endforeach
