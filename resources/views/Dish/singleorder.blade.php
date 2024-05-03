@@ -7,10 +7,10 @@
 
     <div class="text-center position-relative negative-index position-relative negative-index bg-base-orange" style="height: 400px">
         <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded" >
-            <h1>{{$orders[0]->full_name}}</h1>
-            <h3>{{$orders[0]->email}}</h3>
-            <h3>{{$orders[0]->tel_number}}</h3>
-            <h4>{{$orders[0]->address}}</h4>
+            <h1>Cliente: {{$orders[0]->full_name}}</h1>
+            <h3>Email: {{$orders[0]->email}}</h3>
+            <h3>Telefono: {{$orders[0]->tel_number}}</h3>
+            <h4>Indirizzo: {{$orders[0]->address}}</h4>
         </div>
     </div>
 
