@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Braintree\Gateway;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -63,7 +64,7 @@ class BraintreeController extends Controller
                 "address" => $request->address,
                 "tel_number" => $request->tel,
                 "description" => $request->description,
-                "date" => date("Y-m-d H:i:s"),
+                "date" => date("Y-m-d H:i:s", strtotime('+2 hours')),
                 "status" => 1,
                 "total_price" => $total_amount,
                 "restaurant_id" => $rest_id,
