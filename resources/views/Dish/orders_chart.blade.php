@@ -6,7 +6,7 @@
 <div>
   <canvas id="ordersChart" class="w-75 mx-auto mt-5"></canvas>
 </div>
-<hr class="w-75 m-auto border border-success border-2 opacity-50 mt-5">
+<hr class="w-75 m-auto border border-warning border-2 opacity-50 mt-5">
 <div>
   <canvas id="dishesChart" class="w-75 mx-auto mt-5"></canvas>
 </div>
