@@ -17,17 +17,17 @@
     <div>
 
         <div class="custom-table-container">
-            <div class="rounded overflow-hidden dishes-container">
+            <div class="rounded w-50 mx-auto overflow-hidden dishes-container">
                 <div class="table-responsive w-100">
                     <table class="table table-warning mb-0">
                         <thead>
                             <tr>
-                                <th scope="col" class="py-3" style="width: 180px">Image</th>
-                                <th scope="col" class="ps-4 py-3" style="width: 150px">Id piatto</th>
-                                <th scope="col" class="py-3" style="width: 200px">Nome</th>
-                                <th scope="col" class="py-3" style="width: 200px">Categoria</th>
-                                <th scope="col" class="py-3" style="width: 200px">Prezzo</th>
-                                <th scope="col" class="py-3" style="width: 200px">Quantità</th>
+                    
+                            <th scope="col" class="py-3 ps-4" style="width: 200px">Nome</th>
+                    
+                            <th scope="col" class="py-3 ps-4" style="width: 200px">Quantità</th>
+
+                            <th scope="col" class="py-3 ps-4" style="width: 200px">Orario</th>
 
                             </tr>
                         </thead>
@@ -36,23 +36,9 @@
 
                                 @foreach ($order->dishes as $dish)
                             <tr>
-
-
-                                <td class="align-middle">
-                                    @if($dish->image)
-                                    <a target="_blank" href="{{asset('/storage/'. $dish->image)}}">
-                                        <img class="table-dish-img rounded" src="{{asset('/storage/'. $dish->image)}}" alt="immagine-piatto">
-                                    </a>
-                                    @else
-                                    <img class="table-dish-img rounded" src="/template-dish.webp" alt="immagine-piatto">
-                                    @endif
-                                </td>
-
-                                <td class="align-middle ps-4">{{ $dish->id }}</a></td>
                                 <td class="align-middle ps-4">{{ $dish->name }}</td>
-                                <td class="align-middle ps-4">{{ $dish->category->name }}</a></td>
-                                <td class="align-middle ps-4">{{ $dish->pivot->price }}</td>
                                 <td class="align-middle ps-4">{{ $dish->pivot->quantity }}</td>
+                                <td class="align-middle ps-4">{{ $order->created_at->format('H:i') }}</td>
                             </tr>
                                 @endforeach
                             @endforeach
