@@ -19,8 +19,8 @@
         <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
             <h1 class="text-uppercase">{{$restaurant->activity_name}}</h1>
             <h3>{{$restaurant->address}}</h3>
-            <h4>p.iva:{{$restaurant->piva}}</h4>
-
+            <h4 class="mb-3">p.iva:{{$restaurant->piva}}</h4>
+            <a class="text-center btn-base-orange rounded px-5 m-0 m-auto py-2" href="{{ route('orders-chart') }}">Grafico Ordini</a>
         </div>
     </div>
 
@@ -72,6 +72,5 @@
             </div>
         </div>
     </div>
-    <a class="text-center btn-base-orange rounded w-25 m-0 m-auto py-2" href="{{ route('orders-chart') }}">Grafico Ordini</a>
 </div>
 @endsection
