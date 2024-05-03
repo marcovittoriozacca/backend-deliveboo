@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div>
+    <div style="min-height:calc(100vh - 85.45px - 448px)">
 
         <div class="custom-table-container">
             <div class="rounded overflow-hidden dishes-container">
