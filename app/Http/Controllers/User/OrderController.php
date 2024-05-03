@@ -98,6 +98,42 @@ class OrderController extends Controller
         }
 
 
+        $orderCountsByHour = [];
+
+        // Itera attraverso gli ordini e conta il numero di ordini per ciascuna fascia oraria
+        foreach ($orders as $order) {
+            // Estrai l'ora dal campo created_at
+            $hour = $order->created_at->format('H');
+        
+            // Incrementa il conteggio degli ordini per l'ora corrente
+            if (!isset($orderCountsByHour[$hour])) {
+                $orderCountsByHour[$hour] = 1;
+            } else {
+                $orderCountsByHour[$hour]++;
+            }
+        }
+        
+        // Inizializza un array per le etichette delle fasce orarie e un array per i dati dei conteggi degli ordini
+        $hoursLabels = [];
+        $hoursData = [];
+        
+        // Itera attraverso le ore del giorno (da 00 a 23) e ottieni il conteggio degli ordini per ogni ora
+        for ($hour = 0; $hour < 24; $hour++) {
+            // Formatta l'ora come stringa a due cifre (es. "08" per le ore 8:00)
+            $hourFormatted = str_pad($hour, 2, '0', STR_PAD_LEFT);
+            
+            // Aggiungi l'ora formattata alle etichette
+            $hoursLabels[] = $hourFormatted . ':00';
+        
+            // Se esiste un conteggio per questa ora, aggiungilo ai dati, altrimenti aggiungi zero
+            if (isset($orderCountsByHour[$hourFormatted])) {
+                $hoursData[] = $orderCountsByHour[$hourFormatted];
+            } else {
+                $hoursData[] = 0;
+            }
+        } 
+
+
         // Ordina le chiavi (timestamp Unix) in ordine cronologico
         $ordersCount = $ordersCount->sortKeys();
 
@@ -106,7 +142,7 @@ class OrderController extends Controller
         $ordersData = $ordersCount->values();
 
         // Passa i dati alla vista
-        return view('dish.orders_chart', compact('ordersLabels', 'ordersData', 'dishesLabels', 'dishesData'));
+        return view('dish.orders_chart', compact('ordersLabels', 'ordersData', 'dishesLabels', 'dishesData','hoursLabels', 'hoursData'));
     }
 
 
