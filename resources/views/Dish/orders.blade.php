@@ -34,35 +34,31 @@
                     <table class="table table-warning mb-0">
                         <thead>
                             <tr>
-                                <th scope="col" class="py-3" style="width: 200px">Ordine</th>
+                                <th scope="col" class="py-3" style="width: 200px">Nome</th>
                                 <th scope="col" class="ps-4 py-3" style="width: 150px">Email</th>
+                                <th scope="col" class="ps-4 py-3" style="width: 150px">Telefono</th>
                                 <th scope="col" class="py-3" style="width: 200px">Prezzo totale</th>
                                 <th scope="col" class="py-3" style="width: 180px">Indirizzo</th>
-                                <th scope="col" class="py-3" style="width: 180px">Stato</th>
                                 <th scope="col" class="py-3" style="width: 180px">Data</th>
+                                <th scope="col" class="py-3" style="width: 100px">Ordine</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($orders as $order)
                             <tr>
 
+                                <td class="align-middle ps-4">{{ $order->full_name }}</td>
+                                <td class="align-middle ps-4">{{ $order->email }}</td>
+                                <td class="align-middle ps-4">{{ $order->tel_number }}</td>
+                                <td class="align-middle">{{ $order->total_price }}€</td>
+                                <td class="align-middle">{{ $order->address }}</td>
+                                
+                                <td class="align-middle">{{ $order->date }}</td>
                                 <td class="align-middle ps-4">
                                     <a class="h3" href="{{ route('orders.show', $order->id) }}">
                                         <i class="fas fa-square-arrow-up-right"></i>
                                     </a>
                                 </td>
-                                <td class="align-middle ps-4">{{ $order->email }}</td>
-                                <td class="align-middle">{{ $order->total_price }}€</td>
-                                <td class="align-middle">{{ $order->address }}</td>
-
-                                <td class="align-middle">
-                                    <div class="ms-2 d-flex justify-content-center available px-2 rounded-pill text-white text-center @if($order->status == 0) bg-danger @else bg-success @endif">
-                                        <span>
-
-                                        </span>
-                                    </div>
-                                </td>
-                                <td class="align-middle">{{ $order->date}}</td>
                             </tr>
                             @endforeach
                         </tbody>

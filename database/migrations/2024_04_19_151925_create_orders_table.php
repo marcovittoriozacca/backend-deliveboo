@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("address");
             $table->string("tel_number");
             $table->text("description");
-            $table->date("date");
+            $table->dateTimeTz("date");
             $table->boolean("status")->default(0);
             $table->decimal("total_price");
             $table->unsignedBigInteger('restaurant_id');
