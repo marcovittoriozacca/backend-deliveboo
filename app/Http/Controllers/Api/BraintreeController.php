@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderConfirmed;
 use App\Models\Order;
 use Braintree\Gateway;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class BraintreeController extends Controller
 {
@@ -79,6 +81,8 @@ class BraintreeController extends Controller
                     "name" => $record['name'],
                 ]);
             }
+
+            Mail::to($new_order->email)->send(new OrderConfirmed($new_order, $request->cart));
 
             return response()->json(['success' => true, 'transaction_id' => $result->transaction->id]);
         } else {
