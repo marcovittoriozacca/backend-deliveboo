@@ -137,7 +137,7 @@
             </div>
 
             <div class="text-center w-100">
-                <button type="submit" class="btn btn-warning w-50 white">Modifica</button>
+                <button type="submit" class="btn btn-warning w-50 fw-bold">Modifica</button>
             </div>
 
         </div>

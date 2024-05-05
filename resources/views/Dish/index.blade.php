@@ -26,12 +26,12 @@
                     {{ $restaurant->address }}
                 </h3>
                 <h4>
-                    p.iva:{{ $restaurant->piva }}
+                    p.iva: {{ $restaurant->piva }}
                 </h4>
             </div>
 
             <div class="position-absolute start-50 translate-middle z-2 add_button">
-                <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
+                <a class="btn btn-base-orange text-dark fw-bolder" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
             </div>
 
         </div>
@@ -52,7 +52,7 @@
         </figure>
 
         {{-- informazioni generali del ristoranti --}}
-        <div class="position-absolute custom-top-banner start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
+        <div class="position-absolute custom-top-banner start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded py-2">
             <div>
                 <h1 class="text-uppercase">
                     {{ $dishes[0]->restaurant->activity_name }}
@@ -61,12 +61,12 @@
                     {{ $dishes[0]->restaurant->address }}
                 </h3>
                 <h4>
-                    p.iva:{{ $dishes[0]->restaurant->piva }}
+                    p.iva: {{ $dishes[0]->restaurant->piva }}
                 </h4>
             </div>
 
             <div class="position-absolute start-50 translate-middle z-2 add_button">
-                <a class="btn btn-base-orange" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
+                <a class="btn btn-base-orange text-dark fw-bolder" href="{{ route('dishes.create') }}">Aggiungi un piatto!</a>
             </div>
 
         </div>
