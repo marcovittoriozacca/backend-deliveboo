@@ -132,7 +132,7 @@
 
 
             <div class="text-center w-100">
-                <button type="submit" class="btn btn-warning w-50 white">Aggiungi</button>
+                <button type="submit" class="btn btn-warning w-50 fw-bold">Aggiungi</button>
             </div>
 
         </div>
