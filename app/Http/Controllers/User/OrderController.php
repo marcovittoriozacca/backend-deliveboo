@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
 use App\Models\Restaurant;
 use App\Models\Dish;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 class OrderController extends Controller
 {
@@ -58,7 +59,7 @@ class OrderController extends Controller
         
         // Raggruppa gli ordini per mese e anno e conta il numero di ordini
         $ordersCount = $orders->groupBy(function ($order) {
-            return $order->created_at->format('Y-m'); // Chiave basata sul timestamp Unix
+            return Carbon::parse($order->date)->format('Y-m'); // Chiave basata sul timestamp Unix
         })->map(function ($group) {
             return $group->count();
         });
@@ -103,7 +104,7 @@ class OrderController extends Controller
         // Itera attraverso gli ordini e conta il numero di ordini per ciascuna fascia oraria
         foreach ($orders as $order) {
             // Estrai l'ora dal campo created_at
-            $hour = $order->created_at->format('H');
+            $hour = date('H', strtotime($order->date));
         
             // Incrementa il conteggio degli ordini per l'ora corrente
             if (!isset($orderCountsByHour[$hour])) {
