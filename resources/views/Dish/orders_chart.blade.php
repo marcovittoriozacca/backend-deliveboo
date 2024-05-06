@@ -65,7 +65,7 @@
     data: {
       labels: {!! json_encode($dishesLabels) !!},
       datasets: [{
-        label: 'Numero ordini per ogin piatto',
+        label: 'Numero ordini per ogni piatto',
         data: {!! json_encode($dishesData) !!},
         backgroundColor: dishesRandomColors, // Colore di sfondo
         borderColor: 'Black', // Colore del bordo
