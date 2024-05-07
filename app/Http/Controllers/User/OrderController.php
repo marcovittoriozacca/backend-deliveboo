@@ -54,8 +54,17 @@ class OrderController extends Controller
 
     public function ordersChart()
     {
-        // Ottieni tutti gli ordini collegati al ristorante dell'utente autenticato dal database
-        $orders = Order::where('restaurant_id', Auth::id())->get();
+        // Ottieni la data e l'ora di oggi
+        $today = Carbon::now();
+
+        // Sottrai un anno esatto dalla data odierna
+        $oneYearAgo = $today->copy()->subYear();
+
+        // Ora puoi usare queste date per filtrare gli ordini
+        $orders = Order::where('restaurant_id', Auth::id())
+               ->where('date', '>=', $oneYearAgo)
+               ->where('date', '<=', $today)
+               ->get();
         
         // Raggruppa gli ordini per mese e anno e conta il numero di ordini
         $ordersCount = $orders->groupBy(function ($order) {

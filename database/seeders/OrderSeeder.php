@@ -14,17 +14,17 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i=0; $i<5; $i++){
+        for ($i=0; $i<50; $i++){
             $order= new Order();
             $order->full_name = $faker->firstName().' '.$faker->lastName();
             $order->email = $faker->email();
             $order->address = $faker->address();
             $order->tel_number = $faker->phoneNumber();
             $order->description = $faker->text(15);
-            $order->date = $faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s');
+            $order->date = $faker->dateTimeBetween('-2 year', 'now')->format('Y-m-d H:i:s');
             $order->status = $faker->boolean(100);
             $order->total_price = $faker->randomFloat(2, 1, 99);
-            $order->restaurant_id = $faker->numberBetween(1, 5);
+            $order->restaurant_id = 11;
             $order->save();
         }
     }
