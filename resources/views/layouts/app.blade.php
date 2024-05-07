@@ -59,8 +59,8 @@
                         @endif
                         @else
                         <li class="d-flex flex-column gap-4 flex-md-row">
-                            <div>
-                                <span class="text-white text-center">
+                            <div class="text-center">
+                                <span class="text-white text-center text-nowrap">
                                     {{ Auth::user()->name}}
                                 </span>
 

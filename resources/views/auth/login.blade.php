@@ -29,8 +29,9 @@
                             <div class="px-3 px-lg-5 mb-4 row d-flex flex-column text_orange_color">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                                <div>
+                                <div class="position-relative">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="off">
+                                    <div id="visible" class="position-absolute" style="cursor: pointer">Mostra</div>
                                     <div id="passwordError" class="d-none bg-danger text-white rounded-pill fit-content px-3 py-1 mt-2" role="alert"></div>
                                     @error('password')
                                     <div class="invalid-feedback" role="alert">

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\User\DishController;
+use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\RestaurantController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +26,12 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/dashboard', [RestaurantController::class, 'index']);
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+    Route::get('/orders-chart', [OrderController::class, 'ordersChart'])->name('orders-chart');
 });
+
+
 
 Route::middleware('auth')->group(function () {
     // COMMENTATI PERCHE NON DOBBIAMO DARE LA POSSIBILITà AL RISTORATORE DI MODIFICARE DIRETTAMENTE I PROPRI DATI

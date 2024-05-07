@@ -28,21 +28,21 @@
             <div class="row bg-dark-navy-blue px-3 py-4 rounded-2">
                 <div class="col-12 col-lg-6 order-lg-1">
                     <div class="d-lg-flex flex-column justify-content-evenly h-100 row-gap-3">
-                        <div class="bg-base-orange p-3 text-white mb-3 mb-lg-0 rounded text-center text-lg-start">
-                            <h4>Nome Attività: {{ $restaurant->activity_name }}</h4>
+                        <div class="bg-base-orange p-3 mb-3 mb-lg-0 rounded text-center text-lg-start ">
+                            <h4>Nome Attività: <span class="fw-bolder h2">{{ $restaurant->activity_name }}</span></h4>
                             <p>Indirizzo: {{ $restaurant->address }}</p>
                             <p>Partita IVA: {{ $restaurant->piva }}</p>
-                            <h5>Proprietario: {{ Auth::user()->name . ' ' . Auth::user()->surname }} </h5>
+                            <h5>Proprietario: <span class="fw-bolder h3">{{ Auth::user()->name . ' ' . Auth::user()->surname }}</span> </h5>
                         </div>
 
                         <div class="d-flex flex-column gap-3">
 
                             <div class="d-none d-lg-block">
-                                <a class="d-lg-block text-center btn-base-orange rounded py-3" href="{{ route('dishes.index') }}">Gestisci il tuo menù</a>
+                                <a class="d-lg-block text-center btn-base-orange rounded py-3 text-dark fw-bolder" href="{{ route('dishes.index') }}">Gestisci il tuo menù</a>
                             </div>
 
                             <div class="d-none d-lg-block">
-                                <a class="d-lg-block text-center btn-base-orange rounded py-3" href="{{ route('dishes.index') }}">Osserva gli ordini</a>
+                                <a class="d-lg-block text-center btn-base-orange rounded py-3 text-dark fw-bolder" href="/orders">Osserva gli ordini</a>
                             </div>
                         </div>
 
@@ -57,7 +57,7 @@
                             <img class="img-fluid rounded" src="/restaurant_bg_1.jpg" alt="restaurant-img">
                             @endif
                             <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute" href="{{ route('dishes.index') }}">Menù</a>
-                            <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute dashboard_links_mt" href="{{ route('dishes.index') }}">Ordini</a>
+                            <a class="d-lg-none text-center btn-base-orange rounded w-75 py-2 position-absolute dashboard_links_mt" href="/orders">Ordini</a>
                         </figure>
                     </div>
                 </div>

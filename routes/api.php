@@ -21,9 +21,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //ristoranti da mostrare nella Home Page di VUE
 Route::get('/restaurants', [RestaurantController::class, 'index']);
-
+Route::get('/restaurantsid/{id}', [RestaurantController::class, 'restaurantid']);
 //tipologie dei ristoranti utilizzati per il filtraggo nella Home Page di VUE
 Route::get('/type', [RestaurantController::class, 'type']);
 
+//endpoint che accetta array e gestisce il filtraggio
+Route::get('/filtertypologies', [RestaurantController::class, 'getFilteredTypologies']);
+
 //singolo ristorante preso tramite chiamata API da usare nella SHOW del menù
 Route::get('restaurant/{dishes}', [RestaurantController::class, 'dishes']);
+
+
+Route::get('/braintree/get-token', [BraintreeController::class, 'getToken']);
+
+Route::post('/braintree/payment', [BraintreeController::class, 'payment']);
