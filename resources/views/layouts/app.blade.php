@@ -34,7 +34,7 @@
 
         <nav class="navbar navbar-expand-md navbar-light bg-nav shadow-sm ">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex align-items-center" href="http://localhost:5174">
                     <div>
                        <img width="100" src="/deliveboo-logo.png" alt="deliveboo-logo">
                     </div>
