@@ -19,7 +19,7 @@
         <div class="position-absolute top-50 start-50 w-75 text-center translate-middle restaurant-credentials text-white p-0 p-lg-3 px-lg-5 rounded">
             <h1 class="text-uppercase">{{$restaurant->activity_name}}</h1>
             <h3>{{$restaurant->address}}</h3>
-            <h4 class="mb-3">p.iva:{{$restaurant->piva}}</h4>
+            <h4 class="mb-3">p.iva: {{$restaurant->piva}}</h4>
             <a class="text-center btn-base-orange rounded px-5 m-0 m-auto py-2" href="{{ route('orders-chart') }}">Grafico Ordini</a>
         </div>
     </div>
@@ -35,26 +35,32 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="py-3" style="width: 200px">Nome</th>
-                                <th scope="col" class="ps-4 py-3" style="width: 150px">Email</th>
+                                <th scope="col" class="ps-4 py-3 d-none d-sm-table-cell" style="width: 150px">Email</th>
                                 <th scope="col" class="ps-4 py-3" style="width: 150px">Telefono</th>
-                                <th scope="col" class="py-3" style="width: 200px">Prezzo totale</th>
-                                <th scope="col" class="py-3" style="width: 180px">Indirizzo</th>
-                                <th scope="col" class="py-3" style="width: 180px">Data</th>
-                                <th scope="col" class="py-3" style="width: 100px">Ordine</th>
+                                <th scope="col" class="py-3 d-none d-sm-table-cell" style="width: 200px">Prezzo totale</th>
+                                <th scope="col" class="py-3 d-none d-sm-table-cell" style="width: 180px">Indirizzo</th>
+                                <th scope="col" class="py-3 d-none d-sm-table-cell" style="width: 180px">Data</th>
+                                <th scope="col" class="py-3 d-none d-sm-table-cell" style="width: 100px">Ordine</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($orders as $order)
                             <tr>
 
-                                <td class="align-middle ps-4">{{ $order->full_name }}</td>
-                                <td class="align-middle ps-4">{{ $order->email }}</td>
+                                <td class="align-middle ps-4 d-none d-sm-table-cell">{{ $order->full_name }}</td>
+
+                                    <td class="align-middle ps-4 d-sm-none d-table-cell">
+                                        <a class="h3 text-primary" href="{{ route('orders.show', $order->id) }}">
+                                            {{ $order->full_name }}
+                                        </a>
+                                    </td>
+                                <td class="align-middle ps-4 d-none d-sm-table-cell">{{ $order->email }}</td>
                                 <td class="align-middle ps-4">{{ $order->tel_number }}</td>
-                                <td class="align-middle">{{ $order->total_price }}€</td>
-                                <td class="align-middle">{{ $order->address }}</td>
-                                
-                                <td class="align-middle">{{ $order->date }}</td>
-                                <td class="align-middle ps-4">
+                                <td class="align-middle d-none d-sm-table-cell">{{ $order->total_price }}€</td>
+                                <td class="align-middle d-none d-sm-table-cell">{{ $order->address }}</td>
+
+                                <td class="align-middle d-none d-sm-table-cell">{{ $order->date }}</td>
+                                <td class="align-middle ps-4 d-none d-sm-table-cell">
                                     <a class="h3" href="{{ route('orders.show', $order->id) }}">
                                         <i class="fas fa-square-arrow-up-right"></i>
                                     </a>
