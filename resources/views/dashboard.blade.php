@@ -51,8 +51,10 @@
                 <div class="col-12  col-lg-6">
                     <div>
                         <figure class="mb-0 position-relative d-flex justify-content-center align-items-center m-0">
-                            @if ($restaurant->image)
+                            @if ($restaurant->image && str_contains($restaurant->image, 'restaurant_images/'))
                             <img class="img-fluid rounded" src="{{asset('/storage/'. $restaurant->image)}}" alt="restaurant-img">
+                            @elseif($restaurant->image && str_contains($restaurant->image, 'https://'))
+                            <img class="img-fluid rounded" src="{{ $restaurant->image }}" alt="restaurant-img">
                             @else
                             <img class="img-fluid rounded" src="/restaurant_bg_1.jpg" alt="restaurant-img">
                             @endif
