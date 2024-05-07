@@ -15,4 +15,4 @@
     @endforeach
 </ul>
 
-<h4>Totale: {{ $order->total_price }}</h4>
+<h4>Totale: {{ $order->total_price }}€</h4>
