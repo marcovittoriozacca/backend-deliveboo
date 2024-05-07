@@ -9,10 +9,15 @@
     <div class="position-relative negative-index">
         {{-- banner con l'immagine del ristorante che sarà dinamica --}}
         <figure class="mb-0 photo-max-h overflow-hidden m-0">
-            @if ($restaurant->image )
+            @if ($restaurant->image && str_contains($restaurant->image, 'restaurant_images/'))
             <div style="background-image:url({{asset('/storage/'. $restaurant->image)}})" class="h-100 menu-restaurant-banner"></div>
+
+            @elseif($restaurant->image && str_contains($restaurant->image, 'https://'))
+            <div style="background-image:url({{ $restaurant->image }})" class="h-100 menu-restaurant-banner"></div>
+
             @else
             <div style="background-image:url('/restaurant_bg_1.jpg')" class="h-100 menu-restaurant-banner"></div>
+
             @endif
         </figure>
 

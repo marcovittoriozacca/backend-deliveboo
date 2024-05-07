@@ -58,14 +58,13 @@ class RestaurantController extends Controller
         $restaurant_api = Restaurant::with('types')->where('slug', $restaurant)->first();
         ///////------
 
-        $dishes = Dish::with('category')->where('restaurant_id', $restaurant_api->id)->get();
-
-        if(count($dishes) < 1){
+        if(!$restaurant_api){
             return response()->json([
                 'success' => false,
                 "error" => 'No restaurant available with that id',
             ]);
         }else{
+            $dishes = Dish::with('category')->where('restaurant_id', $restaurant_api->id)->get();
             return response()->json([
                 'success' => true,
                 'dishes' => $dishes,
