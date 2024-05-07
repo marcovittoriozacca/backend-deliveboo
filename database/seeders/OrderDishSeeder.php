@@ -23,7 +23,7 @@ class OrderDishSeeder extends Seeder
 
         while ($iterations < 40){
             $order = Order::inRandomOrder()->first()->id;
-            $dish = Dish::inRandomOrder()->first();
+            $dish = Dish::where('restaurant_id', 11)->inRandomOrder()->first();
 
             if( !DB::table('dish_order')->where('dish_id', $dish->id)->where('order_id', $order)->exists() ){
                 $iterations++;
