@@ -19,7 +19,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::whereHas('dishes', function ($query) {
-            $query->where('restaurant_id', Auth::id());
+            $query->where('restaurant_id', Auth::id())->withTrashed();
             })->get()->sortDesc();
         $restaurant=Restaurant::all()->where('id',Auth::id())->first();
 
@@ -55,7 +55,7 @@ class OrderController extends Controller
     public function ordersChart()
     {
         // Ottieni la data e l'ora di oggi
-        $today = Carbon::now();
+        $today = Carbon::now()->addHours(2);
 
         // Sottrai un anno esatto dalla data odierna
         $oneYearAgo = $today->copy()->subYear();

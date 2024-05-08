@@ -37,7 +37,7 @@
           stepSize: 1 //1 serve a visualizzare solo i numeri interi
         }
       },
-      barPercentage: .5, //larghezza delle colonne
+      barPercentage: .2, //larghezza delle colonne
     }
   });
 
