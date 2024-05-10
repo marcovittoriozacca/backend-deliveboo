@@ -5,7 +5,7 @@
 @section('content')
 <main class="container-fluid py-3 d-flex flex-column align-items-center v-100 create_main">
     <h1 class="text-center white mb-5 mt-2">Aggiungi un piatto</h1>
-    <form id="dish-form" action="{{ route('dishes.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+    <form class="container-fluid" id="dish-form" action="{{ route('dishes.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
         @csrf
         <div class="container container_form p-3 py-3 p-lg-5">
             <div class="d-flex justify-content-between gap-5 flex-column flex-lg-row">
@@ -66,52 +66,59 @@
                     @enderror
             </div>
 
-            {{-- edit ingredienti --}}
-            <div class="mb-3 w-100">
-                <label for="ingredient" class="form-label">Ingredienti<span class="text-danger"> *</span></label>
-                <input
-                    name="ingredient"
-                    type="text"
-                    class="form-control @error ('ingredient') @enderror"
-                    id="ingredient"
-                    placeholder="inserisci il nome"
-                    required
-                    maxlength="255"
-                    autocomplete="off"
-                    value="{{ old('ingredient')? old('ingredient') : '' }}"
-                >
-                <div id="ingredientError" class="d-none text-danger" role="alert"></div>
-                @error ('ingredient')
-                <p class="text-danger">{{ $message }}</p>
-                @enderror
-            </div>
 
-            {{-- edit immagine --}}
-            <div class="input-group my-5 d-flex flex-column">
-                <label for="image" class="mb-2">Immagine</label>
-                <input type="file" class="form-control w-100 rounded" id="image" aria-describedby="inputGroupFileAddon04" autocomplete="off" name="image" aria-label="Upload">
-                <div id="imageError" class="d-none text-danger" role="alert"></div>
-            </div>
 
-            {{-- edit prezzo --}}
-            <div class="mb-4">
-                <div>
-                    <label for="price" class="form-label">Prezzo<span class="text-danger"> *</span></label>
+
+                {{-- edit ingredienti --}}
+                <div class="mb-5 w-100">
+                    <label for="ingredient" class="form-label">Ingredienti<span class="text-danger"> *</span></label>
                     <input
-                        name="price"
-                        type="number"
-                        step=".01"
-                        class="form-control @error ('price') is-invalid @enderror"
-                        id="price"
+                        name="ingredient"
+                        type="text"
+                        class="form-control @error ('ingredient') @enderror"
+                        id="ingredient"
+                        placeholder="inserisci il nome"
                         required
-                        min="0"
+                        maxlength="255"
                         autocomplete="off"
-                        value="{{ old('price')? old('price') : '' }}"
+                        value="{{ old('ingredient')? old('ingredient') : '' }}"
                     >
-                    <div id="priceError" class="d-none text-danger" role="alert"></div>
-                    @error ('price')
+                    <div id="ingredientError" class="d-none text-danger" role="alert"></div>
+                    @error ('ingredient')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
+                </div>
+
+            <div class="d-md-flex mb-4">
+
+                {{-- edit immagine --}}
+                <div class="input-group my-5 m-md-0 d-flex flex-column">
+                    <label for="image" class="mb-2">Immagine</label>
+                    <input type="file" class="form-control w-100 rounded" id="image" aria-describedby="inputGroupFileAddon04" autocomplete="off" name="image" aria-label="Upload">
+                    <div id="imageError" class="d-none text-danger" role="alert"></div>
+                </div>
+
+
+                {{-- edit prezzo --}}
+                <div class="mb-4 mb-md-0">
+                    <div>
+                        <label for="price" class="form-label">Prezzo<span class="text-danger"> *</span></label>
+                        <input
+                            name="price"
+                            type="number"
+                            step=".01"
+                            class="form-control @error ('price') is-invalid @enderror"
+                            id="price"
+                            required
+                            min="0"
+                            autocomplete="off"
+                            value="{{ old('price')? old('price') : '' }}"
+                        >
+                        <div id="priceError" class="d-none text-danger" role="alert"></div>
+                        @error ('price')
+                        <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
 
